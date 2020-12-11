@@ -1,0 +1,48 @@
+.sidebar {
+  color: #fff;
+  background-color: #107360;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  & > * {
+    cursor: pointer;
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__menu {
+    list-style: none;
+    width: 70%;
+    margin-left: 30%;
+
+    & > li,
+    .settings--btn {
+      margin-bottom: 1rem;
+      position: relative;
+      padding: 0.3rem 0;
+      border-radius: 10px 0 0 10px;
+    }
+
+    .settings--btn {
+      padding-left: 4px;
+    }
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

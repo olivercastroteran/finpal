@@ -1,0 +1,53 @@
+.sidebar-link {
+  position: relative;
+  margin-left: -20%;
+  padding: 0.5rem 0 0.5rem 1rem;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &.active {
+    background-color: #fff;
+
+    &:after,
+    &:before {
+      content: '';
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      right: 0px;
+    }
+
+    &:after {
+      top: -11px;
+      background: radial-gradient(circle at top left, #107360 10px, white 11px);
+    }
+
+    &:before {
+      bottom: -11px;
+      background: radial-gradient(
+        circle at bottom left,
+        #107360 10px,
+        white 11px
+      );
+    }
+
+    svg path {
+      fill: #107360;
+    }
+
+    &.dashboard-icon {
+      svg path {
+        fill: transparent;
+        stroke: #107360;
+      }
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+  }
+}
