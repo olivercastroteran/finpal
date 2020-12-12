@@ -1,0 +1,16 @@
+.modal {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  height: 30%;
+  background-color: #fff;
+  border-radius: 20px;
+  transition: all 0.3s 0.1s;
+  z-index: 10;
+
+  &.show {
+    top: 50%;
+  }
+}

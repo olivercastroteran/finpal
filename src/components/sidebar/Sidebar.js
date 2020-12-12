@@ -5,7 +5,10 @@ import { FinPalImgLight, FinPalImgDark } from '../../assets/images';
 import { SettingsIcon, ArrowIcon } from '../../assets/icons';
 import { links } from './components/data/data';
 import SidebarLink from './components/sidebarLinks/SidebarLink';
-import { toggleSidebar } from '../../store/actions/settingsActions';
+import {
+  toggleModal,
+  toggleSidebar,
+} from '../../store/actions/settingsActions';
 
 const Sidebar = () => {
   const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
@@ -24,7 +27,7 @@ const Sidebar = () => {
         {links.map((link) => (
           <SidebarLink key={link.id} {...link} />
         ))}
-        <li>
+        <li onClick={() => dispatch(toggleModal())}>
           <div className="sidebar-link btn">
             <SettingsIcon />
             {isSidebarOpen && <p>Settings</p>}
