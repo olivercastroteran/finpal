@@ -2,6 +2,26 @@
   height: 100%;
   width: 100%;
   display: flex;
-  color: #fff;
+  color: #333;
   position: relative;
+
+  .sidebar,
+  .content {
+    margin: 1rem;
+    padding: 0.75rem;
+  }
+
+  .sidebar {
+    width: 92px;
+    padding: 1.5rem 0;
+    transition: all 0.3s;
+  }
+
+  .sidebar.open {
+    width: 220px;
+  }
+
+  .content {
+    flex: 1;
+  }
 }
