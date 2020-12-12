@@ -1,7 +1,10 @@
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import './SidebarLink.scss';
 
 const SidebarLink = ({ id, url, text, icon }) => {
+  const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
+
   return (
     <li>
       <NavLink
@@ -12,7 +15,7 @@ const SidebarLink = ({ id, url, text, icon }) => {
         }
       >
         <div className="sidebar-link__icon">{icon}</div>
-        {/* <p className="sidebar-link__text">{text}</p> */}
+        {isSidebarOpen && <p className="sidebar-link__text">{text}</p>}
       </NavLink>
     </li>
   );

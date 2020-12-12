@@ -1,16 +1,22 @@
 import './Sidebar.scss';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { FinPalImgLight, FinPalImgDark } from '../../assets/images';
 import { SettingsIcon, ArrowIcon } from '../../assets/icons';
-import { Link } from 'react-router-dom';
 import { links } from './components/data/data';
 import SidebarLink from './components/sidebarLinks/SidebarLink';
+import { toggleSidebar } from '../../store/actions/settingsActions';
 
 const Sidebar = () => {
+  const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
+  const dispatch = useDispatch();
+
   return (
-    <nav className="sidebar">
+    <nav className={isSidebarOpen ? 'sidebar open' : 'sidebar'}>
       <div className="sidebar__logo">
         <Link to="/">
           <FinPalImgLight />
+          {isSidebarOpen && <h1>FinPal</h1>}
         </Link>
       </div>
 
@@ -18,13 +24,16 @@ const Sidebar = () => {
         {links.map((link) => (
           <SidebarLink key={link.id} {...link} />
         ))}
-        <div className="settings--btn">
-          <SettingsIcon />
-        </div>
+        <li>
+          <div className="sidebar-link btn">
+            <SettingsIcon />
+            {isSidebarOpen && <p>Settings</p>}
+          </div>
+        </li>
       </ul>
 
-      <div className="sidebar__btn">
-        <ArrowIcon />
+      <div className="sidebar__btn" onClick={() => dispatch(toggleSidebar())}>
+        <ArrowIcon className={isSidebarOpen ? 'arrow open' : 'arrow'} />
       </div>
     </nav>
   );
