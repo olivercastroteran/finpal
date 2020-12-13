@@ -77,6 +77,38 @@
     }
   }
 
+  &.dark.active {
+    background-color: #111;
+    p {
+      color: #1ccdaa;
+    }
+
+    &:after {
+      top: -11px;
+      background: radial-gradient(circle at top left, #16a085 10px, #111 11px);
+    }
+
+    &:before {
+      bottom: -11px;
+      background: radial-gradient(
+        circle at bottom left,
+        #16a085 10px,
+        #111 11px
+      );
+    }
+
+    svg path {
+      fill: #1ccdaa;
+    }
+
+    &.dashboard-icon {
+      svg path {
+        fill: transparent;
+        stroke: #1ccdaa;
+      }
+    }
+  }
+
   &__icon {
     display: flex;
     align-items: center;

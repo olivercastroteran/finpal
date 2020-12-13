@@ -12,13 +12,14 @@ import {
 
 const Sidebar = () => {
   const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
+  const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
 
   return (
     <nav className={isSidebarOpen ? 'sidebar open' : 'sidebar'}>
       <div className="sidebar__logo">
         <Link to="/">
-          <FinPalImgLight />
+          {isDarkMode ? <FinPalImgDark /> : <FinPalImgLight />}
           {isSidebarOpen && <h1>FinPal</h1>}
         </Link>
       </div>

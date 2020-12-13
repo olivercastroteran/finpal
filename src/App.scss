@@ -4,11 +4,22 @@
   display: flex;
   color: #333;
   position: relative;
+  transition: all 0.3s;
+
+  &.dark {
+    background-color: #111;
+    color: #eee;
+
+    .sidebar {
+      background-color: #16a085;
+    }
+  }
 
   .sidebar,
   .content {
     margin: 1rem;
     padding: 0.75rem;
+    transition: all 0.3s;
   }
 
   .sidebar {

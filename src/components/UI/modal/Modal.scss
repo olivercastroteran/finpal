@@ -7,11 +7,22 @@
   height: 30%;
   background-color: #fff;
   border-radius: 20px;
-  border: 1px solid #ccc;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s 0.1s;
+  transition: all 0.3s;
   z-index: 10;
+
+  &.dark {
+    background-color: #222;
+
+    .modal__title {
+      border-bottom: 1px solid #555;
+    }
+
+    .modal__setting select * {
+      background-color: #444;
+    }
+  }
 
   @media screen and (max-width: 1400px) {
     height: 40%;
@@ -65,6 +76,7 @@
     justify-content: space-between;
 
     select {
+      color: inherit;
       border: none;
       background: transparent;
       font-size: 1rem;
