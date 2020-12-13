@@ -4,7 +4,7 @@ import Sidebar from './components/sidebar/Sidebar';
 import { Balance, Dashboard, Debts, NotFound, Stock } from './views';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleModal } from './store/actions/settingsActions';
-import Modal from './components/UI/modal/Modal';
+import SettingsForm from './components/settingsForm/SettingsForm';
 
 function App() {
   const isModalOpen = useSelector((state) => state.settings.isModalOpen);
@@ -14,15 +14,16 @@ function App() {
     <BrowserRouter>
       <div className="app">
         <Sidebar />
+
         {isModalOpen && (
           <div
             className="backdrop"
             onClick={() => dispatch(toggleModal())}
           ></div>
         )}
-        <Modal show={isModalOpen}>
-          <h2>Settings</h2>
-        </Modal>
+
+        <SettingsForm />
+
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route path="/balance" component={Balance} />

@@ -9,3 +9,7 @@ export const toggleModal = () => {
     type: 'TOGGLE_MODAL',
   };
 };
+
+export const toggleDarkMode = () => {
+  return { type: 'TOGGLE_DARK_MODE' };
+};
