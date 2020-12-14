@@ -1,0 +1,36 @@
+.toggle-btn {
+  width: 60px;
+  height: 36px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__slide {
+    cursor: pointer;
+    width: 100%;
+    height: 50%;
+    background-color: #ccc;
+    border-radius: 20px;
+  }
+
+  &.on {
+    .toggle-btn__ball {
+      left: 50%;
+      background-color: #107360;
+    }
+  }
+
+  &__ball {
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #16a085;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 1px 2px 3px rgba($color: #000000, $alpha: 0.3);
+    transition: all 0.3s;
+  }
+}

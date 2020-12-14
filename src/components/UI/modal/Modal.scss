@@ -1,0 +1,119 @@
+.modal {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  max-width: 550px;
+  height: 30%;
+  max-height: 300px;
+  background-color: #fff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+  z-index: 10;
+
+  &.dark {
+    background-color: #222;
+
+    .modal__title {
+      border-bottom: 1px solid #555;
+    }
+
+    .modal__setting select * {
+      background-color: #444;
+    }
+  }
+
+  @media screen and (max-width: 1400px) {
+    height: 40%;
+  }
+
+  @media screen and (max-width: 700px) {
+    width: 80%;
+  }
+
+  &.show {
+    top: 50%;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid #ccc;
+
+    h2 {
+      letter-spacing: 2px;
+    }
+
+    span {
+      cursor: pointer;
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: #c0392b;
+      transition: all 0.1s;
+
+      &:hover {
+        transform: scale(1.075);
+      }
+
+      &:active {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__info {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0.7rem 1rem;
+  }
+
+  &__setting {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    select {
+      color: inherit;
+      border: none;
+      background: transparent;
+      font-size: 1rem;
+      border-bottom: 1px solid #107360;
+      outline: none;
+      padding: 0.3rem 1rem;
+    }
+  }
+
+  &__btn {
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 50%;
+    margin: 0 auto;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 20px;
+    background-color: #107360;
+    color: #fff;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: #16a085;
+      transform: scale(1.03);
+      box-shadow: 2px 3px 5px rgba($color: #000000, $alpha: 0.3);
+    }
+
+    &:active {
+      transform: scale(1);
+      box-shadow: 1px 2px 3px rgba($color: #000000, $alpha: 0.2);
+    }
+  }
+}

@@ -4,11 +4,22 @@
   display: flex;
   color: #333;
   position: relative;
+  transition: all 0.3s;
+
+  &.dark {
+    background-color: #111;
+    color: #eee;
+
+    .sidebar {
+      background-color: #16a085;
+    }
+  }
 
   .sidebar,
   .content {
     margin: 1rem;
     padding: 0.75rem;
+    transition: all 0.3s;
   }
 
   .sidebar {
@@ -18,10 +29,20 @@
   }
 
   .sidebar.open {
-    width: 220px;
+    width: 225px;
   }
 
   .content {
     flex: 1;
   }
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: #000000, $alpha: 0.7);
+  z-index: 5;
 }

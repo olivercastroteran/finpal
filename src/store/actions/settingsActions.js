@@ -3,3 +3,20 @@ export const toggleSidebar = () => {
     type: 'TOGGLE_SIDEBAR',
   };
 };
+
+export const toggleModal = () => {
+  return {
+    type: 'TOGGLE_MODAL',
+  };
+};
+
+export const toggleDarkMode = () => {
+  return { type: 'TOGGLE_DARK_MODE' };
+};
+
+export const changeLanguage = (language) => {
+  return {
+    type: 'CHANGE_LANGUAGE',
+    payload: language,
+  };
+};
