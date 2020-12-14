@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 2.5rem;
 
   &.dark {
     .header__search {
@@ -31,7 +32,7 @@
   }
 
   &__search {
-    width: 30%;
+    width: 40%;
     height: 100%;
     background-color: #efefef;
     border-radius: 17px;
@@ -40,6 +41,7 @@
     align-items: center;
 
     input {
+      width: 85%;
       border: none;
       background-color: transparent;
       font-size: 1.15rem;

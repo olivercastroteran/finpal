@@ -1,0 +1,39 @@
+.dashboard {
+  &.dark {
+    .dashboard__bottom {
+      &--left,
+      &--right {
+        & > div {
+          background-color: #333;
+          color: #eee;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+
+    &--left {
+      width: 70%;
+      margin-right: 1rem;
+
+      & > div {
+        padding: 1rem;
+        background-color: #efefef;
+        border-radius: 25px;
+      }
+    }
+
+    &--right {
+      width: 30%;
+
+      & > div {
+        padding: 1rem;
+        background-color: #efefef;
+        border-radius: 25px;
+      }
+    }
+  }
+}
