@@ -1,7 +1,7 @@
 import './App.scss';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Sidebar from './components/sidebar/Sidebar';
-import { Balance, Dashboard, Debts, NotFound, Stock } from './views';
+import { Balance, Dashboard, Debts, NotFound, Stock, User } from './views';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleModal } from './store/actions/settingsActions';
 import SettingsForm from './components/settingsForm/SettingsForm';
@@ -30,6 +30,7 @@ function App() {
           <Route path="/balance" component={Balance} />
           <Route path="/debts" component={Debts} />
           <Route path="/stock" component={Stock} />
+          <Route path="/user" component={User} />
           <Route component={NotFound} />
         </Switch>
       </div>

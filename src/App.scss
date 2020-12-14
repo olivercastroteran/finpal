@@ -34,6 +34,26 @@
 
   .content {
     flex: 1;
+    overflow-y: scroll;
+    margin-right: 0;
+    padding-right: 1.5rem;
+
+    &::-webkit-scrollbar {
+      width: 0.6rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #107360;
+      border-radius: 15px;
+
+      &:hover {
+        background-color: #16a085;
+      }
+    }
   }
 }
 

@@ -1,0 +1,52 @@
+.global-info {
+  &__top {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  &.dark {
+    .global-info__bottom > div {
+      background-color: #333;
+    }
+  }
+
+  &__bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > div {
+      cursor: pointer;
+      width: 27.5%;
+      min-height: 80px;
+      background-color: #ddd;
+      border-radius: 15px;
+      transition: all 0.3s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__incomes {
+    &:hover {
+      background-color: #27ae60 !important;
+    }
+  }
+
+  &__expenses {
+    &:hover {
+      background-color: #c0392b !important;
+    }
+  }
+
+  &__debts {
+    &:hover {
+      background-color: #f39c12 !important;
+    }
+  }
+}
