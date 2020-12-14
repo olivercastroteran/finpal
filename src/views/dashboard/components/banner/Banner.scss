@@ -1,3 +1,27 @@
 .banner {
   margin-bottom: 2.5rem;
+  min-height: 14rem;
+  display: flex;
+  justify-content: space-between;
+
+  &__left {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    p {
+      opacity: 0.7;
+    }
+  }
+
+  &__right {
+    position: relative;
+
+    svg {
+      position: absolute;
+      right: -35px;
+      bottom: 7px;
+    }
+  }
 }

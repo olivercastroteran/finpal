@@ -7,7 +7,7 @@
 
   &.dark {
     .header__search {
-      background-color: #333;
+      background-color: #222;
 
       input {
         color: #ccc;
@@ -22,7 +22,7 @@
       color: #ccc;
 
       &:hover {
-        background-color: #333;
+        background-color: #222;
       }
 
       svg path {
