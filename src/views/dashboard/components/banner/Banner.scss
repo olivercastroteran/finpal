@@ -10,6 +10,11 @@
     flex-direction: column;
     justify-content: space-around;
 
+    h2 {
+      font-size: 1.7rem;
+      letter-spacing: 1px;
+    }
+
     p {
       opacity: 0.7;
     }
@@ -20,8 +25,8 @@
 
     svg {
       position: absolute;
-      right: -35px;
-      bottom: 7px;
+      right: -2.5rem;
+      bottom: 0.4rem;
     }
   }
 }

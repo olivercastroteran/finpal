@@ -35,6 +35,8 @@
   .content {
     flex: 1;
     overflow-y: scroll;
+    margin-right: 0;
+    padding-right: 1.5rem;
 
     &::-webkit-scrollbar {
       width: 0.6rem;
