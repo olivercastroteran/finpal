@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import './SidebarLink.scss';
 
-const SidebarLink = ({ id, url, text, icon }) => {
+const SidebarLink = ({ url, text, icon }) => {
   const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
 
@@ -12,7 +12,7 @@ const SidebarLink = ({ id, url, text, icon }) => {
         exact
         to={url}
         className={
-          text === 'Dashboard'
+          text === 'Dashboard' || 'Menu'
             ? `sidebar-link dashboard-icon ${isDarkMode && 'dark'}`
             : `sidebar-link ${isDarkMode && 'dark'}`
         }

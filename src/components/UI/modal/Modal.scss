@@ -4,7 +4,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 40%;
+  max-width: 550px;
   height: 30%;
+  max-height: 300px;
   background-color: #fff;
   border-radius: 20px;
   display: flex;
@@ -26,6 +28,10 @@
 
   @media screen and (max-width: 1400px) {
     height: 40%;
+  }
+
+  @media screen and (max-width: 700px) {
+    width: 80%;
   }
 
   &.show {

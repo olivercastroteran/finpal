@@ -13,3 +13,10 @@ export const toggleModal = () => {
 export const toggleDarkMode = () => {
   return { type: 'TOGGLE_DARK_MODE' };
 };
+
+export const changeLanguage = (language) => {
+  return {
+    type: 'CHANGE_LANGUAGE',
+    payload: language,
+  };
+};

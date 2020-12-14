@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import './Sidebar.scss';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,11 +10,23 @@ import {
   toggleModal,
   toggleSidebar,
 } from '../../store/actions/settingsActions';
+import { english, spanish } from '../../languages';
 
 const Sidebar = () => {
   const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
+  const language = useSelector((state) => state.settings.language);
+  const [content, setContent] = useState([]);
+
+  useEffect(() => {
+    if (language === 'english') {
+      setContent([...english.sidebar]);
+    } else if (language === 'spanish') {
+      setContent([...spanish.sidebar]);
+    }
+    // eslint-disable-next-line
+  }, [language]);
 
   return (
     <nav className={isSidebarOpen ? 'sidebar open' : 'sidebar'}>
@@ -25,13 +38,15 @@ const Sidebar = () => {
       </div>
 
       <ul className="sidebar__menu">
-        {links.map((link) => (
-          <SidebarLink key={link.id} {...link} />
+        {links.map((link, i) => (
+          <SidebarLink key={link.id} {...link} text={content && content[i]} />
         ))}
         <li onClick={() => dispatch(toggleModal())}>
           <div className="sidebar-link btn">
             <SettingsIcon />
-            {isSidebarOpen && <p>Settings</p>}
+            {isSidebarOpen && (
+              <p>{language === 'english' ? 'Settings' : 'Ajustes'}</p>
+            )}
           </div>
         </li>
       </ul>
