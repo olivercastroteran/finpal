@@ -1,9 +1,10 @@
 import './Dashboard.scss';
+import Header from '../../components/header/Header';
 
 const Dashboard = () => {
   return (
     <div className="dashboard content">
-      <h1>Dashboard</h1>
+      <Header />
     </div>
   );
 };

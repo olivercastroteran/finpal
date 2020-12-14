@@ -6,6 +6,7 @@ const spanish = {
     btn: 'GUARDAR',
   },
   sidebar: ['Menu', 'Balance', 'Deudas', 'Stock'],
+  header: 'Buscar',
 };
 
 export default spanish;

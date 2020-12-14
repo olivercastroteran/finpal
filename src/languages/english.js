@@ -6,6 +6,7 @@ const english = {
     btn: 'SAVE',
   },
   sidebar: ['Dashboard', 'Balance', 'Debts', 'Stock'],
+  header: 'Search',
 };
 
 export default english;
