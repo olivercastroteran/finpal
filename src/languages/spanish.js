@@ -5,6 +5,15 @@ const spanish = {
     darkMode: 'Modo Oscuro',
     btn: 'GUARDAR',
   },
+  addTransaction: {
+    title: 'Añadir Transacción',
+    type: 'Tipo',
+    types: ['Ingreso', 'Gasto'],
+    name: 'Nombre',
+    description: 'Descripción',
+    amount: 'Monto',
+    btn: 'Añadir',
+  },
   sidebar: ['Menu', 'Balance', 'Deudas', 'Stock'],
   header: 'Buscar',
   dashboard: {
@@ -24,7 +33,7 @@ const spanish = {
   balance: {
     incomes: 'Ingresos',
     expenses: 'Gastos',
-    btnText: 'Aumentar Transacción',
+    btnText: 'Añadir Transacción',
   },
 };
 

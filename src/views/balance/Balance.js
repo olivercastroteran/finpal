@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
 import './Balance.scss';
 import Header from '../../components/header/Header';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AddBtn from '../../components/UI/addBtn/AddBtn';
 import { english, spanish } from '../../languages';
+import { toggleAddTransactionModal } from '../../store/actions/settingsActions';
 
 const Balance = () => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (language === 'english') {
@@ -31,11 +33,17 @@ const Balance = () => {
 
         <div className="balance__expenses">
           <h2>{content?.expenses}</h2>
-          <div className="balance__expenses--list">item</div>
+          <div className="balance__expenses--list">
+            <h4>Item</h4>
+          </div>
         </div>
       </div>
 
-      <AddBtn text={content?.btnText} symbol="+" />
+      <AddBtn
+        text={content?.btnText}
+        symbol="+"
+        clicked={() => dispatch(toggleAddTransactionModal())}
+      />
     </div>
   );
 };

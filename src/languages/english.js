@@ -5,6 +5,15 @@ const english = {
     darkMode: 'Dark Mode',
     btn: 'SAVE',
   },
+  addTransaction: {
+    title: 'Add Transaction',
+    type: 'Type',
+    types: ['Income', 'Expense'],
+    name: 'Name',
+    description: 'Description',
+    amount: 'Amount',
+    btn: 'ADD',
+  },
   sidebar: ['Dashboard', 'Balance', 'Debts', 'Stock'],
   header: 'Search',
   dashboard: {
