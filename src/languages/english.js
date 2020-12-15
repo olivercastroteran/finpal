@@ -13,6 +13,12 @@ const english = {
       welcomeTxt:
         'FinPal the best app to manage your buisness finances, control your incomes, expenses, debts and stock in one place. And Block your account whenever you need',
     },
+    globalBalance: {
+      title: 'Global Balance',
+      incomesTxt: 'Total Incomes',
+      expensesTxt: 'Total Expenses',
+      debtsTxt: 'Total Debts',
+    },
   },
 };
 

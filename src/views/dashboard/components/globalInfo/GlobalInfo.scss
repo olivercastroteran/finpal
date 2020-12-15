@@ -1,4 +1,14 @@
 .global-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  h2 {
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+  }
+
   &__top {
     display: flex;
     align-self: center;
@@ -6,9 +16,23 @@
     margin-bottom: 3rem;
   }
 
+  &-data {
+    display: none;
+  }
+
   &.dark {
     .global-info__bottom > div {
       background-color: #333;
+
+      &:hover {
+        svg {
+          display: none;
+        }
+      }
+
+      svg path {
+        fill: #bbb;
+      }
     }
   }
 
@@ -21,32 +45,60 @@
     & > div {
       cursor: pointer;
       width: 27.5%;
-      min-height: 80px;
-      background-color: #ddd;
-      border-radius: 15px;
+      min-height: 100px;
+      background-color: #e1e1e1;
+      border-radius: 0.5rem;
       transition: all 0.3s;
+      border-left: 7px solid;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg path {
+        transition: all 0.3s;
+      }
 
       &:hover {
         transform: scale(1.05);
+        svg {
+          display: none;
+        }
+
+        .global-info-data {
+          display: block;
+          color: #eee;
+
+          p {
+            text-transform: uppercase;
+            margin-bottom: 7px;
+            font-size: 1rem;
+          }
+        }
       }
     }
   }
 
   &__incomes {
+    border-left-color: #155c33 !important;
+
     &:hover {
-      background-color: #27ae60 !important;
+      background-color: #155c33 !important;
     }
   }
 
   &__expenses {
+    border-left-color: #a43125 !important;
+
     &:hover {
-      background-color: #c0392b !important;
+      background-color: #a43125 !important;
     }
   }
 
   &__debts {
+    border-left-color: #d8890b !important;
+
     &:hover {
-      background-color: #f39c12 !important;
+      background-color: #d8890b !important;
     }
   }
 }

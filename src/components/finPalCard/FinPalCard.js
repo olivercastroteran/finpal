@@ -7,10 +7,8 @@ const FinPalCard = () => {
   const [isCardBlock, setIsCardBlock] = useState(false);
 
   const style = {
-    background: `url(${CardImg})`,
+    backgroundImage: `url(${CardImg})`,
   };
-
-  console.log(CardImg);
 
   return (
     <div className="finpal-card" style={style}>
