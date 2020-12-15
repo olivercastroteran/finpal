@@ -1,0 +1,39 @@
+.add-btn {
+  cursor: pointer;
+  outline: none;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto 0 auto;
+  font-size: 1rem;
+  padding: 0.5rem 2.5rem;
+  border: none;
+  border-radius: 30px;
+  background-color: #107360;
+  color: #fff;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: #16a085;
+    transform: scale(1.025);
+    box-shadow: 2px 3px 5px rgba($color: #000000, $alpha: 0.3);
+  }
+
+  &:active {
+    transform: scale(1);
+    box-shadow: 1px 2px 4px rgba($color: #000000, $alpha: 0.2);
+  }
+
+  span {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

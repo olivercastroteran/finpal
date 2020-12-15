@@ -19,6 +19,12 @@ const spanish = {
       expensesTxt: 'Gastos Totales',
       debtsTxt: 'Deudas Totales',
     },
+    recentMovementsTitle: 'Movimientos Recientes',
+  },
+  balance: {
+    incomes: 'Ingresos',
+    expenses: 'Gastos',
+    btnText: 'Aumentar Transacción',
   },
 };
 

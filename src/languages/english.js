@@ -19,6 +19,12 @@ const english = {
       expensesTxt: 'Total Expenses',
       debtsTxt: 'Total Debts',
     },
+    recentMovementsTitle: 'Recent Movements',
+  },
+  balance: {
+    incomes: 'Incomes',
+    expenses: 'Expenses',
+    btnText: 'Add Transaction',
   },
 };
 
