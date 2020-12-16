@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleAddModal } from '../../store/actions/settingsActions';
+import { toggleEditModal } from '../../store/actions/settingsActions';
+import { editExpense, editIncome } from '../../store/actions/financeActions';
 import Modal from '../UI/modal/Modal';
 import { english, spanish } from '../../languages';
-import { addIncome, addExpense } from '../../store/actions/financeActions';
 
-const AddTransaction = () => {
-  const isAddOpen = useSelector((state) => state.settings.modals.isAddOpen);
+const EditTransaction = ({ item }) => {
+  const edit = useSelector((state) => state.settings.modals.edit);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
-  const [type, setType] = useState('income');
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
@@ -17,70 +16,52 @@ const AddTransaction = () => {
 
   const addTransaction = (e) => {
     e.preventDefault();
+    const editedItem = {
+      id: item.id,
+      type: item.type,
+      name,
+      description,
+      amount,
+    };
 
-    if (type === 'income') {
-      dispatch(
-        addIncome({
-          type,
-          name,
-          description,
-          amount,
-          id: +(Math.random() * 1000000).toFixed(0),
-        })
-      );
-    } else if (type === 'expense') {
-      dispatch(
-        addExpense({
-          type,
-          name,
-          description,
-          amount,
-          id: +(Math.random() * 1000000).toFixed(0),
-        })
-      );
+    if (item?.type === 'income') {
+      dispatch(editIncome(editedItem));
+    } else if (item?.type === 'expense') {
+      dispatch(editExpense(editedItem));
     }
 
     setName('');
     setDescription('');
-    setAmount(0);
+    setAmount('');
 
     setTimeout(() => {
-      dispatch(toggleAddModal());
+      dispatch(toggleEditModal());
     }, 300);
   };
 
   useEffect(() => {
     if (language === 'english') {
-      setContent({ ...english.addTransaction });
+      setContent({ ...english.edit });
     } else if (language === 'spanish') {
-      setContent({ ...spanish.addTransaction });
+      setContent({ ...spanish.edit });
     }
     // eslint-disable-next-line
   }, [language]);
 
   return (
-    <Modal show={isAddOpen}>
+    <Modal show={edit.isOpen}>
       <div className="modal__title">
-        <h2>{content?.title}</h2>
-        <span onClick={() => dispatch(toggleAddModal())}>x</span>
+        <h2>
+          {content?.title} N-{item?.id}
+        </h2>
+        <span onClick={() => dispatch(toggleEditModal())}>x</span>
       </div>
       <form className="modal__info" onSubmit={addTransaction}>
-        <div className="modal__setting">
-          <label>{content?.type}</label>
-          <select
-            defaultValue="income"
-            onChange={(e) => setType(e.target.value)}
-          >
-            <option value="income">{content.types && content.types[0]}</option>
-            <option value="expense">{content.types && content.types[1]}</option>
-          </select>
-        </div>
-
         <div className="modal__setting">
           <label>{content?.name}</label>
           <input
             type="text"
-            placeholder={content?.name}
+            placeholder={item?.name}
             onChange={(e) => setName(e.target.value)}
             value={name}
             required
@@ -91,7 +72,7 @@ const AddTransaction = () => {
           <label>{content?.description}</label>
           <input
             type="text"
-            placeholder={content?.description}
+            placeholder={item?.description}
             onChange={(e) => setDescription(e.target.value)}
             value={description}
             required
@@ -102,7 +83,7 @@ const AddTransaction = () => {
           <label>{content?.amount}</label>
           <input
             type="number"
-            placeholder={content?.amount}
+            placeholder={item?.amount}
             onChange={(e) => setAmount(+e.target.value)}
             value={amount}
             required
@@ -115,4 +96,4 @@ const AddTransaction = () => {
   );
 };
 
-export default AddTransaction;
+export default EditTransaction;

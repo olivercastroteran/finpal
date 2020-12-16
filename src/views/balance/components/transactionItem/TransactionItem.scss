@@ -10,20 +10,26 @@
   &.dark {
     background-color: #353535;
 
-    .transaction-item__bottom .delete-btn {
-      path {
+    .transaction-item__bottom .item-btns {
+      svg path {
         fill: #ccc;
       }
 
-      &:hover {
+      .delete-btn:hover {
         path {
           fill: #a43125;
+        }
+      }
+
+      .edit-btn:hover {
+        path {
+          fill: #f39c12;
         }
       }
     }
   }
 
-  &:hover .transaction-item__bottom .delete-btn {
+  &:hover .transaction-item__bottom .item-btns {
     display: block;
   }
 
@@ -38,26 +44,47 @@
   }
 
   &__bottom {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     display: flex;
     justify-content: space-between;
 
     p {
-      max-width: 90%;
+      max-width: 75%;
       opacity: 0.7;
+      cursor: default;
     }
 
-    .delete-btn {
+    .item-btns {
       cursor: pointer;
       display: none;
       position: absolute;
-      bottom: 0.6rem;
-      right: 0.9rem;
+      bottom: 0.5rem;
+      right: 0.8rem;
       transition: all 0.2s;
 
-      &:hover {
+      svg {
+        margin: 0 5px;
+        width: 20px;
+        height: 20px;
+
+        path {
+          fill: #555;
+        }
+
+        &:active {
+          transform: scale(0.85);
+        }
+      }
+
+      .delete-btn:hover {
         path {
           fill: #a43125;
+        }
+      }
+
+      .edit-btn:hover {
+        path {
+          fill: #f39c12;
         }
       }
     }

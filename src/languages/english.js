@@ -14,6 +14,13 @@ const english = {
     amount: 'Amount',
     btn: 'ADD',
   },
+  edit: {
+    title: 'Edit Transaction',
+    name: 'Name',
+    description: 'Description',
+    amount: 'Amount',
+    btn: 'Edit',
+  },
   sidebar: ['Dashboard', 'Balance', 'Debts', 'Stock'],
   header: 'Search',
   dashboard: {

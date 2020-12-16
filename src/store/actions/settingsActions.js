@@ -10,9 +10,16 @@ export const toggleSettingsModal = () => {
   };
 };
 
-export const toggleAddTransactionModal = () => {
+export const toggleAddModal = () => {
   return {
-    type: 'TOGGLE_ADD_TRANSACTION_MODAL',
+    type: 'TOGGLE_ADD_MODAL',
+  };
+};
+
+export const toggleEditModal = (item) => {
+  return {
+    type: 'TOGGLE_EDIT_MODAL',
+    payload: item,
   };
 };
 

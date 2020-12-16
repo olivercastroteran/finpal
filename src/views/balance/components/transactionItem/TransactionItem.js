@@ -1,11 +1,33 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './TransactionItem.scss';
-import { TrashCanIcon } from '../../../../assets/icons';
+import { EditIcon, TrashCanIcon } from '../../../../assets/icons';
+import {
+  removeExpense,
+  removeIncome,
+} from '../../../../store/actions/financeActions';
+import { toggleEditModal } from '../../../../store/actions/settingsActions';
 
-const TransactionItem = ({ type, name, description, amount }) => {
+const TransactionItem = ({ id, type, name, description, amount }) => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const [isItemOpen, setIsItemOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    const item = { id, type, name, description, amount };
+
+    if (type === 'income') {
+      dispatch(removeIncome(item));
+    } else if (type === 'expense') {
+      dispatch(removeExpense(item));
+    }
+  };
+
+  const handleEdit = () => {
+    const item = { id, type, name, description, amount };
+
+    dispatch(toggleEditModal(item));
+  };
 
   return (
     <div
@@ -26,7 +48,10 @@ const TransactionItem = ({ type, name, description, amount }) => {
       {isItemOpen && (
         <div className="transaction-item__bottom">
           <p>{description}</p>
-          <TrashCanIcon className="delete-btn" />
+          <div className="item-btns">
+            <EditIcon className="edit-btn" onClick={handleEdit} />
+            <TrashCanIcon className="delete-btn" onClick={handleDelete} />
+          </div>
         </div>
       )}
     </div>

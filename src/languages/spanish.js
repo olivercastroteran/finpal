@@ -14,6 +14,13 @@ const spanish = {
     amount: 'Monto',
     btn: 'Añadir',
   },
+  edit: {
+    title: 'Editar Transacción',
+    name: 'Nombre',
+    description: 'Descripción',
+    amount: 'Monto',
+    btn: 'Editar',
+  },
   sidebar: ['Menu', 'Balance', 'Deudas', 'Stock'],
   header: 'Buscar',
   dashboard: {

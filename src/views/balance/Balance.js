@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import AddBtn from '../../components/UI/addBtn/AddBtn';
 import { TransactionItem } from './components';
 import { english, spanish } from '../../languages';
-import { toggleAddTransactionModal } from '../../store/actions/settingsActions';
+import { toggleAddModal } from '../../store/actions/settingsActions';
 
 const Balance = () => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
@@ -48,7 +48,7 @@ const Balance = () => {
       <AddBtn
         text={content?.btnText}
         symbol="+"
-        clicked={() => dispatch(toggleAddTransactionModal())}
+        clicked={() => dispatch(toggleAddModal())}
       />
     </div>
   );

@@ -1,43 +1,41 @@
 import './App.scss';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Sidebar from './components/sidebar/Sidebar';
 import { Balance, Dashboard, Debts, NotFound, Stock, User } from './views';
-import { useDispatch, useSelector } from 'react-redux';
 import {
   toggleSettingsModal,
-  toggleAddTransactionModal,
+  toggleAddModal,
+  toggleEditModal,
 } from './store/actions/settingsActions';
-import SettingsForm from './components/settingsForm/SettingsForm';
-import AddTransation from './components/addTransaction/AddTransaction';
+import Backdrop from './components/UI/backdrop/Backdrop';
+import { AddTransaction, EditTransaction, SettingsForm } from './components';
 
 function App() {
   const modals = useSelector((state) => state.settings.modals);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
 
-  console.log('app');
+  const { isSettingsOpen, isAddOpen, edit } = modals;
 
   return (
     <BrowserRouter>
       <div className={isDarkMode ? 'app dark' : 'app'}>
         <Sidebar />
 
-        {modals.isSettingsOpen && (
-          <div
-            className="backdrop"
-            onClick={() => dispatch(toggleSettingsModal())}
-          ></div>
+        {isSettingsOpen && (
+          <Backdrop clicked={() => dispatch(toggleSettingsModal())} />
         )}
 
-        {modals.isAddTransactionOpen && (
-          <div
-            className="backdrop"
-            onClick={() => dispatch(toggleAddTransactionModal())}
-          ></div>
+        {isAddOpen && <Backdrop clicked={() => dispatch(toggleAddModal())} />}
+
+        {edit.isOpen && (
+          <Backdrop clicked={() => dispatch(toggleEditModal())} />
         )}
 
         <SettingsForm />
-        <AddTransation />
+        <AddTransaction />
+        <EditTransaction item={edit.item} />
 
         <Switch>
           <Route exact path="/" component={Dashboard} />
