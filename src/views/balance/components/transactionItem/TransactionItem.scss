@@ -1,0 +1,100 @@
+.transaction-item {
+  cursor: pointer;
+  width: 100%;
+  background-color: #e1e1e1;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.3rem;
+  margin-bottom: 0.75rem;
+  position: relative;
+
+  &.dark {
+    background-color: #353535;
+
+    .transaction-item__bottom .item-btns {
+      svg path {
+        fill: #ccc;
+      }
+
+      .delete-btn:hover {
+        path {
+          fill: #a43125;
+        }
+      }
+
+      .edit-btn:hover {
+        path {
+          fill: #f39c12;
+        }
+      }
+    }
+  }
+
+  &:hover .transaction-item__bottom .item-btns {
+    display: block;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      font-size: 1.1rem;
+    }
+  }
+
+  &__bottom {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      max-width: 75%;
+      opacity: 0.7;
+      cursor: default;
+    }
+
+    .item-btns {
+      cursor: pointer;
+      display: none;
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.8rem;
+      transition: all 0.2s;
+
+      svg {
+        margin: 0 5px;
+        width: 20px;
+        height: 20px;
+
+        path {
+          fill: #555;
+        }
+
+        &:active {
+          transform: scale(0.85);
+        }
+      }
+
+      .delete-btn:hover {
+        path {
+          fill: #a43125;
+        }
+      }
+
+      .edit-btn:hover {
+        path {
+          fill: #f39c12;
+        }
+      }
+    }
+  }
+
+  &.income {
+    border-left: 5px solid #155c33;
+  }
+
+  &.expense {
+    border-left: 5px solid #a43125;
+  }
+}

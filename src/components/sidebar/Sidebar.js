@@ -7,7 +7,7 @@ import { SettingsIcon, ArrowIcon } from '../../assets/icons';
 import { links } from './components/data/data';
 import SidebarLink from './components/sidebarLinks/SidebarLink';
 import {
-  toggleModal,
+  toggleSettingsModal,
   toggleSidebar,
 } from '../../store/actions/settingsActions';
 import { english, spanish } from '../../languages';
@@ -41,7 +41,7 @@ const Sidebar = () => {
         {links.map((link, i) => (
           <SidebarLink key={link.id} {...link} text={content && content[i]} />
         ))}
-        <li onClick={() => dispatch(toggleModal())}>
+        <li onClick={() => dispatch(toggleSettingsModal())}>
           <div className="sidebar-link btn">
             <SettingsIcon />
             {isSidebarOpen && (

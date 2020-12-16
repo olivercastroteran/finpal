@@ -15,8 +15,7 @@
     }
   }
 
-  .sidebar,
-  .content {
+  .sidebar {
     margin: 1rem;
     padding: 0.75rem;
     transition: all 0.3s;
@@ -35,8 +34,9 @@
   .content {
     flex: 1;
     overflow-y: scroll;
-    margin-right: 0;
-    padding-right: 1.5rem;
+    margin: 0;
+    padding: 1.25rem;
+    transition: all 0.3s;
 
     &::-webkit-scrollbar {
       width: 0.6rem;
@@ -55,14 +55,4 @@
       }
     }
   }
-}
-
-.backdrop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba($color: #000000, $alpha: 0.7);
-  z-index: 5;
 }

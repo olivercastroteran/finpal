@@ -3,14 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   changeLanguage,
   toggleDarkMode,
-  toggleModal,
+  toggleSettingsModal,
 } from '../../store/actions/settingsActions';
 import Modal from '../UI/modal/Modal';
 import ToggleBtn from '../UI/toggleBtn/ToggleBtn';
 import { english, spanish } from '../../languages';
 
 const SettingsForm = () => {
-  const isModalOpen = useSelector((state) => state.settings.isModalOpen);
+  const isSettingsOpen = useSelector(
+    (state) => state.settings.modals.isSettingsOpen
+  );
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
@@ -19,7 +21,7 @@ const SettingsForm = () => {
   const saveSettingsHandler = (e) => {
     e.preventDefault();
     setTimeout(() => {
-      dispatch(toggleModal());
+      dispatch(toggleSettingsModal());
     }, 300);
   };
 
@@ -37,10 +39,10 @@ const SettingsForm = () => {
   };
 
   return (
-    <Modal show={isModalOpen}>
+    <Modal show={isSettingsOpen}>
       <div className="modal__title">
         <h2>{content?.title}</h2>
-        <span onClick={() => dispatch(toggleModal())}>x</span>
+        <span onClick={() => dispatch(toggleSettingsModal())}>x</span>
       </div>
       <form className="modal__info" onSubmit={saveSettingsHandler}>
         <div className="modal__setting">

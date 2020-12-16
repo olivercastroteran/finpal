@@ -1,6 +1,13 @@
 const initState = {
+  modals: {
+    isSettingsOpen: false,
+    isAddOpen: false,
+    edit: {
+      isOpen: false,
+      item: {},
+    },
+  },
   isSidebarOpen: false,
-  isModalOpen: false,
   isDarkMode: false,
   language: 'english',
 };
@@ -12,10 +19,33 @@ export const settingsReducer = (state = initState, action) => {
         ...state,
         isSidebarOpen: !state.isSidebarOpen,
       };
-    case 'TOGGLE_MODAL':
+    case 'TOGGLE_SETTINGS_MODAL':
       return {
         ...state,
-        isModalOpen: !state.isModalOpen,
+        modals: {
+          ...state.modals,
+          isSettingsOpen: !state.modals.isSettingsOpen,
+        },
+      };
+    case 'TOGGLE_ADD_MODAL':
+      return {
+        ...state,
+        modals: {
+          ...state.modals,
+          isAddOpen: !state.modals.isAddOpen,
+        },
+      };
+    case 'TOGGLE_EDIT_MODAL':
+      return {
+        ...state,
+        modals: {
+          ...state.modals,
+          edit: {
+            ...state.modals.edit,
+            isOpen: !state.modals.edit.isOpen,
+            item: action.payload,
+          },
+        },
       };
     case 'TOGGLE_DARK_MODE':
       return {
