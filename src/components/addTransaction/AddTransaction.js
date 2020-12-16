@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleAddTransactionModal } from '../../store/actions/settingsActions';
 import Modal from '../UI/modal/Modal';
 import { english, spanish } from '../../languages';
+import { addIncome, addExpense } from '../../store/actions/financeActions';
 
 const SettingsForm = () => {
   const isAddTransactionOpen = useSelector(
@@ -18,7 +19,12 @@ const SettingsForm = () => {
 
   const addTransaction = (e) => {
     e.preventDefault();
-    console.log({ type, name, description, amount });
+
+    if (type === 'income') {
+      dispatch(addIncome({ type, name, description, amount }));
+    } else if (type === 'expense') {
+      dispatch(addExpense({ type, name, description, amount }));
+    }
     setTimeout(() => {
       dispatch(toggleAddTransactionModal());
     }, 300);
