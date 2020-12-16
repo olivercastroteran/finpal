@@ -3,12 +3,14 @@ import './Balance.scss';
 import Header from '../../components/header/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import AddBtn from '../../components/UI/addBtn/AddBtn';
+import { TransactionItem } from './components';
 import { english, spanish } from '../../languages';
 import { toggleAddTransactionModal } from '../../store/actions/settingsActions';
 
 const Balance = () => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const language = useSelector((state) => state.settings.language);
+  const finance = useSelector((state) => state.finance);
   const [content, setContent] = useState({});
   const dispatch = useDispatch();
 
@@ -27,14 +29,18 @@ const Balance = () => {
         <div className="balance__incomes">
           <h2>{content?.incomes}</h2>
           <div className="balance__incomes--list">
-            <h4>Item</h4>
+            {finance?.incomes?.map((income) => (
+              <TransactionItem key={income.id} {...income} />
+            ))}
           </div>
         </div>
 
         <div className="balance__expenses">
           <h2>{content?.expenses}</h2>
           <div className="balance__expenses--list">
-            <h4>Item</h4>
+            {finance?.expenses?.map((expense) => (
+              <TransactionItem key={expense.id} {...expense} />
+            ))}
           </div>
         </div>
       </div>

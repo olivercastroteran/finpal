@@ -8,4 +8,5 @@ export { ReactComponent as IncomesIcon } from './incomes.svg';
 export { ReactComponent as SearchIcon } from './search.svg';
 export { ReactComponent as SettingsIcon } from './settings.svg';
 export { ReactComponent as StockIcon } from './stock.svg';
+export { ReactComponent as TrashCanIcon } from './trash-can.svg';
 export { ReactComponent as UserIcon } from './user.svg';

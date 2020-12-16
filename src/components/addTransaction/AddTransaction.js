@@ -21,9 +21,25 @@ const SettingsForm = () => {
     e.preventDefault();
 
     if (type === 'income') {
-      dispatch(addIncome({ type, name, description, amount }));
+      dispatch(
+        addIncome({
+          type,
+          name,
+          description,
+          amount,
+          id: +(Math.random() * 1000000).toFixed(0),
+        })
+      );
     } else if (type === 'expense') {
-      dispatch(addExpense({ type, name, description, amount }));
+      dispatch(
+        addExpense({
+          type,
+          name,
+          description,
+          amount,
+          id: +(Math.random() * 1000000).toFixed(0),
+        })
+      );
     }
     setTimeout(() => {
       dispatch(toggleAddTransactionModal());
