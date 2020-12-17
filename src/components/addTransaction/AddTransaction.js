@@ -19,29 +19,19 @@ const AddTransaction = () => {
 
   const addTransaction = (e) => {
     e.preventDefault();
+    const item = {
+      id: uuidv4(),
+      type,
+      name,
+      description,
+      amount,
+      date,
+    };
 
     if (type === 'income') {
-      dispatch(
-        addIncome({
-          id: uuidv4(),
-          type,
-          name,
-          description,
-          amount,
-          date,
-        })
-      );
+      dispatch(addIncome(item));
     } else if (type === 'expense') {
-      dispatch(
-        addExpense({
-          id: uuidv4(),
-          type,
-          name,
-          description,
-          amount,
-          date,
-        })
-      );
+      dispatch(addExpense(item));
     }
 
     setName('');

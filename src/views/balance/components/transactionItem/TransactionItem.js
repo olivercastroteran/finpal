@@ -7,6 +7,7 @@ import {
   removeIncome,
 } from '../../../../store/actions/financeActions';
 import { toggleEditModal } from '../../../../store/actions/settingsActions';
+import { formatMoney } from '../../../../shared/utility';
 
 const TransactionItem = ({ id, type, name, description, amount, date }) => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
@@ -42,7 +43,10 @@ const TransactionItem = ({ id, type, name, description, amount, date }) => {
         onClick={() => setIsItemOpen(!isItemOpen)}
       >
         <span>{name}</span>
-        <span>$ {amount}</span>
+        <span>
+          {formatMoney(amount)[0]}
+          <small>{formatMoney(amount)[1]}</small>
+        </span>
       </div>
 
       {isItemOpen && (

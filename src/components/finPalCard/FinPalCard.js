@@ -2,8 +2,9 @@ import { useState } from 'react';
 import './FinPalCard.scss';
 import CardImg from '../../assets/images/card.svg';
 import ToggleBtn from '../UI/toggleBtn/ToggleBtn';
+import { formatMoney } from '../../shared/utility';
 
-const FinPalCard = () => {
+const FinPalCard = ({ amount }) => {
   const [isCardBlock, setIsCardBlock] = useState(false);
 
   const style = {
@@ -14,7 +15,8 @@ const FinPalCard = () => {
     <div className="finpal-card" style={style}>
       <div className="finpal-card__money">
         <p>
-          $ 69,699.<small>00</small>
+          {formatMoney(amount)[0]}
+          <small>{formatMoney(amount)[1]}</small>
         </p>
       </div>
       <ToggleBtn
