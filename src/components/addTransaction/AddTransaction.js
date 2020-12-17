@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import { toggleAddModal } from '../../store/actions/settingsActions';
 import Modal from '../UI/modal/Modal';
 import { english, spanish } from '../../languages';
@@ -25,7 +26,7 @@ const AddTransaction = () => {
           name,
           description,
           amount,
-          id: +(Math.random() * 1000000).toFixed(0),
+          id: uuidv4(),
         })
       );
     } else if (type === 'expense') {
@@ -35,7 +36,7 @@ const AddTransaction = () => {
           name,
           description,
           amount,
-          id: +(Math.random() * 1000000).toFixed(0),
+          id: uuidv4(),
         })
       );
     }

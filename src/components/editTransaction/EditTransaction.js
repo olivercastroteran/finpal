@@ -52,7 +52,7 @@ const EditTransaction = ({ item }) => {
     <Modal show={edit.isOpen}>
       <div className="modal__title">
         <h2>
-          {content?.title} N-{item?.id}
+          {content?.title} N-{item?.id.substring(0, 7)}
         </h2>
         <span onClick={() => dispatch(toggleEditModal())}>x</span>
       </div>
