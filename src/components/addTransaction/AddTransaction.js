@@ -14,6 +14,7 @@ const AddTransaction = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
+  const [date, setDate] = useState('');
   const dispatch = useDispatch();
 
   const addTransaction = (e) => {
@@ -22,21 +23,23 @@ const AddTransaction = () => {
     if (type === 'income') {
       dispatch(
         addIncome({
+          id: uuidv4(),
           type,
           name,
           description,
           amount,
-          id: uuidv4(),
+          date,
         })
       );
     } else if (type === 'expense') {
       dispatch(
         addExpense({
+          id: uuidv4(),
           type,
           name,
           description,
           amount,
-          id: uuidv4(),
+          date,
         })
       );
     }
@@ -44,6 +47,7 @@ const AddTransaction = () => {
     setName('');
     setDescription('');
     setAmount(0);
+    setDate('');
 
     setTimeout(() => {
       dispatch(toggleAddModal());
@@ -106,6 +110,16 @@ const AddTransaction = () => {
             placeholder={content?.amount}
             onChange={(e) => setAmount(+e.target.value)}
             value={amount}
+            required
+          />
+        </div>
+
+        <div className="modal__setting">
+          <label>{content?.date}</label>
+          <input
+            type="date"
+            onChange={(e) => setDate(e.target.value)}
+            value={date}
             required
           />
         </div>

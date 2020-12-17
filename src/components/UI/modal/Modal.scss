@@ -20,8 +20,16 @@
       border-bottom: 1px solid #555;
     }
 
-    .modal__setting select * {
-      background-color: #444;
+    .modal__setting {
+      select * {
+        background-color: #444;
+      }
+
+      input {
+        &::-webkit-calendar-picker-indicator {
+          filter: invert(100%);
+        }
+      }
     }
   }
 
@@ -83,7 +91,7 @@
     select,
     input {
       color: inherit;
-      width: 30%;
+      width: 35%;
       border: none;
       background: transparent;
       font-size: 1rem;
@@ -91,6 +99,11 @@
       outline: none;
       padding: 0.3rem 1rem;
       transition: all 0.3s;
+
+      &::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        outline: none;
+      }
     }
 
     input:focus {

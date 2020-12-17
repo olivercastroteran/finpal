@@ -12,6 +12,7 @@ const spanish = {
     name: 'Nombre',
     description: 'Descripción',
     amount: 'Monto',
+    date: 'Fecha',
     btn: 'Añadir',
   },
   edit: {
@@ -19,6 +20,7 @@ const spanish = {
     name: 'Nombre',
     description: 'Descripción',
     amount: 'Monto',
+    date: 'Fecha',
     btn: 'Editar',
   },
   sidebar: ['Menu', 'Balance', 'Deudas', 'Stock'],

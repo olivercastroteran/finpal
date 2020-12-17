@@ -12,6 +12,7 @@ const english = {
     name: 'Name',
     description: 'Description',
     amount: 'Amount',
+    date: 'Date',
     btn: 'ADD',
   },
   edit: {
@@ -19,6 +20,7 @@ const english = {
     name: 'Name',
     description: 'Description',
     amount: 'Amount',
+    date: 'Date',
     btn: 'Edit',
   },
   sidebar: ['Dashboard', 'Balance', 'Debts', 'Stock'],
