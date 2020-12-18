@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './Auth.scss';
 import { useSelector } from 'react-redux';
+import Login from './login/Login';
+import Signup from './signup/Signup';
 
 const Auth = () => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
@@ -31,8 +33,8 @@ const Auth = () => {
           </button>
         </div>
 
-        {login && <h2>Login</h2>}
-        {signup && <h2>Signup</h2>}
+        {login && <Login />}
+        {signup && <Signup />}
       </div>
     </div>
   );

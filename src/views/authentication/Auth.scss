@@ -7,6 +7,28 @@
     .auth__container {
       border-color: #333;
 
+      form {
+        h2 {
+          color: #16a085;
+        }
+        input {
+          color: #eee;
+          border-bottom: 2px solid #444;
+
+          &:focus {
+            border-bottom: 2px solid #16a085;
+          }
+
+          &::-webkit-input-placeholder {
+            color: #aaa;
+          }
+        }
+
+        label {
+          color: #16a085;
+        }
+      }
+
       &--switch .auth-btn {
         color: #fff;
 
@@ -18,9 +40,7 @@
   }
 
   &__container {
-    width: 70%;
-    height: 50%;
-    min-height: 500px;
+    width: 60%;
     padding: 1.5rem;
     border-radius: 20px;
     border: 1px solid #ccc;
@@ -63,6 +83,83 @@
           border-top-right-radius: 15px;
           border-bottom-right-radius: 15px;
         }
+      }
+    }
+
+    form {
+      h2 {
+        text-align: center;
+        font-size: 2rem;
+        letter-spacing: 2px;
+        color: #107360;
+        margin-bottom: 2rem;
+      }
+
+      .input-field {
+        width: 100%;
+        margin-bottom: 1.25rem;
+
+        .form__btn {
+          outline: none;
+          cursor: pointer;
+          padding: 0.5rem 3rem;
+          border: none;
+          border-radius: 30px;
+          font-size: 1rem;
+          background-color: #107360;
+          color: #fff;
+          transition: all 0.2s;
+
+          &:hover {
+            background-color: #16a085;
+            transform: translateY(-3px);
+            box-shadow: 2px 5px 7px rgba($color: #000000, $alpha: 0.3);
+          }
+
+          &:active {
+            transform: translateY(-1px);
+            box-shadow: 1px 3px 5px rgba($color: #000000, $alpha: 0.2);
+          }
+        }
+      }
+
+      input {
+        width: 100%;
+        font-family: inherit;
+        font-size: 1rem;
+        padding: 0.2rem 0.5rem;
+        border: 0;
+        border-bottom: 2px solid #ccc;
+        display: block;
+        background-color: transparent;
+
+        &:focus {
+          outline: none;
+          border-bottom: 2px solid #107360;
+
+          &:invalid {
+            border-bottom: 2px solid #c0392b;
+          }
+        }
+
+        &::-webkit-input-placeholder {
+          color: #555;
+        }
+      }
+
+      label {
+        color: #107360;
+        font-size: 1rem;
+        margin-left: 0.5rem;
+        display: block;
+        transform: translateY(-250%);
+        transition: all 0.2s;
+      }
+
+      input:placeholder-shown + label {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-100%);
       }
     }
   }
