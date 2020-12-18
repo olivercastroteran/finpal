@@ -1,3 +1,4 @@
+export { default as Auth } from './authentication/Auth';
 export { default as Dashboard } from './dashboard/Dashboard';
 export { default as Balance } from './balance/Balance';
 export { default as Debts } from './debts/Debts';

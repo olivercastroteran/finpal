@@ -2,7 +2,15 @@ import './App.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Sidebar from './components/sidebar/Sidebar';
-import { Balance, Dashboard, Debts, NotFound, Stock, User } from './views';
+import {
+  Auth,
+  Balance,
+  Dashboard,
+  Debts,
+  NotFound,
+  Stock,
+  User,
+} from './views';
 import {
   toggleSettingsModal,
   toggleAddModal,
@@ -39,6 +47,7 @@ function App() {
 
         <Switch>
           <Route exact path="/" component={Dashboard} />
+          <Route path="/auth" component={Auth} />
           <Route path="/balance" component={Balance} />
           <Route path="/debts" component={Debts} />
           <Route path="/stock" component={Stock} />
