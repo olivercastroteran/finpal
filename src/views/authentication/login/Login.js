@@ -1,17 +1,32 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { english, spanish } from '../../../languages';
 
 const Login = () => {
+  const language = useSelector((state) => state.settings.language);
+  const [content, setContent] = useState({});
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  useEffect(() => {
+    if (language === 'english') {
+      setContent({ ...english.login });
+    } else if (language === 'spanish') {
+      setContent({ ...spanish.login });
+    }
+  }, [language]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ email, setEmail });
+    console.log({ email, password });
+
+    setEmail('');
+    setPassword('');
   };
 
   return (
     <form className="form login" onSubmit={handleSubmit}>
-      <h2>Login</h2>
+      <h2>{content?.title}</h2>
 
       <div className="input-field">
         <input
@@ -46,7 +61,7 @@ const Login = () => {
       </div>
 
       <div className="input-field">
-        <button className="form__btn">Login</button>
+        <button className="form__btn">{content?.btn}</button>
       </div>
     </form>
   );

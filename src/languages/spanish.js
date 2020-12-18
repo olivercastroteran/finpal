@@ -23,6 +23,18 @@ const spanish = {
     date: 'Fecha',
     btn: 'Editar',
   },
+  login: {
+    title: 'Iniciar Sesión',
+    btn: 'Iniciar Sesión',
+  },
+  signup: {
+    title: 'Registrarse',
+    firstName: 'Nombre',
+    lastName: 'Apellido',
+    password2: 'Confirmar Password',
+    secretKey: 'LLave Secreta',
+    btn: 'Registrarse',
+  },
   sidebar: ['Menu', 'Balance', 'Deudas', 'Stock'],
   header: 'Buscar',
   dashboard: {

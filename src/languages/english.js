@@ -23,6 +23,18 @@ const english = {
     date: 'Date',
     btn: 'Edit',
   },
+  login: {
+    title: 'Login',
+    btn: 'Login',
+  },
+  signup: {
+    title: 'Sigup',
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    password2: 'Confirm Password',
+    secretKey: 'Secret Key',
+    btn: 'Signup',
+  },
   sidebar: ['Dashboard', 'Balance', 'Debts', 'Stock'],
   header: 'Search',
   dashboard: {

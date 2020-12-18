@@ -6,6 +6,7 @@ import Signup from './signup/Signup';
 
 const Auth = () => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
+  const language = useSelector((state) => state.settings.language);
   const [login, setLogin] = useState(true);
   const [signup, setSignup] = useState(false);
 
@@ -20,7 +21,7 @@ const Auth = () => {
               setLogin(true);
             }}
           >
-            Login
+            {language === 'english' ? 'Login' : 'Acceder'}
           </button>
           <button
             className={signup ? 'auth-btn right active' : 'auth-btn right'}
@@ -29,7 +30,7 @@ const Auth = () => {
               setSignup(true);
             }}
           >
-            Signup
+            {language === 'english' ? 'Signup' : 'Registrarse'}
           </button>
         </div>
 
