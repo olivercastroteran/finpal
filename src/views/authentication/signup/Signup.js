@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { HideIcon, LookIcon } from '../../../assets/icons';
 import { english, spanish } from '../../../languages';
 
 const Login = () => {
   const language = useSelector((state) => state.settings.language);
+  const [isFormValid, setIsFormValid] = useState(false);
   const [content, setContent] = useState({});
+  const [isHidePassword, setIsHidePassword] = useState(true);
   const [user, setUser] = useState({
     firstName: '',
     lastName: '',
@@ -25,6 +28,15 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(user);
+
+    setUser({
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      password2: '',
+      secretKey: '',
+    });
   };
 
   const handleChange = (e) => {
@@ -33,6 +45,26 @@ const Login = () => {
 
     setUser({ ...user, [name]: value });
   };
+
+  const checkValidation = useCallback(() => {
+    const { firstName, lastName, email, password, password2, secretKey } = user;
+    if (
+      firstName.length >= 3 &&
+      lastName.length >= 3 &&
+      email &&
+      password.length >= 6 &&
+      password === password2 &&
+      secretKey.length >= 4
+    ) {
+      setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    checkValidation();
+  }, [checkValidation]);
 
   return (
     <form
@@ -54,7 +86,11 @@ const Login = () => {
           id="firstName"
           name="firstName"
           autoComplete="off"
-          onChange={handleChange}
+          className={user.firstName.length < 3 ? 'error' : ''}
+          onChange={(e) => {
+            checkValidation();
+            handleChange(e);
+          }}
           value={user.firstName}
           required
         />
@@ -68,7 +104,11 @@ const Login = () => {
           id="lastName"
           name="lastName"
           autoComplete="off"
-          onChange={handleChange}
+          className={user.lastName.length < 3 ? 'error' : ''}
+          onChange={(e) => {
+            checkValidation();
+            handleChange(e);
+          }}
           value={user.lastName}
           required
         />
@@ -82,7 +122,10 @@ const Login = () => {
           id="email"
           name="email"
           autoComplete="off"
-          onChange={handleChange}
+          onChange={(e) => {
+            checkValidation();
+            handleChange(e);
+          }}
           value={user.email}
           required
         />
@@ -91,40 +134,74 @@ const Login = () => {
 
       <div className="input-field">
         <input
-          type="password"
+          type={isHidePassword ? 'password' : 'text'}
           placeholder="Password"
           id="password"
           name="password"
           autoComplete="off"
-          onChange={handleChange}
+          className={user.password.length < 6 ? 'error' : ''}
+          onChange={(e) => {
+            checkValidation();
+            handleChange(e);
+          }}
           value={user.password}
           required
         />
         <label htmlFor="password">Password</label>
+        {isHidePassword ? (
+          <HideIcon
+            className="input-field__svg"
+            onClick={() => setIsHidePassword(false)}
+          />
+        ) : (
+          <LookIcon
+            className="input-field__svg"
+            onClick={() => setIsHidePassword(true)}
+          />
+        )}
       </div>
 
       <div className="input-field">
         <input
-          type="password"
+          type={isHidePassword ? 'password' : 'text'}
           placeholder={content?.password2}
           id="password2"
           name="password2"
           autoComplete="off"
-          onChange={handleChange}
+          className={user.password2 === user.password ? '' : 'error'}
+          onChange={(e) => {
+            checkValidation();
+            handleChange(e);
+          }}
           value={user.password2}
           required
         />
         <label htmlFor="password2">{content?.password2}</label>
+        {isHidePassword ? (
+          <HideIcon
+            className="input-field__svg"
+            onClick={() => setIsHidePassword(false)}
+          />
+        ) : (
+          <LookIcon
+            className="input-field__svg"
+            onClick={() => setIsHidePassword(true)}
+          />
+        )}
       </div>
 
       <div className="input-field">
         <input
-          type="password"
+          type="number"
           placeholder={content?.secretKey}
           id="secretKey"
           name="secretKey"
           autoComplete="off"
-          onChange={handleChange}
+          className={user.secretKey.length < 4 ? 'error' : ''}
+          onChange={(e) => {
+            checkValidation();
+            handleChange(e);
+          }}
           value={user.secretKey}
           required
         />
@@ -132,7 +209,9 @@ const Login = () => {
       </div>
 
       <div className="input-field">
-        <button className="form__btn">{content?.btn}</button>
+        <button className="form__btn" disabled={!isFormValid}>
+          {content?.btn}
+        </button>
       </div>
     </form>
   );

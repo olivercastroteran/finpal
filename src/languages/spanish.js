@@ -32,7 +32,7 @@ const spanish = {
     firstName: 'Nombre',
     lastName: 'Apellido',
     password2: 'Confirmar Password',
-    secretKey: 'LLave Secreta',
+    secretKey: 'Pin (solo numeros)',
     btn: 'Registrarse',
   },
   sidebar: ['Menu', 'Balance', 'Deudas', 'Stock'],

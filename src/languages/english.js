@@ -32,7 +32,7 @@ const english = {
     firstName: 'First Name',
     lastName: 'Last Name',
     password2: 'Confirm Password',
-    secretKey: 'Secret Key',
+    secretKey: 'Pin (only numbers)',
     btn: 'Signup',
   },
   sidebar: ['Dashboard', 'Balance', 'Debts', 'Stock'],

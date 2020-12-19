@@ -18,6 +18,14 @@
 
           &:focus {
             border-bottom: 2px solid #16a085;
+
+            &:invalid {
+              border-bottom: 2px solid #c0392b;
+            }
+
+            &.error {
+              border-bottom: 2px solid #c0392b;
+            }
           }
 
           &::-webkit-input-placeholder {
@@ -62,7 +70,7 @@
         padding: 0.5rem 0.75rem;
         border: none;
         border: 1px solid #107360;
-        transition: all 0.3s;
+        transition: all 0.2s;
 
         &:hover {
           background-color: #1abe9e;
@@ -99,6 +107,7 @@
       .input-field {
         width: 100%;
         margin-bottom: 1.25rem;
+        position: relative;
 
         .form__btn {
           outline: none;
@@ -121,6 +130,27 @@
             transform: translateY(-1px);
             box-shadow: 1px 3px 5px rgba($color: #000000, $alpha: 0.2);
           }
+
+          &:disabled {
+            cursor: not-allowed;
+            background-color: #777;
+
+            &:hover {
+              transform: translateY(0);
+              box-shadow: none;
+            }
+          }
+        }
+
+        &__svg {
+          cursor: pointer;
+          position: absolute;
+          top: 0;
+          right: 0.5rem;
+
+          path {
+            fill: #777;
+          }
         }
       }
 
@@ -134,11 +164,21 @@
         display: block;
         background-color: transparent;
 
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
         &:focus {
           outline: none;
           border-bottom: 2px solid #107360;
 
           &:invalid {
+            border-bottom: 2px solid #c0392b;
+          }
+
+          &.error {
             border-bottom: 2px solid #c0392b;
           }
         }
