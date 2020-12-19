@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { HideIcon, LookIcon } from '../../../assets/icons';
+import { re } from '../../../shared/utility';
 import { english, spanish } from '../../../languages';
 
 const Login = () => {
@@ -8,13 +9,14 @@ const Login = () => {
   const [isFormValid, setIsFormValid] = useState(false);
   const [content, setContent] = useState({});
   const [isHidePassword, setIsHidePassword] = useState(true);
+  const [errorMsg, setErrorMsg] = useState(null);
   const [user, setUser] = useState({
     firstName: '',
     lastName: '',
     email: '',
     password: '',
     password2: '',
-    secretKey: '',
+    pin: '',
   });
 
   useEffect(() => {
@@ -35,7 +37,7 @@ const Login = () => {
       email: '',
       password: '',
       password2: '',
-      secretKey: '',
+      pin: '',
     });
   };
 
@@ -47,15 +49,16 @@ const Login = () => {
   };
 
   const checkValidation = useCallback(() => {
-    const { firstName, lastName, email, password, password2, secretKey } = user;
+    const { firstName, lastName, email, password, password2, pin } = user;
     if (
       firstName.length >= 3 &&
       lastName.length >= 3 &&
       email &&
       password.length >= 6 &&
       password === password2 &&
-      secretKey.length >= 4
+      pin.length === 4
     ) {
+      setErrorMsg(null);
       setIsFormValid(true);
     } else {
       setIsFormValid(false);
@@ -90,6 +93,11 @@ const Login = () => {
           onChange={(e) => {
             checkValidation();
             handleChange(e);
+            if (e.target.value.length < 3) {
+              setErrorMsg(content?.errMsg?.firstName);
+            } else {
+              setErrorMsg(null);
+            }
           }}
           value={user.firstName}
           required
@@ -108,6 +116,11 @@ const Login = () => {
           onChange={(e) => {
             checkValidation();
             handleChange(e);
+            if (e.target.value.length < 3) {
+              setErrorMsg(content?.errMsg?.lastName);
+            } else {
+              setErrorMsg(null);
+            }
           }}
           value={user.lastName}
           required
@@ -122,9 +135,15 @@ const Login = () => {
           id="email"
           name="email"
           autoComplete="off"
+          className={!re.test(user.email) ? 'error' : ''}
           onChange={(e) => {
             checkValidation();
             handleChange(e);
+            if (!re.test(e.target.value.trim())) {
+              setErrorMsg(content?.errMsg?.email);
+            } else {
+              setErrorMsg(null);
+            }
           }}
           value={user.email}
           required
@@ -143,6 +162,11 @@ const Login = () => {
           onChange={(e) => {
             checkValidation();
             handleChange(e);
+            if (e.target.value.length < 6) {
+              setErrorMsg(content?.errMsg?.password);
+            } else {
+              setErrorMsg(null);
+            }
           }}
           value={user.password}
           required
@@ -172,6 +196,11 @@ const Login = () => {
           onChange={(e) => {
             checkValidation();
             handleChange(e);
+            if (e.target.value !== user.password) {
+              setErrorMsg(content?.errMsg?.password2);
+            } else {
+              setErrorMsg(null);
+            }
           }}
           value={user.password2}
           required
@@ -193,19 +222,24 @@ const Login = () => {
       <div className="input-field">
         <input
           type="number"
-          placeholder={content?.secretKey}
-          id="secretKey"
-          name="secretKey"
+          placeholder={content?.pin}
+          id="pin"
+          name="pin"
           autoComplete="off"
-          className={user.secretKey.length < 4 ? 'error' : ''}
+          className={user.pin.length !== 4 ? 'error' : ''}
           onChange={(e) => {
             checkValidation();
             handleChange(e);
+            if (e.target.value.length !== 4) {
+              setErrorMsg(content?.errMsg?.pin);
+            } else {
+              setErrorMsg(null);
+            }
           }}
-          value={user.secretKey}
+          value={user.pin}
           required
         />
-        <label htmlFor="secretKey">{content?.secretKey}</label>
+        <label htmlFor="pin">{content?.pin}</label>
       </div>
 
       <div className="input-field">
@@ -213,6 +247,8 @@ const Login = () => {
           {content?.btn}
         </button>
       </div>
+
+      {errorMsg && <p className="error-msg">{errorMsg}</p>}
     </form>
   );
 };

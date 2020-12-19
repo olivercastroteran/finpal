@@ -54,6 +54,7 @@
     border-radius: 20px;
     border: 1px solid #ccc;
     box-shadow: 1px 3px 5px rgba($color: #000000, $alpha: 0.25);
+    position: relative;
 
     &--switch {
       display: flex;
@@ -201,6 +202,16 @@
         opacity: 0;
         visibility: hidden;
         transform: translateY(-100%);
+      }
+
+      .error-msg {
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.85rem;
+        color: #c0392b;
+        text-align: center;
       }
     }
   }
