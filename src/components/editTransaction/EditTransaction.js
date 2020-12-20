@@ -86,6 +86,8 @@ const EditTransaction = ({ item }) => {
           <label>{content?.amount}</label>
           <input
             type="number"
+            min="0"
+            step="0.01"
             placeholder={item?.amount}
             onChange={(e) => setAmount(+e.target.value)}
             value={amount}
@@ -96,7 +98,9 @@ const EditTransaction = ({ item }) => {
         <div className="modal__setting">
           <label>{content?.date}</label>
           <input
-            type="date"
+            type="month"
+            min="2000-01"
+            max="2100-12"
             onChange={(e) => setDate(e.target.value)}
             value={date}
             required

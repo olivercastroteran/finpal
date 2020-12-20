@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { english, spanish } from '../../../languages';
+import { login } from '../../../store/actions/authActions';
 
 const Login = () => {
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (language === 'english') {
@@ -19,6 +21,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({ email, password });
+    dispatch(login({ email, password }));
 
     setEmail('');
     setPassword('');
