@@ -1,0 +1,23 @@
+.logout-btn {
+  cursor: pointer;
+  outline: none;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #c0392b;
+  padding: 0.6rem 2.5rem;
+  border: none;
+  border-radius: 30px;
+  margin: 1rem 0;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: #a43125;
+    transform: translateY(-2px);
+    box-shadow: 3px 5px 7px rgba($color: #000000, $alpha: 0.25);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 1px 3px 5px rgba($color: #000000, $alpha: 0.2);
+  }
+}

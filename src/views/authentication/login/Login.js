@@ -5,6 +5,7 @@ import { login } from '../../../store/actions/authActions';
 
 const Login = () => {
   const language = useSelector((state) => state.settings.language);
+  const authError = useSelector((state) => state.auth.authError);
   const [content, setContent] = useState({});
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,11 +21,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ email, password });
     dispatch(login({ email, password }));
-
-    setEmail('');
-    setPassword('');
   };
 
   return (
@@ -66,6 +63,8 @@ const Login = () => {
       <div className="input-field">
         <button className="form__btn">{content?.btn}</button>
       </div>
+
+      {authError && <p className="error-msg">{authError}</p>}
     </form>
   );
 };

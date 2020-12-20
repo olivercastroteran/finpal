@@ -13,7 +13,6 @@ import {
 import { english, spanish } from '../../languages';
 
 const Sidebar = () => {
-  const state = useSelector((state) => state);
   const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
@@ -28,8 +27,6 @@ const Sidebar = () => {
     }
     // eslint-disable-next-line
   }, [language]);
-
-  console.log(state);
 
   return (
     <nav className={isSidebarOpen ? 'sidebar open' : 'sidebar'}>
