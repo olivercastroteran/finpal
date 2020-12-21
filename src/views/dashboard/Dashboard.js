@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './Dashboard.scss';
 import Header from '../../components/header/Header';
 import { Banner, GlobalInfo, RecentMovements } from './components/';
@@ -6,10 +7,13 @@ import { useHistory } from 'react-router-dom';
 
 const Dashboard = () => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
-  const auth = useSelector((state) => state.firebase.auth);
+  const uid = useSelector((state) => state.firebase.auth.uid);
   const history = useHistory();
 
-  if (!auth.uid) history.push('/auth');
+  useEffect(() => {
+    if (!uid) history.push('/auth');
+    // eslint-disable-next-line
+  }, [uid]);
 
   return (
     <div

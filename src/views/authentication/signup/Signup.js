@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { HideIcon, LookIcon } from '../../../assets/icons';
-import { useHistory } from 'react-router-dom';
 import { signup } from '../../../store/actions/authActions';
 import Spinner from '../../../components/UI/spinner/Spinner';
 import { re } from '../../../shared/utility';
@@ -10,7 +9,6 @@ import { english, spanish } from '../../../languages';
 const Login = () => {
   const auth = useSelector((state) => state.firebase.auth);
   const authError = useSelector((state) => state.auth.authError);
-  const history = useHistory();
   const dispatch = useDispatch();
   const language = useSelector((state) => state.settings.language);
   const [isFormValid, setIsFormValid] = useState(false);
@@ -84,8 +82,6 @@ const Login = () => {
   useEffect(() => {
     checkValidation();
   }, [checkValidation]);
-
-  if (auth.uid) history.push('/');
 
   return (
     <form

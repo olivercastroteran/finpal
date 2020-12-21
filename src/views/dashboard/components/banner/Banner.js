@@ -5,6 +5,7 @@ import { WalletImg } from '../../../../assets/images';
 import { english, spanish } from '../../../../languages';
 
 const Banner = () => {
+  const firstName = useSelector((state) => state.firebase.profile.firstName);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
 
@@ -20,7 +21,9 @@ const Banner = () => {
   return (
     <div className="banner">
       <div className="banner__left">
-        <h2>{content?.welcomeTitle} Oliver</h2>
+        <h2>
+          {content?.welcomeTitle} {firstName}
+        </h2>
         <p>{content?.welcomeTxt}</p>
       </div>
       <div className="banner__right">

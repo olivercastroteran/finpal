@@ -7,12 +7,17 @@ import './User.scss';
 import { english, spanish } from '../../languages';
 
 const User = () => {
-  const auth = useSelector((state) => state.firebase.auth);
+  const uid = useSelector((state) => state.firebase.auth.uid);
   const profile = useSelector((state) => state.firebase.profile);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
   const dispatch = useDispatch();
   const history = useHistory();
+
+  useEffect(() => {
+    if (!uid) history.push('/auth');
+    // eslint-disable-next-line
+  }, [uid]);
 
   useEffect(() => {
     if (language === 'english') {
@@ -21,8 +26,6 @@ const User = () => {
       setContent({ ...spanish.user });
     }
   }, [language]);
-
-  if (!auth.uid) history.push('/auth');
 
   return (
     <div className="user content">

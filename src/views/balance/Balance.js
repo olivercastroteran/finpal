@@ -9,7 +9,7 @@ import { toggleAddModal } from '../../store/actions/settingsActions';
 import { useHistory } from 'react-router-dom';
 
 const Balance = () => {
-  const auth = useSelector((state) => state.firebase.auth);
+  const uid = useSelector((state) => state.firebase.auth.uid);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const language = useSelector((state) => state.settings.language);
   const finance = useSelector((state) => state.finance);
@@ -17,7 +17,10 @@ const Balance = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  if (!auth.uid) history.push('/auth');
+  useEffect(() => {
+    if (!uid) history.push('/auth');
+    // eslint-disable-next-line
+  }, [uid]);
 
   useEffect(() => {
     if (language === 'english') {

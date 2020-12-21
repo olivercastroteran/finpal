@@ -1,14 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Auth.scss';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Login from './login/Login';
 import Signup from './signup/Signup';
 
 const Auth = () => {
+  const uid = useSelector((state) => state.firebase.auth.uid);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const language = useSelector((state) => state.settings.language);
   const [login, setLogin] = useState(true);
   const [signup, setSignup] = useState(false);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (uid) history.push('/');
+    // eslint-disable-next-line
+  }, [uid]);
 
   return (
     <div className={isDarkMode ? 'auth content dark' : 'auth content'}>

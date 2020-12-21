@@ -1,12 +1,16 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './Stock.scss';
 
 const Stock = () => {
-  const auth = useSelector((state) => state.firebase.auth);
+  const uid = useSelector((state) => state.firebase.auth.uid);
   const history = useHistory();
 
-  if (!auth.uid) history.push('/auth');
+  useEffect(() => {
+    if (!uid) history.push('/auth');
+    // eslint-disable-next-line
+  }, [uid]);
 
   return (
     <div className="stock content">
