@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { english, spanish } from '../../../languages';
 import { login } from '../../../store/actions/authActions';
+import { HideIcon, LookIcon } from '../../../assets/icons';
+import Spinner from '../../../components/UI/spinner/Spinner';
 
 const Login = () => {
   const auth = useSelector((state) => state.firebase.auth);
@@ -12,6 +14,8 @@ const Login = () => {
   const [content, setContent] = useState({});
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isHidePassword, setIsHidePassword] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,9 +26,16 @@ const Login = () => {
     }
   }, [language]);
 
+  useEffect(() => {
+    setIsLoading(false);
+  }, [authError]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password }));
+    if (!auth.uid) {
+      setIsLoading(true);
+    }
   };
 
   if (auth.uid) history.push('/');
@@ -51,7 +62,7 @@ const Login = () => {
 
       <div className="input-field">
         <input
-          type="password"
+          type={isHidePassword ? 'password' : 'text'}
           placeholder="Password"
           id="password"
           autoComplete="off"
@@ -63,11 +74,24 @@ const Login = () => {
           required
         />
         <label htmlFor="password">Password</label>
+        {isHidePassword ? (
+          <HideIcon
+            className="input-field__svg"
+            onClick={() => setIsHidePassword(false)}
+          />
+        ) : (
+          <LookIcon
+            className="input-field__svg"
+            onClick={() => setIsHidePassword(true)}
+          />
+        )}
       </div>
 
       <div className="input-field">
         <button className="form__btn">{content?.btn}</button>
       </div>
+
+      {isLoading && <Spinner />}
 
       {authError && <p className="error-msg second">{authError}</p>}
     </form>
