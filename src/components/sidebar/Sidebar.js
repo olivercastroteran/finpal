@@ -13,6 +13,7 @@ import {
 import { english, spanish } from '../../languages';
 
 const Sidebar = () => {
+  const auth = useSelector((state) => state.firebase.auth);
   const isSidebarOpen = useSelector((state) => state.settings.isSidebarOpen);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
@@ -38,9 +39,10 @@ const Sidebar = () => {
       </div>
 
       <ul className="sidebar__menu">
-        {links.map((link, i) => (
-          <SidebarLink key={link.id} {...link} text={content && content[i]} />
-        ))}
+        {auth.uid &&
+          links.map((link, i) => (
+            <SidebarLink key={link.id} {...link} text={content && content[i]} />
+          ))}
         <li onClick={() => dispatch(toggleSettingsModal())}>
           <div className="sidebar-link btn">
             <SettingsIcon />

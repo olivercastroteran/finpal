@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { english, spanish } from '../../../languages';
 import { login } from '../../../store/actions/authActions';
 
 const Login = () => {
+  const auth = useSelector((state) => state.firebase.auth);
+  const history = useHistory();
   const language = useSelector((state) => state.settings.language);
   const authError = useSelector((state) => state.auth.authError);
   const [content, setContent] = useState({});
@@ -23,6 +26,8 @@ const Login = () => {
     e.preventDefault();
     dispatch(login({ email, password }));
   };
+
+  if (auth.uid) history.push('/');
 
   return (
     <form className="form login" onSubmit={handleSubmit}>

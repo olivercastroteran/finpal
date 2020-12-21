@@ -23,6 +23,9 @@ export const logout = () => {
       .signOut()
       .then(() => {
         dispatch({ type: 'LOGOUT_SUCCESS' });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 };

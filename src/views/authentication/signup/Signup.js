@@ -3,8 +3,11 @@ import { useSelector } from 'react-redux';
 import { HideIcon, LookIcon } from '../../../assets/icons';
 import { re } from '../../../shared/utility';
 import { english, spanish } from '../../../languages';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
+  const auth = useSelector((state) => state.firebase.auth);
+  const history = useHistory();
   const language = useSelector((state) => state.settings.language);
   const [isFormValid, setIsFormValid] = useState(false);
   const [content, setContent] = useState({});
@@ -68,6 +71,8 @@ const Login = () => {
   useEffect(() => {
     checkValidation();
   }, [checkValidation]);
+
+  if (auth.uid) history.push('/');
 
   return (
     <form
