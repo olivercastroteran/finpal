@@ -64,6 +64,15 @@ const english = {
     expenses: 'Expenses',
     btnText: 'Add Transaction',
   },
+  user: {
+    hello: 'Hello',
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    email: 'Email',
+    password: 'Password',
+    pin: 'Pin',
+    btn: 'Logout',
+  },
 };
 
 export default english;

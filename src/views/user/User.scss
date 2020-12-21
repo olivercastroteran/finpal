@@ -1,4 +1,47 @@
+.user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__banner {
+    width: 70%;
+    min-height: 10rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #555555a4;
+    border-radius: 20px;
+    position: relative;
+
+    h2 {
+      margin-left: 2rem;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+    }
+
+    svg {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 1rem;
+    }
+  }
+
+  p {
+    opacity: 0.7;
+    margin-left: 2.5rem;
+    margin-bottom: 0.5rem;
+
+    span {
+      margin-left: 5px;
+    }
+  }
+}
+
 .logout-btn {
+  width: 20%;
+  align-self: center;
   cursor: pointer;
   outline: none;
   font-size: 1rem;

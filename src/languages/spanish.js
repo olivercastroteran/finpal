@@ -64,6 +64,15 @@ const spanish = {
     expenses: 'Gastos',
     btnText: 'Añadir Transacción',
   },
+  user: {
+    hello: 'Hola',
+    firstName: 'Nommbre',
+    lastName: 'Apellido/s',
+    email: 'Email',
+    password: 'Password',
+    pin: 'Pin',
+    btn: 'Cerrar Sesión',
+  },
 };
 
 export default spanish;
