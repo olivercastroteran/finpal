@@ -212,6 +212,10 @@
         font-size: 0.85rem;
         color: #c0392b;
         text-align: center;
+
+        &.second {
+          bottom: 25px;
+        }
       }
     }
   }

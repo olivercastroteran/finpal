@@ -1,13 +1,16 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { HideIcon, LookIcon } from '../../../assets/icons';
+import { useHistory } from 'react-router-dom';
+import { signup } from '../../../store/actions/authActions';
 import { re } from '../../../shared/utility';
 import { english, spanish } from '../../../languages';
-import { useHistory } from 'react-router-dom';
 
 const Login = () => {
   const auth = useSelector((state) => state.firebase.auth);
+  const authError = useSelector((state) => state.auth.authError);
   const history = useHistory();
+  const dispatch = useDispatch();
   const language = useSelector((state) => state.settings.language);
   const [isFormValid, setIsFormValid] = useState(false);
   const [content, setContent] = useState({});
@@ -33,6 +36,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(user);
+    dispatch(signup(user));
 
     setUser({
       firstName: '',
@@ -254,6 +258,7 @@ const Login = () => {
       </div>
 
       {errorMsg && <p className="error-msg">{errorMsg}</p>}
+      {authError && <p className="error-msg second">{authError}</p>}
     </form>
   );
 };

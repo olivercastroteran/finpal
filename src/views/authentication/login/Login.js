@@ -69,7 +69,7 @@ const Login = () => {
         <button className="form__btn">{content?.btn}</button>
       </div>
 
-      {authError && <p className="error-msg">{authError}</p>}
+      {authError && <p className="error-msg second">{authError}</p>}
     </form>
   );
 };

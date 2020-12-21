@@ -29,3 +29,37 @@ export const logout = () => {
       });
   };
 };
+
+export const signup = (newUser) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firebase = getFirebase();
+    const firestore = getFirestore();
+
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(newUser.email, newUser.password)
+      .then((resp) => {
+        return firestore
+          .collection('users')
+          .doc(resp.user.uid)
+          .set({
+            firstName: newUser.firstName,
+            lastName: newUser.lastName,
+            email: newUser.email,
+            password: newUser.password,
+            pin: newUser.pin,
+            finance: {
+              incomes: [],
+              expenses: [],
+              debts: [],
+            },
+          });
+      })
+      .then(() => {
+        dispatch({ type: 'SIGNUP_SUCCESS' });
+      })
+      .catch((err) => {
+        dispatch({ type: 'SIGNUP_ERROR', err });
+      });
+  };
+};
