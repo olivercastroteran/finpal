@@ -6,6 +6,8 @@ import { english, spanish } from '../../languages';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+  const profile = useSelector((state) => state.firebase.profile);
+  const [lastName, setLastName] = useState('');
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const language = useSelector((state) => state.settings.language);
   const [text, setText] = useState('');
@@ -19,6 +21,15 @@ const Header = () => {
     }
     // eslint-disable-next-line
   }, [language]);
+
+  useEffect(() => {
+    const lastNameArr = profile?.lastName?.split(' ');
+    if (lastNameArr?.length === 2) {
+      setLastName(`${lastNameArr[0][0]}${lastNameArr[1][0]}`);
+    } else {
+      setLastName(profile.lastName);
+    }
+  }, [profile]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -36,7 +47,9 @@ const Header = () => {
         />
       </form>
       <Link to="/user" className="header__user">
-        <span>Oliver CT</span>
+        <span>
+          {profile?.firstName} {lastName}
+        </span>
         <UserIcon />
       </Link>
     </div>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import { toggleAddModal } from '../../store/actions/settingsActions';
 import Modal from '../UI/modal/Modal';
 import { english, spanish } from '../../languages';
@@ -13,36 +14,30 @@ const AddTransaction = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
+  const [date, setDate] = useState('');
   const dispatch = useDispatch();
 
   const addTransaction = (e) => {
     e.preventDefault();
+    const item = {
+      id: uuidv4(),
+      type,
+      name,
+      description,
+      amount,
+      date,
+    };
 
     if (type === 'income') {
-      dispatch(
-        addIncome({
-          type,
-          name,
-          description,
-          amount,
-          id: +(Math.random() * 1000000).toFixed(0),
-        })
-      );
+      dispatch(addIncome(item));
     } else if (type === 'expense') {
-      dispatch(
-        addExpense({
-          type,
-          name,
-          description,
-          amount,
-          id: +(Math.random() * 1000000).toFixed(0),
-        })
-      );
+      dispatch(addExpense(item));
     }
 
     setName('');
     setDescription('');
     setAmount(0);
+    setDate('');
 
     setTimeout(() => {
       dispatch(toggleAddModal());
@@ -102,9 +97,23 @@ const AddTransaction = () => {
           <label>{content?.amount}</label>
           <input
             type="number"
+            min="0"
+            step="0.01"
             placeholder={content?.amount}
             onChange={(e) => setAmount(+e.target.value)}
             value={amount}
+            required
+          />
+        </div>
+
+        <div className="modal__setting">
+          <label>{content?.date}</label>
+          <input
+            type="month"
+            min="2000-01"
+            max="2100-12"
+            onChange={(e) => setDate(e.target.value)}
+            value={date}
             required
           />
         </div>

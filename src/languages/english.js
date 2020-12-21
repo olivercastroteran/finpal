@@ -12,6 +12,7 @@ const english = {
     name: 'Name',
     description: 'Description',
     amount: 'Amount',
+    date: 'Date',
     btn: 'ADD',
   },
   edit: {
@@ -19,7 +20,28 @@ const english = {
     name: 'Name',
     description: 'Description',
     amount: 'Amount',
+    date: 'Date',
     btn: 'Edit',
+  },
+  login: {
+    title: 'Login',
+    btn: 'Login',
+  },
+  signup: {
+    title: 'Sigup',
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    password2: 'Confirm Password',
+    pin: 'Pin (numeric)',
+    btn: 'Signup',
+    errMsg: {
+      firstName: 'First Name must have at least 3 characters',
+      lastName: 'Last Name must have at least 3 characters',
+      email: 'Please use a valid Email',
+      password: 'Password must be at least 6 characters',
+      password2: 'Please check passwords fields are the same',
+      pin: 'Please set a 4 digits numeric pin',
+    },
   },
   sidebar: ['Dashboard', 'Balance', 'Debts', 'Stock'],
   header: 'Search',
@@ -41,6 +63,15 @@ const english = {
     incomes: 'Incomes',
     expenses: 'Expenses',
     btnText: 'Add Transaction',
+  },
+  user: {
+    hello: 'Hello',
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    email: 'Email',
+    password: 'Password',
+    pin: 'Pin',
+    btn: 'Logout',
   },
 };
 

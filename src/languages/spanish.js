@@ -12,6 +12,7 @@ const spanish = {
     name: 'Nombre',
     description: 'Descripción',
     amount: 'Monto',
+    date: 'Fecha',
     btn: 'Añadir',
   },
   edit: {
@@ -19,7 +20,28 @@ const spanish = {
     name: 'Nombre',
     description: 'Descripción',
     amount: 'Monto',
+    date: 'Fecha',
     btn: 'Editar',
+  },
+  login: {
+    title: 'Iniciar Sesión',
+    btn: 'Iniciar Sesión',
+  },
+  signup: {
+    title: 'Registrarse',
+    firstName: 'Nombre',
+    lastName: 'Apellido',
+    password2: 'Confirmar Password',
+    pin: 'Pin (numérico)',
+    btn: 'Registrarse',
+    errMsg: {
+      firstName: 'Nombre debe contener mas de 3 caracteres',
+      lastName: 'Apellido debe contener mas de 3 caracteres',
+      email: 'Por favor utilice un Email valido',
+      password: 'Password debe contener mas de 3 caracteres',
+      password2: 'Por favor verifique que los passwords coinciden',
+      pin: 'Por favor introduzca un pin numérico de 4 digitos',
+    },
   },
   sidebar: ['Menu', 'Balance', 'Deudas', 'Stock'],
   header: 'Buscar',
@@ -41,6 +63,15 @@ const spanish = {
     incomes: 'Ingresos',
     expenses: 'Gastos',
     btnText: 'Añadir Transacción',
+  },
+  user: {
+    hello: 'Hola',
+    firstName: 'Nommbre',
+    lastName: 'Apellido/s',
+    email: 'Email',
+    password: 'Password',
+    pin: 'Pin',
+    btn: 'Cerrar Sesión',
   },
 };
 

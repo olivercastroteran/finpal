@@ -1,13 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import FinPalCard from '../../../../components/finPalCard/FinPalCard';
 import './GlobalInfo.scss';
 import { DebtsIcon, ExpensesIcon, IncomesIcon } from '../../../../assets/icons';
 import { english, spanish } from '../../../../languages';
+import { formatMoney } from '../../../../shared/utility';
 
 const GlobalInfo = () => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const language = useSelector((state) => state.settings.language);
+  const incomes = useSelector((state) => state.finance.incomes);
+  const expenses = useSelector((state) => state.finance.expenses);
+  const [total, setTotal] = useState(0);
+  const [totalInc, setTotalInc] = useState(0);
+  const [totalExp, setTotalExp] = useState(0);
   const [content, setContent] = useState({});
 
   useEffect(() => {
@@ -19,12 +25,28 @@ const GlobalInfo = () => {
     // eslint-disable-next-line
   }, [language]);
 
+  const calcTotal = useCallback(() => {
+    let totalIncomes = 0;
+    let totalExpenses = 0;
+
+    incomes.forEach((inc) => (totalIncomes += inc.amount));
+    expenses.forEach((exp) => (totalExpenses += exp.amount));
+
+    setTotalInc(totalIncomes);
+    setTotalExp(totalExpenses);
+    setTotal(totalIncomes - totalExpenses);
+  }, [expenses, incomes]);
+
+  useEffect(() => {
+    calcTotal();
+  }, [calcTotal]);
+
   return (
     <div className={isDarkMode ? 'global-info dark' : 'global-info'}>
       <h2>{content?.title}</h2>
 
       <div className="global-info__top">
-        <FinPalCard />
+        <FinPalCard amount={total} />
       </div>
 
       <div className="global-info__bottom">
@@ -33,7 +55,8 @@ const GlobalInfo = () => {
           <div className="global-info-data">
             <p>{content?.incomesTxt}</p>
             <p>
-              $ 140,568.<small>00</small>
+              {formatMoney(totalInc)[0]}
+              <small>{formatMoney(totalInc)[1]}</small>
             </p>
           </div>
         </div>
@@ -42,7 +65,8 @@ const GlobalInfo = () => {
           <div className="global-info-data">
             <p>{content?.expensesTxt}</p>
             <p>
-              $ 70,869.<small>00</small>
+              {formatMoney(totalExp)[0]}
+              <small>{formatMoney(totalExp)[1]}</small>
             </p>
           </div>
         </div>
