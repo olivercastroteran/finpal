@@ -110,15 +110,63 @@ export const removeExpense = (id) => {
 };
 
 export const editIncome = (editedIncome) => {
-  return {
-    type: 'EDIT_INCOME',
-    payload: editedIncome,
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const editedIncIndex = profile.finance.incomes.findIndex(
+      (inc) => inc.id === editedIncome.id
+    );
+    const newIncomes = [...profile.finance.incomes];
+
+    newIncomes[editedIncIndex] = editedIncome;
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          incomes: newIncomes,
+        },
+      })
+      .then(() => {
+        console.log('income edited');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
 
 export const editExpense = (editedExpense) => {
-  return {
-    type: 'EDIT_EXPENSE',
-    payload: editedExpense,
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const editedExpIndex = profile.finance.expenses.findIndex(
+      (exp) => exp.id === editedExpense.id
+    );
+    const newExpenses = [...profile.finance.expenses];
+
+    newExpenses[editedExpIndex] = editedExpense;
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          expenses: newExpenses,
+        },
+      })
+      .then(() => {
+        console.log('expense edited');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
