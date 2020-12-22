@@ -6,7 +6,7 @@ export const syncData = (finance) => {
 };
 
 export const addIncome = (income) => {
-  return (dispatch, getState, { getFirebase, getFirestore }) => {
+  return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
     const uid = getState().firebase.auth.uid;
     const profile = getState().firebase.profile;
@@ -32,7 +32,7 @@ export const addIncome = (income) => {
 };
 
 export const addExpense = (expense) => {
-  return (dispatch, getState, { getFirebase, getFirestore }) => {
+  return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
     const uid = getState().firebase.auth.uid;
     const profile = getState().firebase.profile;
@@ -57,17 +57,55 @@ export const addExpense = (expense) => {
   };
 };
 
-export const removeIncome = (income) => {
-  return {
-    type: 'REMOVE_INCOME',
-    payload: income,
+export const removeIncome = (id) => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newIncomes = profile.finance.incomes.filter((inc) => inc.id !== id);
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          incomes: newIncomes,
+        },
+      })
+      .then(() => {
+        console.log('income deleted');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
 
-export const removeExpense = (expense) => {
-  return {
-    type: 'REMOVE_EXPENSE',
-    payload: expense,
+export const removeExpense = (id) => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newExpenses = profile.finance.expenses.filter((exp) => exp.id !== id);
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          expenses: newExpenses,
+        },
+      })
+      .then(() => {
+        console.log('expense deleted');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
 

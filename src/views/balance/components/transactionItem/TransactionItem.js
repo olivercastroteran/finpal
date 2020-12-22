@@ -15,12 +15,10 @@ const TransactionItem = ({ id, type, name, description, amount, date }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    const item = { id, type, name, description, amount, date };
-
     if (type === 'income') {
-      dispatch(removeIncome(item));
+      dispatch(removeIncome(id));
     } else if (type === 'expense') {
-      dispatch(removeExpense(item));
+      dispatch(removeExpense(id));
     }
   };
 
