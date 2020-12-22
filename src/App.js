@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './App.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -18,11 +19,22 @@ import {
 } from './store/actions/settingsActions';
 import Backdrop from './components/UI/backdrop/Backdrop';
 import { AddTransaction, EditTransaction, SettingsForm } from './components';
+import useFirestore from './hooks/useFirestore';
+import { syncData } from './store/actions/financeActions';
 
 function App() {
+  const uid = useSelector((state) => state.firebase.auth.uid);
   const modals = useSelector((state) => state.settings.modals);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const dispatch = useDispatch();
+  const { doc } = useFirestore(uid);
+
+  useEffect(() => {
+    if (doc.finance) {
+      console.log('Hey');
+      dispatch(syncData(doc.finance));
+    }
+  }, [uid, doc.finance, dispatch]);
 
   const { isSettingsOpen, isAddOpen, edit } = modals;
 

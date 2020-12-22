@@ -7,6 +7,13 @@ const initState = {
 export const financeReducer = (state = initState, action) => {
   let newIncomes, newExpenses;
   switch (action.type) {
+    case 'SYNC_DATA':
+      return {
+        ...state,
+        incomes: action.payload.incomes,
+        expenses: action.payload.expenses,
+        debts: action.payload.debts,
+      };
     case 'ADD_INCOME':
       return {
         ...state,

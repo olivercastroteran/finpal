@@ -1,14 +1,59 @@
-export const addIncome = (income) => {
+export const syncData = (finance) => {
   return {
-    type: 'ADD_INCOME',
-    payload: income,
+    type: 'SYNC_DATA',
+    payload: finance,
+  };
+};
+
+export const addIncome = (income) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newIncomes = [...profile.finance.incomes, income];
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          incomes: newIncomes,
+        },
+      })
+      .then(() => {
+        console.log('income added');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
 
 export const addExpense = (expense) => {
-  return {
-    type: 'ADD_EXPENSE',
-    payload: expense,
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newExpenses = [...profile.finance.expenses, expense];
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          expenses: newExpenses,
+        },
+      })
+      .then(() => {
+        console.log('expense added');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
 
