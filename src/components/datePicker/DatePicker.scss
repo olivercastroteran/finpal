@@ -1,0 +1,53 @@
+.date-picker {
+  .date {
+    background-color: transparent;
+    border: none;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #16a085;
+    border-radius: 5px;
+    padding: 0.5rem 0.75rem;
+    transition: all 0.2s;
+
+    &::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid #16a085;
+    }
+  }
+
+  &__btn {
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    margin: 0 1rem;
+    padding: 0.3rem 1.5rem;
+    color: inherit;
+    border: 1px solid #107360;
+    border-radius: 5px;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: #16a085;
+      color: #fff;
+    }
+  }
+
+  &__selected {
+    color: #16a085;
+    font-size: 1.3rem;
+  }
+
+  &.dark {
+    .date {
+      color: #eee;
+
+      &::-webkit-calendar-picker-indicator {
+        background-color: transparent;
+        filter: invert(100%);
+      }
+    }
+  }
+}

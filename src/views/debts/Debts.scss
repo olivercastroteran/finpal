@@ -1,0 +1,14 @@
+.debts {
+  &__top {
+    width: 100%;
+    position: relative;
+
+    svg {
+      width: 300px;
+      height: auto;
+      position: absolute;
+      top: -1rem;
+      right: 1rem;
+    }
+  }
+}

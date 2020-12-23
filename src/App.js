@@ -31,7 +31,7 @@ function App() {
 
   useEffect(() => {
     if (doc.finance) {
-      console.log('Hey');
+      console.log('app rendered');
       dispatch(syncData(doc.finance));
     }
   }, [uid, doc.finance, dispatch]);
