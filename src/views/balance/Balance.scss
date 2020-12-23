@@ -26,13 +26,13 @@
     flex: 1;
     display: flex;
     justify-content: space-between;
-    max-height: 806px;
+    max-height: 70vh;
     width: 80%;
     max-width: 1000px;
     margin: 0 auto;
 
     @media screen and (max-width: 1350px) {
-      max-height: 467px;
+      max-height: 59vh;
     }
 
     & > div {

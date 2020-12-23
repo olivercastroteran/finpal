@@ -28,7 +28,16 @@ const DatePicker = ({ getDate, selectedDate }) => {
         required
       />
       <button className="date-picker__btn">
-        {language === 'english' ? 'Set Date' : 'Definir Fecha'}
+        {language === 'english' ? 'Select Date' : 'Definir Fecha'}
+      </button>
+      <button
+        className="date-picker__btn"
+        type="button"
+        onClick={() =>
+          getDate(language === 'english' ? 'Show All' : 'Mostrar Todo')
+        }
+      >
+        {language === 'english' ? 'Show All' : 'Mostrar Todo'}
       </button>
       {selectedDate && (
         <span className="date-picker__selected">{selectedDate}</span>

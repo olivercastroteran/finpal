@@ -1,5 +1,8 @@
 .date-picker {
+  margin-bottom: 2rem;
+
   .date {
+    margin-right: 0.5rem;
     background-color: transparent;
     border: none;
     border: 1px solid transparent;
@@ -10,6 +13,7 @@
 
     &::-webkit-calendar-picker-indicator {
       cursor: pointer;
+      outline: none;
     }
 
     &:focus {
@@ -22,7 +26,7 @@
     outline: none;
     cursor: pointer;
     background-color: transparent;
-    margin: 0 1rem;
+    margin: 0 0.5rem;
     padding: 0.3rem 1.5rem;
     color: inherit;
     border: 1px solid #107360;
@@ -36,6 +40,7 @@
   }
 
   &__selected {
+    margin-left: 0.5rem;
     color: #16a085;
     font-size: 1.3rem;
   }
@@ -45,7 +50,7 @@
       color: #eee;
 
       &::-webkit-calendar-picker-indicator {
-        background-color: transparent;
+        outline: none;
         filter: invert(100%);
       }
     }
