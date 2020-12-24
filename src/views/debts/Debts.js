@@ -6,6 +6,7 @@ import { DataImg } from '../../assets/images';
 import { Header } from '../../components';
 import DatePicker from '../../components/datePicker/DatePicker';
 import AddDebtsForm from './components/addDebtForm/AddDebtForm';
+import DebtsTable from './components/debtsTable/DebtsTable';
 
 const Debts = () => {
   const uid = useSelector((state) => state.firebase.auth.uid);
@@ -28,6 +29,9 @@ const Debts = () => {
         <DatePicker getDate={getDate} selectedDate={selectedDate} />
         <AddDebtsForm />
         <DataImg />
+      </div>
+      <div className="debts__bottom">
+        <DebtsTable />
       </div>
     </div>
   );

@@ -1,7 +1,10 @@
 .debts {
+  display: flex;
+  flex-direction: column;
+
   &__top {
     width: 100%;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     position: relative;
 
     svg {
@@ -11,5 +14,9 @@
       top: -1.7rem;
       right: 1rem;
     }
+  }
+
+  &__bottom {
+    flex: 1;
   }
 }
