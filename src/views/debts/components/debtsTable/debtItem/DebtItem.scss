@@ -1,0 +1,50 @@
+.debt-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-bottom: 1px solid rgba($color: #888, $alpha: 0.3);
+  padding: 0.5rem 0;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: rgba($color: #888, $alpha: 0.15);
+  }
+
+  &__actions,
+  p {
+    flex: 1;
+    text-align: center;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .btn {
+      outline: none;
+      cursor: pointer;
+      color: inherit;
+      padding: 4px 8px;
+      background-color: transparent;
+      border: 1px solid rgba($color: #888, $alpha: 0.4);
+      border-radius: 3px;
+      transition: background-color 0.3s;
+
+      &:hover {
+        color: #fff;
+        background-color: #d8890b;
+        transform: scale(1.03);
+      }
+
+      &:active {
+        transform: scale(1);
+      }
+    }
+  }
+
+  #item-desc {
+    flex: 3;
+    text-align: left;
+  }
+}

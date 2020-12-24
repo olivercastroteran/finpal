@@ -2,8 +2,13 @@
   width: 90%;
   max-width: 60rem;
   height: 100%;
+  max-height: 65vh;
   margin: 0 auto;
-  border-radius: 15px;
+  border-radius: 10px;
+
+  @media screen and (max-width: 1350px) {
+    max-height: 50vh;
+  }
 
   &__header {
     display: flex;
@@ -11,21 +16,21 @@
     justify-content: space-evenly;
     color: #eee;
     background-color: #d8890b;
-    border-radius: 15px;
+    border-radius: 10px;
 
     h3 {
       flex: 1;
       text-align: center;
-      padding: 0.8rem;
+      padding: 0.8rem 0;
     }
 
     #desc {
-      flex: 2;
+      flex: 3;
     }
   }
 
   &__content {
-    padding: 2rem 1rem;
+    padding: 1.5rem 0 0 0;
     height: calc(100% - 48px);
     overflow-y: scroll;
 
@@ -46,11 +51,11 @@
     }
 
     &:hover::-webkit-scrollbar-thumb {
-      background-color: rgba($color: #000, $alpha: 0.3);
+      background-color: rgba($color: #888, $alpha: 0.3);
       border-radius: 15px;
 
       &:hover {
-        background-color: rgba($color: #000, $alpha: 0.35);
+        background-color: rgba($color: #888, $alpha: 0.4);
       }
     }
   }
