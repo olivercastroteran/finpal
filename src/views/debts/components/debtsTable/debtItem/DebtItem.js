@@ -1,15 +1,16 @@
+import { formatMoney } from '../../../../../shared/utility';
 import './DebtItem.scss';
 
-const DebtItem = () => {
+const DebtItem = ({ type, name, description, amount, date }) => {
   return (
     <div className="debt-item">
-      <p>To Me</p>
-      <p>Netflix</p>
-      <p id="item-desc">
-        Myshel needed money for her netflix account with some extra letters
+      <p>{type}</p>
+      <p>{name}</p>
+      <p id="item-desc">{description}</p>
+      <p>
+        {formatMoney(amount)[0]}.{formatMoney(amount)[1]}
       </p>
-      <p>14.99 $us</p>
-      <p>2020-12</p>
+      <p>{date}</p>
       <div className="debt-item__actions">
         <button className="edit btn">Edit</button>
         <button className="paid btn">Paid</button>

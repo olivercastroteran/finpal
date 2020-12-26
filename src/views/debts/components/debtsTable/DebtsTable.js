@@ -1,7 +1,9 @@
+import { useSelector } from 'react-redux';
 import DebtItem from './debtItem/DebtItem';
 import './DebtsTable.scss';
 
 const DebtsTable = () => {
+  const debts = useSelector((state) => state.finance.debts);
   return (
     <div className="debts-table">
       <div className="debts-table__header">
@@ -13,46 +15,9 @@ const DebtsTable = () => {
         <h3>Actions</h3>
       </div>
       <div className="debts-table__content">
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
-        <DebtItem />
+        {debts?.map((debt) => (
+          <DebtItem key={debt.id} {...debt} />
+        ))}
       </div>
     </div>
   );

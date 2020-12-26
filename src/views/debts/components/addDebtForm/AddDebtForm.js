@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import '../../../../shared/FormFormat.scss';
+import { addDebt } from '../../../../store/actions/financeActions';
 
 const AddDebtsForm = () => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
+  const dispatch = useDispatch();
   const [debt, setDebt] = useState({
     id: uuidv4(),
     type: 'toMe',
@@ -17,6 +19,7 @@ const AddDebtsForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     //console.log(debt);
+    dispatch(addDebt(debt));
     setDebt({
       id: uuidv4(),
       type: 'toMe',

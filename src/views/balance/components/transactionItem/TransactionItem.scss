@@ -6,6 +6,8 @@
   border-radius: 0.3rem;
   margin-bottom: 0.75rem;
   position: relative;
+  border: 1px solid transparent;
+  transition: all 0.2s;
 
   &.dark {
     background-color: #353535;
@@ -101,10 +103,20 @@
   }
 
   &.income {
-    border-left: 5px solid #155c33;
+    border-left: 5px solid #16a085;
+
+    &:hover {
+      border: 1px solid #16a085;
+      border-left: 5px solid #16a085;
+    }
   }
 
   &.expense {
     border-left: 5px solid #a43125;
+
+    &:hover {
+      border: 1px solid #a43125;
+      border-left: 5px solid #a43125;
+    }
   }
 }
