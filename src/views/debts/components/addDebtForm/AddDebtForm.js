@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import '../../../../shared/FormFormat.scss';
 import { addDebt } from '../../../../store/actions/financeActions';
+import { english, spanish } from '../../../../languages';
 
 const AddDebtsForm = () => {
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
+  const language = useSelector((state) => state.settings.language);
+  const [content, setContent] = useState({});
   const dispatch = useDispatch();
   const [debt, setDebt] = useState({
     id: uuidv4(),
@@ -15,6 +18,14 @@ const AddDebtsForm = () => {
     amount: '',
     date: '',
   });
+
+  useEffect(() => {
+    if (language === 'english') {
+      setContent({ ...english.debts.addForm });
+    } else if (language === 'spanish') {
+      setContent({ ...spanish.debts.addForm });
+    }
+  }, [language]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,15 +62,15 @@ const AddDebtsForm = () => {
           style={{ width: 'fit-content', transform: 'translateY(-2px)' }}
           onChange={handleChange}
         >
-          <option value="toMe">To Me</option>
-          <option value="fromMe">From Me</option>
+          <option value="toMe">{content.types && content?.types[0]}</option>
+          <option value="fromMe">{content.types && content?.types[1]}</option>
         </select>
       </div>
 
       <div className="input-field">
         <input
           type="text"
-          placeholder="Debt Name"
+          placeholder={content?.name}
           id="debtName"
           autoComplete="off"
           name="name"
@@ -67,13 +78,13 @@ const AddDebtsForm = () => {
           value={debt.name}
           required
         />
-        <label htmlFor="debtName">Debt Name</label>
+        <label htmlFor="debtName">{content?.name}</label>
       </div>
 
       <div className="input-field">
         <input
           type="text"
-          placeholder="Description"
+          placeholder={content?.description}
           id="debtDescription"
           autoComplete="off"
           name="description"
@@ -81,7 +92,7 @@ const AddDebtsForm = () => {
           value={debt.description}
           required
         />
-        <label htmlFor="debtDescription">Description</label>
+        <label htmlFor="debtDescription">{content?.description}</label>
       </div>
 
       <div className="input-field">
@@ -89,13 +100,13 @@ const AddDebtsForm = () => {
           type="number"
           min="0"
           step="0.01"
-          placeholder="Amount"
+          placeholder={content?.amount}
           name="amount"
           onChange={handleChange}
           value={debt.amount}
           required
         />
-        <label htmlFor="debtDescription">Amount</label>
+        <label htmlFor="debtDescription">{content?.amount}</label>
       </div>
 
       <div className="input-field">
@@ -111,7 +122,7 @@ const AddDebtsForm = () => {
         />
       </div>
 
-      <button className="form-format__btn">Add</button>
+      <button className="form-format__btn">{content?.btn}</button>
     </form>
   );
 };

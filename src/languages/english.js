@@ -72,6 +72,23 @@ const english = {
     expenses: 'Expenses',
     btnText: 'Add Transaction',
   },
+  debts: {
+    addForm: {
+      types: ['To Me', 'From Me'],
+      name: 'Debt Name',
+      description: 'Description',
+      amount: 'Amount',
+      btn: 'Add',
+    },
+    table: {
+      type: 'Type',
+      name: 'Name',
+      description: 'Description',
+      amount: 'Amount',
+      date: 'Date',
+      actions: 'Actions',
+    },
+  },
   user: {
     hello: 'Hello',
     firstName: 'First Name',

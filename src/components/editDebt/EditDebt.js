@@ -50,7 +50,9 @@ const EditDebt = ({ item }) => {
   return (
     <Modal show={debt.isOpen}>
       <div className="modal__title">
-        <h2>{content?.title}</h2>
+        <h2>
+          {content?.title} N-{item?.id?.substring(0, 7)}
+        </h2>
         <span onClick={() => dispatch(toggleDebtEditModal())}>x</span>
       </div>
       <form className="modal__info" onSubmit={editDebtItem}>

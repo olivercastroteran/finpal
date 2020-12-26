@@ -1,9 +1,13 @@
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DebtItem from './debtItem/DebtItem';
 import './DebtsTable.scss';
+import { english, spanish } from '../../../../languages';
 
 const DebtsTable = ({ selectedDate }) => {
   const debts = useSelector((state) => state.finance.debts);
+  const language = useSelector((state) => state.settings.language);
+  const [content, setContent] = useState({});
   // const data = {
   //   type: 'toMe',
   //   name: 'Netflix',
@@ -11,15 +15,24 @@ const DebtsTable = ({ selectedDate }) => {
   //   amount: 14.99,
   //   date: '2020-12',
   // };
+
+  useEffect(() => {
+    if (language === 'english') {
+      setContent({ ...english.debts.table });
+    } else if (language === 'spanish') {
+      setContent({ ...spanish.debts.table });
+    }
+  }, [language]);
+
   return (
     <div className="debts-table">
       <div className="debts-table__header">
-        <h3>Type</h3>
-        <h3>Name</h3>
-        <h3 id="desc">Description</h3>
-        <h3>Amount</h3>
-        <h3>Date</h3>
-        <h3>Actions</h3>
+        <h3>{content?.type}</h3>
+        <h3>{content?.name}</h3>
+        <h3 id="desc">{content?.description}</h3>
+        <h3>{content?.amount}</h3>
+        <h3>{content?.date}</h3>
+        <h3>{content?.actions}</h3>
       </div>
       <div className="debts-table__content">
         {!selectedDate ||

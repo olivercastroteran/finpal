@@ -72,6 +72,23 @@ const spanish = {
     expenses: 'Gastos',
     btnText: 'Añadir Transacción',
   },
+  debts: {
+    addForm: {
+      types: ['A Mi', 'De Mi'],
+      name: 'Nombre',
+      description: 'Descripción',
+      amount: 'Monto',
+      btn: 'Añadir',
+    },
+    table: {
+      type: 'Tipo',
+      name: 'Nombre',
+      description: 'Descripción',
+      amount: 'Monto',
+      date: 'Fecha',
+      actions: 'Acciones',
+    },
+  },
   user: {
     hello: 'Hola',
     firstName: 'Nommbre',
