@@ -31,7 +31,7 @@ const Debts = () => {
         <DataImg />
       </div>
       <div className="debts__bottom">
-        <DebtsTable />
+        <DebtsTable selectedDate={selectedDate} />
       </div>
     </div>
   );

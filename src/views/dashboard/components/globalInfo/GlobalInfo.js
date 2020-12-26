@@ -11,9 +11,11 @@ const GlobalInfo = () => {
   const language = useSelector((state) => state.settings.language);
   const incomes = useSelector((state) => state.finance.incomes);
   const expenses = useSelector((state) => state.finance.expenses);
+  const debts = useSelector((state) => state.finance.debts);
   const [total, setTotal] = useState(0);
   const [totalInc, setTotalInc] = useState(0);
   const [totalExp, setTotalExp] = useState(0);
+  const [totalDebts, setTotalDebts] = useState(0);
   const [content, setContent] = useState({});
 
   useEffect(() => {
@@ -28,14 +30,23 @@ const GlobalInfo = () => {
   const calcTotal = useCallback(() => {
     let totalIncomes = 0;
     let totalExpenses = 0;
+    let totalDebtsAll = 0;
 
     incomes.forEach((inc) => (totalIncomes += inc.amount));
     expenses.forEach((exp) => (totalExpenses += exp.amount));
+    debts.forEach((debt) => {
+      if (debt.type === 'toMe') {
+        totalDebtsAll += debt.amount;
+      } else {
+        totalDebtsAll -= debt.amount;
+      }
+    });
 
     setTotalInc(totalIncomes);
     setTotalExp(totalExpenses);
+    setTotalDebts(totalDebtsAll);
     setTotal(totalIncomes - totalExpenses);
-  }, [expenses, incomes]);
+  }, [expenses, incomes, debts]);
 
   useEffect(() => {
     calcTotal();
@@ -75,7 +86,8 @@ const GlobalInfo = () => {
           <div className="global-info-data">
             <p>{content?.debtsTxt}</p>
             <p>
-              $ +14,576.<small>00</small>
+              {formatMoney(totalDebts)[0]}
+              <small>{formatMoney(totalDebts)[1]}</small>
             </p>
           </div>
         </div>

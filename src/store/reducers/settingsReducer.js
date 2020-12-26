@@ -6,6 +6,10 @@ const initState = {
       isOpen: false,
       item: {},
     },
+    debt: {
+      isOpen: false,
+      item: {},
+    },
   },
   isSidebarOpen: false,
   isDarkMode: false,

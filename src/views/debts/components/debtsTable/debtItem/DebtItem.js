@@ -4,11 +4,12 @@ import './DebtItem.scss';
 const DebtItem = ({ type, name, description, amount, date }) => {
   return (
     <div className="debt-item">
-      <p>{type}</p>
+      <p>{type === 'toMe' ? 'To Me' : 'From Me'}</p>
       <p>{name}</p>
       <p id="item-desc">{description}</p>
       <p>
-        {formatMoney(amount)[0]}.{formatMoney(amount)[1]}
+        {formatMoney(amount)[0]}
+        <small>{formatMoney(amount)[1]}</small>
       </p>
       <p>{date}</p>
       <div className="debt-item__actions">
