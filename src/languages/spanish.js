@@ -23,6 +23,14 @@ const spanish = {
     date: 'Fecha',
     btn: 'Editar',
   },
+  editDebt: {
+    title: 'Editar Deuda',
+    name: 'Nombre',
+    description: 'Descripción',
+    amount: 'Monto',
+    date: 'Fecha',
+    btn: 'Editar',
+  },
   login: {
     title: 'Iniciar Sesión',
     btn: 'Iniciar Sesión',
@@ -63,6 +71,23 @@ const spanish = {
     incomes: 'Ingresos',
     expenses: 'Gastos',
     btnText: 'Añadir Transacción',
+  },
+  debts: {
+    addForm: {
+      types: ['A Mi', 'De Mi'],
+      name: 'Nombre',
+      description: 'Descripción',
+      amount: 'Monto',
+      btn: 'Añadir',
+    },
+    table: {
+      type: 'Tipo',
+      name: 'Nombre',
+      description: 'Descripción',
+      amount: 'Monto',
+      date: 'Fecha',
+      actions: 'Acciones',
+    },
   },
   user: {
     hello: 'Hola',

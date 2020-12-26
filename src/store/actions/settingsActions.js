@@ -23,6 +23,13 @@ export const toggleEditModal = (item) => {
   };
 };
 
+export const toggleDebtEditModal = (item) => {
+  return {
+    type: 'TOGGLE_DEBT_EDIT_MODAL',
+    payload: item,
+  };
+};
+
 export const toggleDarkMode = () => {
   return { type: 'TOGGLE_DARK_MODE' };
 };

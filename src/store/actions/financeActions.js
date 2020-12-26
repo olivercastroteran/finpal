@@ -57,6 +57,32 @@ export const addExpense = (expense) => {
   };
 };
 
+export const addDebt = (debt) => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newDebts = [...profile.finance.debts, debt];
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          debts: newDebts,
+        },
+      })
+      .then(() => {
+        console.log('debt added');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
 export const removeIncome = (id) => {
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
@@ -102,6 +128,32 @@ export const removeExpense = (id) => {
       })
       .then(() => {
         console.log('expense deleted');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const removeDebt = (id) => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newDebts = profile.finance.debts.filter((debt) => debt.id !== id);
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          debts: newDebts,
+        },
+      })
+      .then(() => {
+        console.log('debt deleted');
       })
       .catch((err) => {
         console.log(err);
@@ -164,6 +216,37 @@ export const editExpense = (editedExpense) => {
       })
       .then(() => {
         console.log('expense edited');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const editDebt = (editedDebt) => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const editedDebtIndex = profile.finance.debts.findIndex(
+      (debt) => debt.id === editedDebt.id
+    );
+    const newDebts = [...profile.finance.debts];
+
+    newDebts[editedDebtIndex] = editedDebt;
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          debts: newDebts,
+        },
+      })
+      .then(() => {
+        console.log('debt edited');
       })
       .catch((err) => {
         console.log(err);

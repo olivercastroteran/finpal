@@ -1,0 +1,104 @@
+.form-format {
+  display: flex;
+  margin-top: 3rem;
+
+  .input-field:not(:first-of-type) {
+    margin-left: 1.5rem;
+  }
+
+  &.dark {
+    input,
+    select {
+      color: #eee;
+      border-bottom-color: #777;
+
+      &::-webkit-calendar-picker-indicator {
+        outline: none;
+        filter: invert(100%);
+        cursor: pointer;
+      }
+    }
+
+    select * {
+      background-color: #444;
+    }
+  }
+
+  &__btn {
+    cursor: pointer;
+    outline: none;
+    color: inherit;
+    background-color: transparent;
+    border-radius: 7px;
+    font-size: 1rem;
+    margin-left: 1.5rem;
+    transform: translateY(-5px);
+    align-self: flex-start;
+    padding: 0.3rem 1rem;
+    border: 1px solid #16a085;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #16a085;
+      color: #fff;
+      transform: translateY(-8px);
+      box-shadow: 1px 4px 5px rgba($color: #000000, $alpha: 0.2);
+    }
+
+    &:active {
+      transform: translateY(-6px);
+      box-shadow: 1px 2px 4px rgba($color: #000000, $alpha: 0.1);
+    }
+  }
+
+  select,
+  input {
+    color: inherit;
+    width: 6rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+    transition: all 0.2s;
+
+    &:focus {
+      width: 7rem;
+      outline: none;
+      border-bottom: 1px solid #107360;
+
+      &:invalid {
+        border-bottom: 1px solid #c0392b;
+      }
+
+      &.error {
+        border-bottom: 1px solid #c0392b;
+      }
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+      outline: none;
+    }
+
+    &::-webkit-input-placeholder {
+      color: #555;
+    }
+  }
+
+  label {
+    color: #107360;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    display: block;
+    transform: translateY(-250%);
+    transition: all 0.2s;
+  }
+
+  input:placeholder-shown + label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%);
+  }
+}

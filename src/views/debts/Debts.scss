@@ -1,0 +1,22 @@
+.debts {
+  display: flex;
+  flex-direction: column;
+
+  &__top {
+    width: 100%;
+    margin-bottom: 3rem;
+    position: relative;
+
+    svg {
+      width: 300px;
+      height: auto;
+      position: absolute;
+      top: -1.7rem;
+      right: 1rem;
+    }
+  }
+
+  &__bottom {
+    flex: 1;
+  }
+}

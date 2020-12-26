@@ -23,6 +23,14 @@ const english = {
     date: 'Date',
     btn: 'Edit',
   },
+  editDebt: {
+    title: 'Edit Debt',
+    name: 'Name',
+    description: 'Description',
+    amount: 'Amount',
+    date: 'Date',
+    btn: 'Edit',
+  },
   login: {
     title: 'Login',
     btn: 'Login',
@@ -63,6 +71,23 @@ const english = {
     incomes: 'Incomes',
     expenses: 'Expenses',
     btnText: 'Add Transaction',
+  },
+  debts: {
+    addForm: {
+      types: ['To Me', 'From Me'],
+      name: 'Debt Name',
+      description: 'Description',
+      amount: 'Amount',
+      btn: 'Add',
+    },
+    table: {
+      type: 'Type',
+      name: 'Name',
+      description: 'Description',
+      amount: 'Amount',
+      date: 'Date',
+      actions: 'Actions',
+    },
   },
   user: {
     hello: 'Hello',
