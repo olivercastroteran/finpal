@@ -14,6 +14,7 @@ import {
 } from './views';
 import {
   toggleSettingsModal,
+  toggleDebtEditModal,
   toggleAddModal,
   toggleEditModal,
 } from './store/actions/settingsActions';
@@ -21,6 +22,7 @@ import Backdrop from './components/UI/backdrop/Backdrop';
 import { AddTransaction, EditTransaction, SettingsForm } from './components';
 import useFirestore from './hooks/useFirestore';
 import { syncData } from './store/actions/financeActions';
+import EditDebt from './components/editDebt/EditDebt';
 
 function App() {
   const uid = useSelector((state) => state.firebase.auth.uid);
@@ -36,7 +38,7 @@ function App() {
     }
   }, [uid, doc.finance, dispatch]);
 
-  const { isSettingsOpen, isAddOpen, edit } = modals;
+  const { isSettingsOpen, isAddOpen, edit, debt } = modals;
 
   return (
     <BrowserRouter>
@@ -53,9 +55,14 @@ function App() {
           <Backdrop clicked={() => dispatch(toggleEditModal())} />
         )}
 
+        {debt.isOpen && (
+          <Backdrop clicked={() => dispatch(toggleDebtEditModal())} />
+        )}
+
         <SettingsForm />
         <AddTransaction />
         <EditTransaction item={edit.item} />
+        <EditDebt item={debt.item} />
 
         <Switch>
           <Route exact path="/" component={Dashboard} />

@@ -23,6 +23,14 @@ const spanish = {
     date: 'Fecha',
     btn: 'Editar',
   },
+  editDebt: {
+    title: 'Editar Deuda',
+    name: 'Nombre',
+    description: 'Descripción',
+    amount: 'Monto',
+    date: 'Fecha',
+    btn: 'Editar',
+  },
   login: {
     title: 'Iniciar Sesión',
     btn: 'Iniciar Sesión',

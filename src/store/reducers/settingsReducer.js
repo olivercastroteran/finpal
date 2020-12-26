@@ -51,6 +51,18 @@ export const settingsReducer = (state = initState, action) => {
           },
         },
       };
+    case 'TOGGLE_DEBT_EDIT_MODAL':
+      return {
+        ...state,
+        modals: {
+          ...state.modals,
+          debt: {
+            ...state.modals.debt,
+            isOpen: !state.modals.debt.isOpen,
+            item: action.payload,
+          },
+        },
+      };
     case 'TOGGLE_DARK_MODE':
       return {
         ...state,

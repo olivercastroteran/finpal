@@ -32,6 +32,10 @@ const AddDebtsForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === 'amount') {
+      setDebt({ ...debt, amount: +e.target.value });
+      return;
+    }
     setDebt({ ...debt, [name]: value });
   };
 

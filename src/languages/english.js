@@ -23,6 +23,14 @@ const english = {
     date: 'Date',
     btn: 'Edit',
   },
+  editDebt: {
+    title: 'Edit Debt',
+    name: 'Name',
+    description: 'Description',
+    amount: 'Amount',
+    date: 'Date',
+    btn: 'Edit',
+  },
   login: {
     title: 'Login',
     btn: 'Login',

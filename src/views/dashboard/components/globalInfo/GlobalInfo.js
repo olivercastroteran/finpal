@@ -37,7 +37,7 @@ const GlobalInfo = () => {
     debts.forEach((debt) => {
       if (debt.type === 'toMe') {
         totalDebtsAll += debt.amount;
-      } else {
+      } else if (debt.type === 'fromMe') {
         totalDebtsAll -= debt.amount;
       }
     });
