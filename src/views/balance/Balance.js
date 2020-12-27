@@ -10,6 +10,7 @@ import { useHistory } from 'react-router-dom';
 import DatePicker from '../../components/datePicker/DatePicker';
 
 const Balance = () => {
+  const isLocked = useSelector((state) => state.firebase.profile.isLocked);
   const uid = useSelector((state) => state.firebase.auth.uid);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const language = useSelector((state) => state.settings.language);
@@ -74,11 +75,13 @@ const Balance = () => {
         </div>
       </div>
 
-      <AddBtn
-        text={content?.btnText}
-        symbol="+"
-        clicked={() => dispatch(toggleAddModal())}
-      />
+      {!isLocked && (
+        <AddBtn
+          text={content?.btnText}
+          symbol="+"
+          clicked={() => dispatch(toggleAddModal())}
+        />
+      )}
     </div>
   );
 };

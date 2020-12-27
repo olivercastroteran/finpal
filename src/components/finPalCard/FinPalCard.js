@@ -1,11 +1,13 @@
-import { useState } from 'react';
 import './FinPalCard.scss';
 import CardImg from '../../assets/images/card.svg';
 import ToggleBtn from '../UI/toggleBtn/ToggleBtn';
 import { formatMoney } from '../../shared/utility';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleAppLockModal } from '../../store/actions/settingsActions';
 
 const FinPalCard = ({ amount }) => {
-  const [isCardBlock, setIsCardBlock] = useState(false);
+  const isLocked = useSelector((state) => state.firebase.profile.isLocked);
+  const dispatch = useDispatch();
 
   const style = {
     backgroundImage: `url(${CardImg})`,
@@ -20,8 +22,8 @@ const FinPalCard = ({ amount }) => {
         </p>
       </div>
       <ToggleBtn
-        isToggleOn={isCardBlock}
-        changeToggle={() => setIsCardBlock(!isCardBlock)}
+        isToggleOn={isLocked}
+        changeToggle={() => dispatch(toggleAppLockModal())}
       />
     </div>
   );

@@ -10,6 +10,7 @@ import { toggleEditModal } from '../../../../store/actions/settingsActions';
 import { formatMoney } from '../../../../shared/utility';
 
 const TransactionItem = ({ id, type, name, description, amount, date }) => {
+  const isLocked = useSelector((state) => state.firebase.profile.isLocked);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const [isItemOpen, setIsItemOpen] = useState(false);
   const dispatch = useDispatch();
@@ -51,10 +52,12 @@ const TransactionItem = ({ id, type, name, description, amount, date }) => {
         <div className="transaction-item__bottom">
           <p>{description}</p>
           <span>{date}</span>
-          <div className="item-btns">
-            <EditIcon className="edit-btn" onClick={handleEdit} />
-            <TrashCanIcon className="delete-btn" onClick={handleDelete} />
-          </div>
+          {!isLocked && (
+            <div className="item-btns">
+              <EditIcon className="edit-btn" onClick={handleEdit} />
+              <TrashCanIcon className="delete-btn" onClick={handleDelete} />
+            </div>
+          )}
         </div>
       )}
     </div>

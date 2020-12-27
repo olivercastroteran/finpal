@@ -8,13 +8,6 @@ const DebtsTable = ({ selectedDate }) => {
   const debts = useSelector((state) => state.finance.debts);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
-  // const data = {
-  //   type: 'toMe',
-  //   name: 'Netflix',
-  //   description: 'Myshel needed money for Netflix account',
-  //   amount: 14.99,
-  //   date: '2020-12',
-  // };
 
   useEffect(() => {
     if (language === 'english') {
@@ -42,28 +35,6 @@ const DebtsTable = ({ selectedDate }) => {
           : debts
               ?.filter((debt) => debt.date === selectedDate)
               .map((debt) => <DebtItem key={debt.id} {...debt} />)}
-        {/* <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />2
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} />
-        <DebtItem {...data} /> */}
       </div>
     </div>
   );
