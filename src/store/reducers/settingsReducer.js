@@ -2,6 +2,7 @@ const initState = {
   modals: {
     isSettingsOpen: false,
     isAddOpen: false,
+    isLockedOpen: false,
     edit: {
       isOpen: false,
       item: {},
@@ -61,6 +62,14 @@ export const settingsReducer = (state = initState, action) => {
             isOpen: !state.modals.debt.isOpen,
             item: action.payload,
           },
+        },
+      };
+    case 'TOGGLE_APP_LOCK_MODAL':
+      return {
+        ...state,
+        modals: {
+          ...state.modals,
+          isLockedOpen: !state.modals.isLockedOpen,
         },
       };
     case 'TOGGLE_DARK_MODE':

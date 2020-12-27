@@ -16,6 +16,12 @@ export const toggleAddModal = () => {
   };
 };
 
+export const toggleAppLockModal = () => {
+  return {
+    type: 'TOGGLE_APP_LOCK_MODAL',
+  };
+};
+
 export const toggleEditModal = (item) => {
   return {
     type: 'TOGGLE_EDIT_MODAL',

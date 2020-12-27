@@ -17,12 +17,14 @@ import {
   toggleDebtEditModal,
   toggleAddModal,
   toggleEditModal,
+  toggleAppLockModal,
 } from './store/actions/settingsActions';
 import Backdrop from './components/UI/backdrop/Backdrop';
 import { AddTransaction, EditTransaction, SettingsForm } from './components';
 import useFirestore from './hooks/useFirestore';
 import { syncData } from './store/actions/financeActions';
 import EditDebt from './components/editDebt/EditDebt';
+import AppLockModal from './components/appLockModal/AppLockModal';
 
 function App() {
   const uid = useSelector((state) => state.firebase.auth.uid);
@@ -38,7 +40,7 @@ function App() {
     }
   }, [uid, doc.finance, dispatch]);
 
-  const { isSettingsOpen, isAddOpen, edit, debt } = modals;
+  const { isSettingsOpen, isAddOpen, isLockedOpen, edit, debt } = modals;
 
   return (
     <BrowserRouter>
@@ -51,6 +53,10 @@ function App() {
 
         {isAddOpen && <Backdrop clicked={() => dispatch(toggleAddModal())} />}
 
+        {isLockedOpen && (
+          <Backdrop clicked={() => dispatch(toggleAppLockModal())} />
+        )}
+
         {edit.isOpen && (
           <Backdrop clicked={() => dispatch(toggleEditModal())} />
         )}
@@ -61,6 +67,7 @@ function App() {
 
         <SettingsForm />
         <AddTransaction />
+        <AppLockModal />
         <EditTransaction item={edit.item} />
         <EditDebt item={debt.item} />
 

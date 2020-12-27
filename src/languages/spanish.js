@@ -88,6 +88,11 @@ const spanish = {
       date: 'Fecha',
       actions: 'Acciones',
     },
+    item: {
+      type1: 'A Mi',
+      type2: 'De Mi',
+      btns: ['Editar', 'Pagada'],
+    },
   },
   user: {
     hello: 'Hola',

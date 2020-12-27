@@ -88,6 +88,11 @@ const english = {
       date: 'Date',
       actions: 'Actions',
     },
+    item: {
+      type1: 'To Me',
+      type2: 'From Me',
+      btns: ['Edit', 'Paid'],
+    },
   },
   user: {
     hello: 'Hello',
