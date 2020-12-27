@@ -29,12 +29,12 @@ const AppLockModal = () => {
       setTimeout(() => {
         setBtnMsg('Enter');
         dispatch(toggleAppLockModal());
-      }, 1500);
+      }, 1000);
     } else if (code !== pin) {
       setBtnMsg(`${language === 'english' ? 'Incorrect' : 'Incorrecto'}`);
       setTimeout(() => {
         setBtnMsg('Enter');
-      }, 1500);
+      }, 1000);
     }
     setCode('');
     setIsFourDigits(false);

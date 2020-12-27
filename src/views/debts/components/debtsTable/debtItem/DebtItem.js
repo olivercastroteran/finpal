@@ -7,6 +7,7 @@ import './DebtItem.scss';
 import { english, spanish } from '../../../../../languages';
 
 const DebtItem = ({ id, type, name, description, amount, date }) => {
+  const isLocked = useSelector((state) => state.firebase.profile.isLocked);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
   const dispatch = useDispatch();
@@ -31,17 +32,23 @@ const DebtItem = ({ id, type, name, description, amount, date }) => {
         <small>{formatMoney(amount)[1]}</small>
       </p>
       <p>{date}</p>
-      <div className="debt-item__actions">
-        <button
-          className="edit btn"
-          onClick={() => dispatch(toggleDebtEditModal(debtItem))}
-        >
-          {content.btns && content.btns[0]}
-        </button>
-        <button className="paid btn" onClick={() => dispatch(removeDebt(id))}>
-          {content.btns && content.btns[1]}
-        </button>
-      </div>
+      {!isLocked ? (
+        <div className="debt-item__actions">
+          <button
+            className="edit btn"
+            onClick={() => dispatch(toggleDebtEditModal(debtItem))}
+          >
+            {content.btns && content.btns[0]}
+          </button>
+          <button className="paid btn" onClick={() => dispatch(removeDebt(id))}>
+            {content.btns && content.btns[1]}
+          </button>
+        </div>
+      ) : (
+        <div className="debt-item__actions">
+          <p>{language === 'english' ? 'Locked' : 'Bloqueada'}</p>
+        </div>
+      )}
     </div>
   );
 };

@@ -6,6 +6,7 @@ import { addDebt } from '../../../../store/actions/financeActions';
 import { english, spanish } from '../../../../languages';
 
 const AddDebtsForm = () => {
+  const isLocked = useSelector((state) => state.firebase.profile.isLocked);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
@@ -122,7 +123,11 @@ const AddDebtsForm = () => {
         />
       </div>
 
-      <button className="form-format__btn">{content?.btn}</button>
+      {!isLocked ? (
+        <button className="form-format__btn">{content?.btn}</button>
+      ) : (
+        <p>{language === 'english' ? 'App Locked' : 'App Bloqueada'}</p>
+      )}
     </form>
   );
 };
