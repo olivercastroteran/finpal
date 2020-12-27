@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toggleIsLocked } from '../../store/actions/financeActions';
 import { toggleAppLockModal } from '../../store/actions/settingsActions';
 import Modal from '../UI/modal/Modal';
 
@@ -24,15 +25,16 @@ const AppLockModal = () => {
   const handleEnter = () => {
     if (code === pin) {
       setBtnMsg(`${language === 'english' ? 'Correct' : 'Correcto'}`);
+      dispatch(toggleIsLocked());
       setTimeout(() => {
         setBtnMsg('Enter');
         dispatch(toggleAppLockModal());
-      }, 2000);
+      }, 1500);
     } else if (code !== pin) {
       setBtnMsg(`${language === 'english' ? 'Incorrect' : 'Incorrecto'}`);
       setTimeout(() => {
         setBtnMsg('Enter');
-      }, 2000);
+      }, 1500);
     }
     setCode('');
     setIsFourDigits(false);

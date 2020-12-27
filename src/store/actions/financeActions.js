@@ -5,6 +5,28 @@ export const syncData = (finance) => {
   };
 };
 
+export const toggleIsLocked = () => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        isLocked: !profile.isLocked,
+      })
+      .then(() => {
+        console.log('app lock toggled');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
 export const addIncome = (income) => {
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
