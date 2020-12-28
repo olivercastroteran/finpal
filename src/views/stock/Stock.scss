@@ -1,0 +1,14 @@
+.stock {
+  position: relative;
+
+  &__content {
+    display: flex;
+  }
+
+  &__img {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 2rem;
+    width: 300px;
+  }
+}

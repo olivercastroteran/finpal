@@ -52,6 +52,7 @@ export const signup = (newUser) => {
               incomes: [],
               expenses: [],
               debts: [],
+              recentMovements: [],
             },
           });
       })

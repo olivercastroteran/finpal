@@ -94,6 +94,15 @@ const english = {
       btns: ['Edit', 'Paid'],
     },
   },
+  stock: {
+    addForm: {
+      code: 'Code',
+      name: 'Name',
+      price: 'Price',
+      quantity: 'Quantity',
+      btn: 'Add Item',
+    },
+  },
   user: {
     hello: 'Hello',
     firstName: 'First Name',

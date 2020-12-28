@@ -27,7 +27,6 @@ const DebtItem = ({ id, type, name, description, amount, date }) => {
   const d = new Date();
   const month = '' + (d.getMonth() + 1);
   const year = d.getFullYear();
-  console.log({ month, year });
 
   const getDifference = useCallback(() => {
     const yearsDiff = year - parseInt(dateArr[0]);

@@ -2,6 +2,7 @@ const initState = {
   incomes: [],
   expenses: [],
   debts: [],
+  recentMovements: [],
 };
 
 export const financeReducer = (state = initState, action) => {
@@ -13,6 +14,7 @@ export const financeReducer = (state = initState, action) => {
         incomes: action.payload.incomes,
         expenses: action.payload.expenses,
         debts: action.payload.debts,
+        recentMovements: action.payload.recentMovements,
       };
     case 'ADD_INCOME':
       return {

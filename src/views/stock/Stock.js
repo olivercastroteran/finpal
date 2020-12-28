@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { StockImg } from '../../assets/images';
+import { Header } from '../../components';
+import { AddStockForm } from './components';
 import './Stock.scss';
 
 const Stock = () => {
@@ -14,7 +17,11 @@ const Stock = () => {
 
   return (
     <div className="stock content">
-      <h1>Stock</h1>
+      <Header />
+      <div className="stock__content">
+        <AddStockForm />
+      </div>
+      <StockImg className="stock__img" />
     </div>
   );
 };

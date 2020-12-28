@@ -94,6 +94,15 @@ const spanish = {
       btns: ['Editar', 'Pagada'],
     },
   },
+  stock: {
+    addForm: {
+      code: 'Código',
+      name: 'Nombre',
+      price: 'Precio',
+      quantity: 'Cantidad',
+      btn: 'Añadir Item',
+    },
+  },
   user: {
     hello: 'Hola',
     firstName: 'Nommbre',
