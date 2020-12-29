@@ -107,7 +107,8 @@ const RecentMovementItem = ({ type, info }) => {
       <p>{msg}</p>
       {isOpen && (
         <p className="msg-info">
-          <span>name:</span> {info.name}
+          <span>{language === 'english' ? 'name:' : 'nombre:'}</span>{' '}
+          {info.name}
         </p>
       )}
     </div>

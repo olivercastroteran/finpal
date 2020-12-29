@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import './Header.scss';
 import { useSelector } from 'react-redux';
-import { SearchIcon, UserIcon } from '../../assets/icons';
+import { RefreshIcon, SearchIcon, UserIcon } from '../../assets/icons';
 import { english, spanish } from '../../languages';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ getSearchTerm }) => {
   const profile = useSelector((state) => state.firebase.profile);
   const [lastName, setLastName] = useState('');
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
@@ -33,7 +33,14 @@ const Header = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log(searchTerm);
+    getSearchTerm(searchTerm);
+  };
+
+  const handleReset = () => {
+    setSearchTerm('');
+    getSearchTerm('');
+    const txt = language === 'english' ? 'Search' : 'Buscar';
+    setText(txt);
   };
 
   return (
@@ -43,8 +50,10 @@ const Header = () => {
         <input
           type="text"
           placeholder={text}
+          value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+        <RefreshIcon className="refresh-btn" onClick={handleReset} />
       </form>
       <Link to="/user" className="header__user">
         <span>
