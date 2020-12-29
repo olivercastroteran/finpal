@@ -1,8 +1,89 @@
 .recent-movements {
   height: 100%;
+  max-height: 87vh;
+  overflow-y: scroll;
+
+  @media screen and (max-width: 1350px) {
+    max-height: 100%;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0.6rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+  &:hover::-webkit-scrollbar {
+    width: 0.6rem;
+  }
+
+  &:hover::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: rgba($color: #888, $alpha: 0.25);
+    border-radius: 15px;
+
+    &:hover {
+      background-color: rgba($color: #888, $alpha: 0.35);
+    }
+  }
 
   h2 {
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     margin-bottom: 2rem;
+  }
+
+  &__item {
+    cursor: pointer;
+    padding: 0.7rem;
+    border-radius: 0.3rem;
+    background-color: rgba($color: #888, $alpha: 0.15);
+    border: 1px solid transparent;
+    border-left: 2px solid transparent;
+    margin-bottom: 1rem;
+
+    .msg-info {
+      margin-top: 0.5rem;
+
+      span {
+        opacity: 0.8;
+      }
+    }
+
+    &.income {
+      border-left: 2px solid #16a085;
+      &:hover {
+        border: 1px solid #16a085;
+        border-left: 2px solid #16a085;
+      }
+    }
+
+    &.expense {
+      border-left: 2px solid #a43125;
+      &:hover {
+        border: 1px solid #a43125;
+        border-left: 2px solid #a43125;
+      }
+    }
+
+    &.debt {
+      border-left: 2px solid #d8890b;
+      &:hover {
+        border: 1px solid #d8890b;
+        border-left: 2px solid #d8890b;
+      }
+    }
+
+    &.stock {
+      border-left: 2px solid #2c8ac7;
+      &:hover {
+        border: 1px solid #2c8ac7;
+        border-left: 2px solid #2c8ac7;
+      }
+    }
   }
 }

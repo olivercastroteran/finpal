@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import './RecentMovements.scss';
 import { useSelector } from 'react-redux';
 import { english, spanish } from '../../../../languages';
+import RecentMovementItem from './RecentMovementItem';
 
 const RecentMovements = () => {
   const language = useSelector((state) => state.settings.language);
+  const recentMovements = useSelector((state) => state.finance.recentMovements);
   const [title, setTitle] = useState('');
 
   useEffect(() => {
@@ -16,9 +18,22 @@ const RecentMovements = () => {
     // eslint-disable-next-line
   }, [language]);
 
+  function reverseArr(input) {
+    let ret = [];
+    for (let i = input.length - 1; i >= 0; i--) {
+      ret.push(input[i]);
+    }
+    return ret;
+  }
+
+  let recentMovementsReversed = reverseArr(recentMovements);
+
   return (
     <div className="recent-movements">
       <h2>{title}</h2>
+      {recentMovementsReversed.map((item) => (
+        <RecentMovementItem key={Math.random()} {...item} />
+      ))}
     </div>
   );
 };
