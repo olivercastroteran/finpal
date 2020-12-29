@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { EditIcon, SaveIcon } from '../../../../../assets/icons';
 import { formatMoney } from '../../../../../shared/utility';
+import { editStockItem } from '../../../../../store/actions/financeActions';
 
 const StockItemEdit = ({
   id,
@@ -13,6 +14,7 @@ const StockItemEdit = ({
   isEditingActive,
 }) => {
   const isLocked = useSelector((state) => state.firebase.profile.isLocked);
+  const dispatch = useDispatch();
   const [editedItem, setEditedItem] = useState({
     id,
     code,
@@ -23,7 +25,8 @@ const StockItemEdit = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(editedItem);
+    dispatch(editStockItem(editedItem));
+    changeEdit();
   };
 
   return (

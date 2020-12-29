@@ -327,3 +327,34 @@ export const editDebt = (editedDebt) => {
       });
   };
 };
+
+export const editStockItem = (editedStockItem) => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const editedStockItemIndex = profile.finance.stock.findIndex(
+      (item) => item.id === editedStockItem.id
+    );
+    const newStock = [...profile.finance.stock];
+
+    newStock[editedStockItemIndex] = editedStockItem;
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          stock: newStock,
+        },
+      })
+      .then(() => {
+        console.log('stock item edited');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
