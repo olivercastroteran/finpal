@@ -76,13 +76,13 @@ const StockItemEdit = ({
             setEditedItem({ ...editedItem, quantity: editedItem.quantity - 1 })
           }
         >
-          -
+          &#x2212;
         </span>
         <p>{editedItem.quantity}</p>
         <span
           className="input-field__btn"
           onClick={() =>
-            setEditedItem({ ...editedItem, quantity: editedItem.quantity + 1 })
+            setEditedItem({ ...editedItem, quantity: +editedItem.quantity + 1 })
           }
         >
           +
