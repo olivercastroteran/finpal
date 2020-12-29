@@ -1,15 +1,16 @@
 import '../../../../shared/FormFormat.scss';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { english, spanish } from '../../../../languages';
+import { addStockItem } from '../../../../store/actions/financeActions';
 
 const AddStockForm = () => {
   const isLocked = useSelector((state) => state.firebase.profile.isLocked);
   const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [stockItem, setStockItem] = useState({
     id: uuidv4(),
     code: '',
@@ -28,8 +29,8 @@ const AddStockForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(stockItem);
-    //dispatch(addDebt(debt));
+    //console.log(stockItem);
+    dispatch(addStockItem(stockItem));
     setStockItem({
       id: uuidv4(),
       code: '',
@@ -41,6 +42,12 @@ const AddStockForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === 'price') {
+      setStockItem({ ...stockItem, price: +e.target.value });
+      return;
+    } else if (name === 'quantity') {
+      setStockItem({ ...stockItem, quantity: +e.target.value });
+    }
     setStockItem({ ...stockItem, [name]: value });
   };
 

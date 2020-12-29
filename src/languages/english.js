@@ -102,6 +102,14 @@ const english = {
       quantity: 'Quantity',
       btn: 'Add Item',
     },
+    table: {
+      code: 'Code',
+      name: 'Name',
+      price: 'Price',
+      quantity: 'Quantity',
+      total: 'Total',
+      actions: 'Actions',
+    },
   },
   user: {
     hello: 'Hello',

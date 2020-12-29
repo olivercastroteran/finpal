@@ -18,12 +18,12 @@ import fbConfig from './config/fbConfig';
 import firebase from 'firebase/app';
 import { isLoaded } from 'react-redux-firebase';
 
-// const composeEnhancers =
-//   process.env.NODE_ENV === 'development'
-//     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-//     : null || compose;
+const composeEnhancers =
+  process.env.NODE_ENV === 'development'
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : null || compose;
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducer,
