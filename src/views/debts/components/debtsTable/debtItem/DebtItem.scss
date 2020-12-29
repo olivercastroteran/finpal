@@ -5,6 +5,26 @@
   border-bottom: 1px solid rgba($color: #888, $alpha: 0.3);
   padding: 0.5rem 0;
   transition: all 0.2s;
+  position: relative;
+
+  &__notification {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: transparent;
+    position: absolute;
+    top: 50%;
+    left: 0.6rem;
+    transform: translateY(-50%);
+
+    &.plus-twelve {
+      background-color: #c0392b;
+    }
+
+    &.plus-six {
+      background-color: #d8890b;
+    }
+  }
 
   &:hover {
     background-color: rgba($color: #888, $alpha: 0.15);

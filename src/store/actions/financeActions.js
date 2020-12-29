@@ -105,6 +105,32 @@ export const addDebt = (debt) => {
   };
 };
 
+export const addStockItem = (stockItem) => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newStock = [...profile.finance.stock, stockItem];
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          stock: newStock,
+        },
+      })
+      .then(() => {
+        console.log('stock item added');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
 export const removeIncome = (id) => {
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
@@ -176,6 +202,32 @@ export const removeDebt = (id) => {
       })
       .then(() => {
         console.log('debt deleted');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const removeStockItem = (id) => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newStock = profile.finance.stock.filter((item) => item.id !== id);
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          stock: newStock,
+        },
+      })
+      .then(() => {
+        console.log('stock item deleted');
       })
       .catch((err) => {
         console.log(err);
@@ -269,6 +321,37 @@ export const editDebt = (editedDebt) => {
       })
       .then(() => {
         console.log('debt edited');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const editStockItem = (editedStockItem) => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const editedStockItemIndex = profile.finance.stock.findIndex(
+      (item) => item.id === editedStockItem.id
+    );
+    const newStock = [...profile.finance.stock];
+
+    newStock[editedStockItemIndex] = editedStockItem;
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          stock: newStock,
+        },
+      })
+      .then(() => {
+        console.log('stock item edited');
       })
       .catch((err) => {
         console.log(err);

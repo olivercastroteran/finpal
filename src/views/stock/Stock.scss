@@ -1,0 +1,18 @@
+.stock {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__img {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 2rem;
+    width: 300px;
+  }
+}
