@@ -209,6 +209,32 @@ export const removeDebt = (id) => {
   };
 };
 
+export const removeStockItem = (id) => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    const uid = getState().firebase.auth.uid;
+    const profile = getState().firebase.profile;
+    const newStock = profile.finance.stock.filter((item) => item.id !== id);
+
+    firestore
+      .collection('users')
+      .doc(uid)
+      .set({
+        ...profile,
+        finance: {
+          ...profile.finance,
+          stock: newStock,
+        },
+      })
+      .then(() => {
+        console.log('stock item deleted');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
 export const editIncome = (editedIncome) => {
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();

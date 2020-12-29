@@ -1,18 +1,19 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { EditIcon, TrashCanIcon } from '../../../../../assets/icons';
 import { formatMoney } from '../../../../../shared/utility';
+import { removeStockItem } from '../../../../../store/actions/financeActions';
 import StockItemEdit from '../stockItemEdit/StockItemEdit';
 
 const StockItem = ({ id, code, name, price, quantity }) => {
   const isLocked = useSelector((state) => state.firebase.profile.isLocked);
   const language = useSelector((state) => state.settings.language);
   const [isEditing, setIsEditing] = useState(false);
+  const dispatch = useDispatch();
 
   const item = { id, code, name, price, quantity };
 
   const changeEdit = () => {
-    console.log('Hey');
     setIsEditing(!isEditing);
   };
 
@@ -46,7 +47,10 @@ const StockItem = ({ id, code, name, price, quantity }) => {
         <small>{formatMoney(quantity * price)[1]}</small>
       </p>
       {!isLocked ? (
-        <TrashCanIcon className="stock-delete" />
+        <TrashCanIcon
+          className="stock-icon delete"
+          onClick={() => dispatch(removeStockItem(id))}
+        />
       ) : (
         <p>{language === 'english' ? 'Locked' : 'Bloqueada'}</p>
       )}

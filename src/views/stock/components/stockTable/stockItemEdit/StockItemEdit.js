@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { EditIcon } from '../../../../../assets/icons';
+import { EditIcon, SaveIcon } from '../../../../../assets/icons';
+import { formatMoney } from '../../../../../shared/utility';
 
 const StockItemEdit = ({
   id,
@@ -11,22 +13,86 @@ const StockItemEdit = ({
   isEditingActive,
 }) => {
   const isLocked = useSelector((state) => state.firebase.profile.isLocked);
+  const [editedItem, setEditedItem] = useState({
+    id,
+    code,
+    name,
+    price,
+    quantity,
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(editedItem);
+  };
 
   return (
-    <div className="stock-item">
+    <form className="stock-item" onSubmit={handleSubmit}>
       {!isLocked && (
         <EditIcon
           onClick={changeEdit}
           className={isEditingActive ? 'stock-edit active' : 'stock-edit'}
         />
       )}
-      <p>{code}</p>
-      <p>{name}</p>
-      <p>{price}</p>
-      <p>{quantity}</p>
-      <p>{(price * quantity).toFixed(2)}</p>
-      <p>Edit</p>
-    </div>
+
+      <div className="input-field">
+        <input
+          type="text"
+          value={editedItem.code}
+          onChange={(e) =>
+            setEditedItem({ ...editedItem, code: e.target.value })
+          }
+        />
+      </div>
+
+      <div className="input-field">
+        <input
+          type="text"
+          value={editedItem.name}
+          onChange={(e) =>
+            setEditedItem({ ...editedItem, name: e.target.value })
+          }
+        />
+      </div>
+
+      <div className="input-field">
+        <input
+          type="number"
+          min="0"
+          step="0.01"
+          value={editedItem.price}
+          onChange={(e) =>
+            setEditedItem({ ...editedItem, price: e.target.value })
+          }
+        />
+      </div>
+      <div className="input-field">
+        <span
+          className="input-field__btn"
+          onClick={() =>
+            setEditedItem({ ...editedItem, quantity: editedItem.quantity - 1 })
+          }
+        >
+          -
+        </span>
+        <p>{editedItem.quantity}</p>
+        <span
+          className="input-field__btn"
+          onClick={() =>
+            setEditedItem({ ...editedItem, quantity: editedItem.quantity + 1 })
+          }
+        >
+          +
+        </span>
+      </div>
+      <p>
+        {formatMoney(editedItem.price * editedItem.quantity)[0]}
+        <small>{formatMoney(editedItem.price * editedItem.quantity)[1]}</small>
+      </p>
+      <button className="stock-item__edit-btn">
+        <SaveIcon className="stock-icon save" />
+      </button>
+    </form>
   );
 };
 
