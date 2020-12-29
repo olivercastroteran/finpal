@@ -1,9 +1,12 @@
 .stock {
   position: relative;
+  display: flex;
+  flex-direction: column;
 
   &__content {
     display: flex;
     flex-direction: column;
+    flex: 1;
   }
 
   &__img {

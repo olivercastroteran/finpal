@@ -1,7 +1,55 @@
-const StockItem = () => {
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { EditIcon, TrashCanIcon } from '../../../../../assets/icons';
+import { formatMoney } from '../../../../../shared/utility';
+import StockItemEdit from '../stockItemEdit/StockItemEdit';
+
+const StockItem = ({ id, code, name, price, quantity }) => {
+  const isLocked = useSelector((state) => state.firebase.profile.isLocked);
+  const language = useSelector((state) => state.settings.language);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const item = { id, code, name, price, quantity };
+
+  const changeEdit = () => {
+    console.log('Hey');
+    setIsEditing(!isEditing);
+  };
+
+  if (isEditing) {
+    return (
+      <StockItemEdit
+        {...item}
+        changeEdit={changeEdit}
+        isEditingActive={isEditing}
+      />
+    );
+  }
+
   return (
     <div className="stock-item">
-      <h3>Stock Item</h3>
+      {!isLocked && (
+        <EditIcon
+          onClick={changeEdit}
+          className={isEditing ? 'stock-edit active' : 'stock-edit'}
+        />
+      )}
+      <p>{code}</p>
+      <p>{name}</p>
+      <p>
+        {formatMoney(price)[0]}
+        <small>{formatMoney(price)[1]}</small>
+      </p>
+      <p>{quantity}</p>
+      <p>
+        {formatMoney(quantity * price)[0]}
+        <small>{formatMoney(quantity * price)[1]}</small>
+      </p>
+      {!isLocked ? (
+        <TrashCanIcon className="stock-delete" />
+      ) : (
+        <p>{language === 'english' ? 'Locked' : 'Bloqueada'}</p>
+      )}
     </div>
   );
 };

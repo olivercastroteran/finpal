@@ -103,7 +103,7 @@ const spanish = {
       btn: 'Añadir Item',
     },
     table: {
-      code: 'Codigo',
+      code: 'Código',
       name: 'Nombre',
       price: 'Precio',
       quantity: 'Cantidad',
