@@ -33,6 +33,18 @@ export const addIncome = (income) => {
     const uid = getState().firebase.auth.uid;
     const profile = getState().firebase.profile;
     const newIncomes = [...profile.finance.incomes, income];
+    const recentMovementItem = {
+      type: ['income', 'added'],
+      info: income,
+    };
+    const newRecentMovements = [
+      ...profile.finance.recentMovements,
+      recentMovementItem,
+    ];
+
+    if (newRecentMovements.length > 10) {
+      newRecentMovements.shift();
+    }
 
     firestore
       .collection('users')
@@ -42,6 +54,7 @@ export const addIncome = (income) => {
         finance: {
           ...profile.finance,
           incomes: newIncomes,
+          recentMovements: newRecentMovements,
         },
       })
       .then(() => {
@@ -59,6 +72,18 @@ export const addExpense = (expense) => {
     const uid = getState().firebase.auth.uid;
     const profile = getState().firebase.profile;
     const newExpenses = [...profile.finance.expenses, expense];
+    const recentMovementItem = {
+      type: ['expense', 'added'],
+      info: expense,
+    };
+    const newRecentMovements = [
+      ...profile.finance.recentMovements,
+      recentMovementItem,
+    ];
+
+    if (newRecentMovements.length > 10) {
+      newRecentMovements.shift();
+    }
 
     firestore
       .collection('users')
@@ -68,6 +93,7 @@ export const addExpense = (expense) => {
         finance: {
           ...profile.finance,
           expenses: newExpenses,
+          recentMovements: newRecentMovements,
         },
       })
       .then(() => {
@@ -85,6 +111,18 @@ export const addDebt = (debt) => {
     const uid = getState().firebase.auth.uid;
     const profile = getState().firebase.profile;
     const newDebts = [...profile.finance.debts, debt];
+    const recentMovementItem = {
+      type: ['debt', 'added'],
+      info: debt,
+    };
+    const newRecentMovements = [
+      ...profile.finance.recentMovements,
+      recentMovementItem,
+    ];
+
+    if (newRecentMovements.length > 10) {
+      newRecentMovements.shift();
+    }
 
     firestore
       .collection('users')
@@ -94,6 +132,7 @@ export const addDebt = (debt) => {
         finance: {
           ...profile.finance,
           debts: newDebts,
+          recentMovements: newRecentMovements,
         },
       })
       .then(() => {
@@ -111,6 +150,18 @@ export const addStockItem = (stockItem) => {
     const uid = getState().firebase.auth.uid;
     const profile = getState().firebase.profile;
     const newStock = [...profile.finance.stock, stockItem];
+    const recentMovementItem = {
+      type: ['stock', 'added'],
+      info: stockItem,
+    };
+    const newRecentMovements = [
+      ...profile.finance.recentMovements,
+      recentMovementItem,
+    ];
+
+    if (newRecentMovements.length > 10) {
+      newRecentMovements.shift();
+    }
 
     firestore
       .collection('users')
@@ -120,6 +171,7 @@ export const addStockItem = (stockItem) => {
         finance: {
           ...profile.finance,
           stock: newStock,
+          recentMovements: newRecentMovements,
         },
       })
       .then(() => {
@@ -137,6 +189,18 @@ export const removeIncome = (id) => {
     const uid = getState().firebase.auth.uid;
     const profile = getState().firebase.profile;
     const newIncomes = profile.finance.incomes.filter((inc) => inc.id !== id);
+    const recentMovementItem = {
+      type: ['income', 'removed'],
+      info: profile.finance.incomes.find((inc) => inc.id === id),
+    };
+    const newRecentMovements = [
+      ...profile.finance.recentMovements,
+      recentMovementItem,
+    ];
+
+    if (newRecentMovements.length > 10) {
+      newRecentMovements.shift();
+    }
 
     firestore
       .collection('users')
@@ -146,6 +210,7 @@ export const removeIncome = (id) => {
         finance: {
           ...profile.finance,
           incomes: newIncomes,
+          recentMovements: newRecentMovements,
         },
       })
       .then(() => {
@@ -163,6 +228,18 @@ export const removeExpense = (id) => {
     const uid = getState().firebase.auth.uid;
     const profile = getState().firebase.profile;
     const newExpenses = profile.finance.expenses.filter((exp) => exp.id !== id);
+    const recentMovementItem = {
+      type: ['expense', 'removed'],
+      info: profile.finance.expenses.find((exp) => exp.id === id),
+    };
+    const newRecentMovements = [
+      ...profile.finance.recentMovements,
+      recentMovementItem,
+    ];
+
+    if (newRecentMovements.length > 10) {
+      newRecentMovements.shift();
+    }
 
     firestore
       .collection('users')
@@ -172,6 +249,7 @@ export const removeExpense = (id) => {
         finance: {
           ...profile.finance,
           expenses: newExpenses,
+          recentMovements: newRecentMovements,
         },
       })
       .then(() => {
@@ -189,6 +267,18 @@ export const removeDebt = (id) => {
     const uid = getState().firebase.auth.uid;
     const profile = getState().firebase.profile;
     const newDebts = profile.finance.debts.filter((debt) => debt.id !== id);
+    const recentMovementItem = {
+      type: ['debt', 'removed'],
+      info: profile.finance.debts.find((debt) => debt.id === id),
+    };
+    const newRecentMovements = [
+      ...profile.finance.recentMovements,
+      recentMovementItem,
+    ];
+
+    if (newRecentMovements.length > 10) {
+      newRecentMovements.shift();
+    }
 
     firestore
       .collection('users')
@@ -198,6 +288,7 @@ export const removeDebt = (id) => {
         finance: {
           ...profile.finance,
           debts: newDebts,
+          recentMovements: newRecentMovements,
         },
       })
       .then(() => {
@@ -215,6 +306,18 @@ export const removeStockItem = (id) => {
     const uid = getState().firebase.auth.uid;
     const profile = getState().firebase.profile;
     const newStock = profile.finance.stock.filter((item) => item.id !== id);
+    const recentMovementItem = {
+      type: ['stock', 'removed'],
+      info: profile.finance.stock.find((item) => item.id === id),
+    };
+    const newRecentMovements = [
+      ...profile.finance.recentMovements,
+      recentMovementItem,
+    ];
+
+    if (newRecentMovements.length > 10) {
+      newRecentMovements.shift();
+    }
 
     firestore
       .collection('users')
@@ -224,6 +327,7 @@ export const removeStockItem = (id) => {
         finance: {
           ...profile.finance,
           stock: newStock,
+          recentMovements: newRecentMovements,
         },
       })
       .then(() => {
@@ -247,6 +351,19 @@ export const editIncome = (editedIncome) => {
 
     newIncomes[editedIncIndex] = editedIncome;
 
+    const recentMovementItem = {
+      type: ['income', 'edited'],
+      info: editedIncome,
+    };
+    const newRecentMovements = [
+      ...profile.finance.recentMovements,
+      recentMovementItem,
+    ];
+
+    if (newRecentMovements.length > 10) {
+      newRecentMovements.shift();
+    }
+
     firestore
       .collection('users')
       .doc(uid)
@@ -255,6 +372,7 @@ export const editIncome = (editedIncome) => {
         finance: {
           ...profile.finance,
           incomes: newIncomes,
+          recentMovements: newRecentMovements,
         },
       })
       .then(() => {
@@ -278,6 +396,19 @@ export const editExpense = (editedExpense) => {
 
     newExpenses[editedExpIndex] = editedExpense;
 
+    const recentMovementItem = {
+      type: ['expense', 'edited'],
+      info: editedExpense,
+    };
+    const newRecentMovements = [
+      ...profile.finance.recentMovements,
+      recentMovementItem,
+    ];
+
+    if (newRecentMovements.length > 10) {
+      newRecentMovements.shift();
+    }
+
     firestore
       .collection('users')
       .doc(uid)
@@ -286,6 +417,7 @@ export const editExpense = (editedExpense) => {
         finance: {
           ...profile.finance,
           expenses: newExpenses,
+          recentMovements: newRecentMovements,
         },
       })
       .then(() => {
@@ -309,6 +441,19 @@ export const editDebt = (editedDebt) => {
 
     newDebts[editedDebtIndex] = editedDebt;
 
+    const recentMovementItem = {
+      type: ['debt', 'edited'],
+      info: editedDebt,
+    };
+    const newRecentMovements = [
+      ...profile.finance.recentMovements,
+      recentMovementItem,
+    ];
+
+    if (newRecentMovements.length > 10) {
+      newRecentMovements.shift();
+    }
+
     firestore
       .collection('users')
       .doc(uid)
@@ -317,6 +462,7 @@ export const editDebt = (editedDebt) => {
         finance: {
           ...profile.finance,
           debts: newDebts,
+          recentMovements: newRecentMovements,
         },
       })
       .then(() => {
@@ -340,6 +486,19 @@ export const editStockItem = (editedStockItem) => {
 
     newStock[editedStockItemIndex] = editedStockItem;
 
+    const recentMovementItem = {
+      type: ['stock', 'edited'],
+      info: editedStockItem,
+    };
+    const newRecentMovements = [
+      ...profile.finance.recentMovements,
+      recentMovementItem,
+    ];
+
+    if (newRecentMovements.length > 10) {
+      newRecentMovements.shift();
+    }
+
     firestore
       .collection('users')
       .doc(uid)
@@ -348,6 +507,7 @@ export const editStockItem = (editedStockItem) => {
         finance: {
           ...profile.finance,
           stock: newStock,
+          recentMovements: newRecentMovements,
         },
       })
       .then(() => {
