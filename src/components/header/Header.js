@@ -51,7 +51,10 @@ const Header = ({ getSearchTerm }) => {
           type="text"
           placeholder={text}
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => {
+            getSearchTerm(e.target.value);
+            setSearchTerm(e.target.value);
+          }}
         />
         <RefreshIcon className="refresh-btn" onClick={handleReset} />
       </form>
