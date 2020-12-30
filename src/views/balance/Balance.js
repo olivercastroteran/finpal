@@ -8,6 +8,7 @@ import { english, spanish } from '../../languages';
 import { toggleAddModal } from '../../store/actions/settingsActions';
 import { useHistory } from 'react-router-dom';
 import DatePicker from '../../components/datePicker/DatePicker';
+import { TreasureImg } from '../../assets/images';
 
 const Balance = () => {
   const isLocked = useSelector((state) => state.firebase.profile.isLocked);
@@ -86,6 +87,8 @@ const Balance = () => {
                   .map((exp) => <TransactionItem key={exp.id} {...exp} />)}
           </div>
         </div>
+
+        <TreasureImg className="treasure-img" />
       </div>
 
       {!isLocked && (

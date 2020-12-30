@@ -12,6 +12,7 @@ const Debts = () => {
   const uid = useSelector((state) => state.firebase.auth.uid);
   const history = useHistory();
   const [selectedDate, setSelectedDate] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     if (!uid) history.push('/auth');
@@ -22,16 +23,20 @@ const Debts = () => {
     setSelectedDate(date);
   };
 
+  const getSearchTerm = (searchTxt) => {
+    setSearchTerm(searchTxt);
+  };
+
   return (
     <div className="debts content">
-      <Header />
+      <Header getSearchTerm={getSearchTerm} />
       <div className="debts__top">
         <DatePicker getDate={getDate} selectedDate={selectedDate} />
         <AddDebtsForm />
         <DataImg />
       </div>
       <div className="debts__bottom">
-        <DebtsTable selectedDate={selectedDate} />
+        <DebtsTable selectedDate={selectedDate} searchTerm={searchTerm} />
       </div>
     </div>
   );
