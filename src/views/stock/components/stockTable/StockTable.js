@@ -4,7 +4,7 @@ import './StockTable.scss';
 import { english, spanish } from '../../../../languages';
 import StockItem from './stockItem/StockItem';
 
-const StockTable = () => {
+const StockTable = ({ searchTerm }) => {
   const stock = useSelector((state) => state.finance.stock);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
@@ -17,6 +17,14 @@ const StockTable = () => {
     }
   }, [language]);
 
+  let searchArrStock = stock;
+
+  if (searchTerm !== '') {
+    searchArrStock = searchArrStock.filter((item) =>
+      item?.name.includes(searchTerm)
+    );
+  }
+
   return (
     <div className="stock-table">
       <div className="stock-table__header">
@@ -28,7 +36,7 @@ const StockTable = () => {
         <h3>{content?.actions}</h3>
       </div>
       <div className="stock-table__content">
-        {stock?.map((item) => (
+        {searchArrStock?.map((item) => (
           <StockItem key={item.id} {...item} />
         ))}
       </div>

@@ -42,7 +42,7 @@ export const addIncome = (income) => {
       recentMovementItem,
     ];
 
-    if (newRecentMovements.length > 10) {
+    if (newRecentMovements.length > 15) {
       newRecentMovements.shift();
     }
 
@@ -81,7 +81,7 @@ export const addExpense = (expense) => {
       recentMovementItem,
     ];
 
-    if (newRecentMovements.length > 10) {
+    if (newRecentMovements.length > 15) {
       newRecentMovements.shift();
     }
 
@@ -120,7 +120,7 @@ export const addDebt = (debt) => {
       recentMovementItem,
     ];
 
-    if (newRecentMovements.length > 10) {
+    if (newRecentMovements.length > 15) {
       newRecentMovements.shift();
     }
 
@@ -159,7 +159,7 @@ export const addStockItem = (stockItem) => {
       recentMovementItem,
     ];
 
-    if (newRecentMovements.length > 10) {
+    if (newRecentMovements.length > 15) {
       newRecentMovements.shift();
     }
 
@@ -198,7 +198,7 @@ export const removeIncome = (id) => {
       recentMovementItem,
     ];
 
-    if (newRecentMovements.length > 10) {
+    if (newRecentMovements.length > 15) {
       newRecentMovements.shift();
     }
 
@@ -237,7 +237,7 @@ export const removeExpense = (id) => {
       recentMovementItem,
     ];
 
-    if (newRecentMovements.length > 10) {
+    if (newRecentMovements.length > 15) {
       newRecentMovements.shift();
     }
 
@@ -276,7 +276,7 @@ export const removeDebt = (id) => {
       recentMovementItem,
     ];
 
-    if (newRecentMovements.length > 10) {
+    if (newRecentMovements.length > 15) {
       newRecentMovements.shift();
     }
 
@@ -315,7 +315,7 @@ export const removeStockItem = (id) => {
       recentMovementItem,
     ];
 
-    if (newRecentMovements.length > 10) {
+    if (newRecentMovements.length > 15) {
       newRecentMovements.shift();
     }
 
@@ -360,7 +360,7 @@ export const editIncome = (editedIncome) => {
       recentMovementItem,
     ];
 
-    if (newRecentMovements.length > 10) {
+    if (newRecentMovements.length > 15) {
       newRecentMovements.shift();
     }
 
@@ -405,7 +405,7 @@ export const editExpense = (editedExpense) => {
       recentMovementItem,
     ];
 
-    if (newRecentMovements.length > 10) {
+    if (newRecentMovements.length > 15) {
       newRecentMovements.shift();
     }
 
@@ -450,7 +450,7 @@ export const editDebt = (editedDebt) => {
       recentMovementItem,
     ];
 
-    if (newRecentMovements.length > 10) {
+    if (newRecentMovements.length > 15) {
       newRecentMovements.shift();
     }
 
@@ -495,7 +495,7 @@ export const editStockItem = (editedStockItem) => {
       recentMovementItem,
     ];
 
-    if (newRecentMovements.length > 10) {
+    if (newRecentMovements.length > 15) {
       newRecentMovements.shift();
     }
 

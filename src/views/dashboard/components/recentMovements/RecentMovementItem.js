@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import './RecentMovements.scss';
 
 const RecentMovementItem = ({ type, info }) => {
+  const isDarkMode = useSelector((state) => state.settings.isDarkMode);
   const language = useSelector((state) => state.settings.language);
   const [msg, setMsg] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -103,11 +104,15 @@ const RecentMovementItem = ({ type, info }) => {
   }
 
   return (
-    <div className={classes} onClick={() => setIsOpen(!isOpen)}>
+    <div
+      className={isDarkMode ? classes + ' dark' : classes}
+      onClick={() => setIsOpen(!isOpen)}
+    >
       <p>{msg}</p>
       {isOpen && (
         <p className="msg-info">
-          <span>name:</span> {info.name}
+          <span>{language === 'english' ? 'name:' : 'nombre:'}</span>{' '}
+          {info.name}
         </p>
       )}
     </div>

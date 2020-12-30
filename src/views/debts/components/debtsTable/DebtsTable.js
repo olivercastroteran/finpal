@@ -4,7 +4,7 @@ import DebtItem from './debtItem/DebtItem';
 import './DebtsTable.scss';
 import { english, spanish } from '../../../../languages';
 
-const DebtsTable = ({ selectedDate }) => {
+const DebtsTable = ({ selectedDate, searchTerm }) => {
   const debts = useSelector((state) => state.finance.debts);
   const language = useSelector((state) => state.settings.language);
   const [content, setContent] = useState({});
@@ -16,6 +16,14 @@ const DebtsTable = ({ selectedDate }) => {
       setContent({ ...spanish.debts.table });
     }
   }, [language]);
+
+  let searchArrDebts = debts;
+
+  if (searchTerm !== '') {
+    searchArrDebts = searchArrDebts.filter((debt) =>
+      debt?.name.includes(searchTerm)
+    );
+  }
 
   return (
     <div className="debts-table">
@@ -31,8 +39,8 @@ const DebtsTable = ({ selectedDate }) => {
         {!selectedDate ||
         selectedDate === 'Show All' ||
         selectedDate === 'Mostrar Todo'
-          ? debts?.map((debt) => <DebtItem key={debt.id} {...debt} />)
-          : debts
+          ? searchArrDebts?.map((debt) => <DebtItem key={debt.id} {...debt} />)
+          : searchArrDebts
               ?.filter((debt) => debt.date === selectedDate)
               .map((debt) => <DebtItem key={debt.id} {...debt} />)}
       </div>

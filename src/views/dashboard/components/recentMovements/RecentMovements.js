@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { english, spanish } from '../../../../languages';
 import RecentMovementItem from './RecentMovementItem';
 
-const RecentMovements = () => {
+const RecentMovements = ({ searchTerm }) => {
   const language = useSelector((state) => state.settings.language);
   const recentMovements = useSelector((state) => state.finance.recentMovements);
   const [title, setTitle] = useState('');
@@ -31,9 +31,15 @@ const RecentMovements = () => {
   return (
     <div className="recent-movements">
       <h2>{title}</h2>
-      {recentMovementsReversed.map((item) => (
-        <RecentMovementItem key={Math.random()} {...item} />
-      ))}
+      {!searchTerm || searchTerm === ''
+        ? recentMovementsReversed.map((item) => (
+            <RecentMovementItem key={Math.random()} {...item} />
+          ))
+        : recentMovementsReversed
+            .filter((item) => item?.info?.name?.includes(searchTerm))
+            .map((item) => (
+              <RecentMovementItem key={Math.random()} {...item} />
+            ))}
     </div>
   );
 };

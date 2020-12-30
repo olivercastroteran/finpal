@@ -16,6 +16,23 @@
       svg path {
         fill: #ccc;
       }
+
+      .refresh-btn {
+        align-self: center;
+        cursor: pointer;
+        transform: translateY(2px);
+        transition: all 0.2s;
+
+        &:hover {
+          path {
+            fill: #16a085;
+          }
+        }
+
+        &:active {
+          transform: translateY(2px) rotate(-45deg);
+        }
+      }
     }
 
     .header__user {
@@ -41,6 +58,7 @@
     align-items: center;
 
     input {
+      color: inherit;
       width: 85%;
       border: none;
       background-color: transparent;
@@ -52,6 +70,23 @@
     svg {
       width: 28px;
       height: 28px;
+    }
+
+    .refresh-btn {
+      align-self: center;
+      cursor: pointer;
+      transform: translateY(2px);
+      transition: all 0.2s;
+
+      &:hover {
+        path {
+          fill: #16a085;
+        }
+      }
+
+      &:active {
+        transform: translateY(2px) rotate(-45deg);
+      }
     }
   }
 

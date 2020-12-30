@@ -7,6 +7,7 @@ export { ReactComponent as EditIcon } from './edit.svg';
 export { ReactComponent as ExpensesIcon } from './expenses.svg';
 export { ReactComponent as HideIcon } from './hide.svg';
 export { ReactComponent as IncomesIcon } from './incomes.svg';
+export { ReactComponent as RefreshIcon } from './refresh.svg';
 export { ReactComponent as LookIcon } from './look.svg';
 export { ReactComponent as SaveIcon } from './save.svg';
 export { ReactComponent as SearchIcon } from './search.svg';

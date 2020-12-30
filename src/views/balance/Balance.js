@@ -8,6 +8,7 @@ import { english, spanish } from '../../languages';
 import { toggleAddModal } from '../../store/actions/settingsActions';
 import { useHistory } from 'react-router-dom';
 import DatePicker from '../../components/datePicker/DatePicker';
+import { TreasureImg } from '../../assets/images';
 
 const Balance = () => {
   const isLocked = useSelector((state) => state.firebase.profile.isLocked);
@@ -17,6 +18,7 @@ const Balance = () => {
   const finance = useSelector((state) => state.finance);
   const [content, setContent] = useState({});
   const [selectedDate, setSelectedDate] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -37,9 +39,21 @@ const Balance = () => {
     setSelectedDate(date);
   };
 
+  const getSearchTerm = (searchTxt) => {
+    setSearchTerm(searchTxt);
+  };
+
+  let searchArrInc = finance?.incomes;
+  let searchArrExp = finance?.expenses;
+
+  if (searchTerm !== '') {
+    searchArrInc = searchArrInc.filter((inc) => inc?.name.includes(searchTerm));
+    searchArrExp = searchArrExp.filter((exp) => exp?.name.includes(searchTerm));
+  }
+
   return (
     <div className={isDarkMode ? 'balance content dark' : 'balance content'}>
-      <Header />
+      <Header getSearchTerm={getSearchTerm} />
 
       <DatePicker getDate={getDate} selectedDate={selectedDate} />
 
@@ -50,10 +64,10 @@ const Balance = () => {
             {!selectedDate ||
             selectedDate === 'Show All' ||
             selectedDate === 'Mostrar Todo'
-              ? finance?.incomes?.map((income) => (
+              ? searchArrInc?.map((income) => (
                   <TransactionItem key={income.id} {...income} />
                 ))
-              : finance?.incomes
+              : searchArrInc
                   ?.filter((inc) => inc.date === selectedDate)
                   .map((inc) => <TransactionItem key={inc.id} {...inc} />)}
           </div>
@@ -65,14 +79,16 @@ const Balance = () => {
             {!selectedDate ||
             selectedDate === 'Show All' ||
             selectedDate === 'Mostrar Todo'
-              ? finance?.expenses?.map((expense) => (
+              ? searchArrExp?.map((expense) => (
                   <TransactionItem key={expense.id} {...expense} />
                 ))
-              : finance?.expenses
+              : searchArrExp
                   ?.filter((exp) => exp.date === selectedDate)
                   .map((exp) => <TransactionItem key={exp.id} {...exp} />)}
           </div>
         </div>
+
+        <TreasureImg className="treasure-img" />
       </div>
 
       {!isLocked && (

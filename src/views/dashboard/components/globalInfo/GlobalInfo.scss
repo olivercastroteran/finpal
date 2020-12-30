@@ -22,7 +22,7 @@
 
   &.dark {
     .global-info__bottom > div {
-      background-color: #333;
+      background-color: rgba($color: #000, $alpha: 0.25);
 
       &:hover {
         svg {
@@ -46,7 +46,7 @@
       cursor: pointer;
       width: 27.5%;
       min-height: 100px;
-      background-color: #e1e1e1;
+      background-color: rgba($color: #fff, $alpha: 0.6);
       border-radius: 0.5rem;
       transition: all 0.3s;
       border-left: 7px solid;
