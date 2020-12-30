@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { StockImg } from '../../assets/images';
@@ -9,6 +9,7 @@ import './Stock.scss';
 
 const Stock = () => {
   const uid = useSelector((state) => state.firebase.auth.uid);
+  const [searchTerm, setSearchTerm] = useState('');
   const history = useHistory();
 
   useEffect(() => {
@@ -16,12 +17,16 @@ const Stock = () => {
     // eslint-disable-next-line
   }, [uid]);
 
+  const getSearchTerm = (searchTxt) => {
+    setSearchTerm(searchTxt);
+  };
+
   return (
     <div className="stock content">
-      <Header />
+      <Header getSearchTerm={getSearchTerm} />
       <div className="stock__content">
         <AddStockForm />
-        <StockTable />
+        <StockTable searchTerm={searchTerm} />
       </div>
       <StockImg className="stock__img" />
     </div>
