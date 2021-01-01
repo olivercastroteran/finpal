@@ -40,6 +40,10 @@
     }
   }
 
+  @media screen and (orientation: landscape) and (max-width: 768px) {
+    max-height: 100vh;
+  }
+
   &__header {
     display: flex;
     align-items: center;

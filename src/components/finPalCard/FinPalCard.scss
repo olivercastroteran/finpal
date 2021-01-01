@@ -16,6 +16,10 @@
     transform: scale(0.6);
   }
 
+  @media screen and (orientation: portrait) and (max-device-width: 480px) {
+    align-self: center;
+  }
+
   &:hover {
     transform: scale(1.02);
     box-shadow: 3px 3px 7px rgba($color: #000000, $alpha: 0.3);
@@ -48,6 +52,10 @@
     p {
       color: #fff;
       font-size: 2rem;
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        font-size: 2.5rem;
+      }
     }
   }
 }

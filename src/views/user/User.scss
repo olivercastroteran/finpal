@@ -20,10 +20,21 @@
       width: 95%;
     }
 
+    @media screen and (orientation: portrait) and (max-device-width: 480px) {
+      width: 100%;
+      padding: 0.25rem;
+      border-radius: 10px;
+    }
+
     h2 {
       margin-left: 2rem;
       margin-bottom: 1rem;
       font-size: 2.5rem;
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        margin-left: 0.5rem;
+        font-size: 2rem;
+      }
     }
 
     svg {
@@ -35,6 +46,13 @@
         width: 300px;
         height: auto;
       }
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        width: 100px;
+        height: auto;
+        right: 0;
+        bottom: 0;
+      }
     }
   }
 
@@ -42,6 +60,10 @@
     opacity: 0.7;
     margin-left: 2.5rem;
     margin-bottom: 0.5rem;
+
+    @media screen and (orientation: portrait) and (max-device-width: 480px) {
+      margin-left: 0.5rem;
+    }
 
     span {
       margin-left: 5px;
@@ -62,6 +84,10 @@
   border-radius: 30px;
   margin: 1rem 0;
   transition: background-color 0.2s;
+
+  @media screen and (orientation: portrait) and (max-device-width: 480px) {
+    width: 70%;
+  }
 
   &:hover {
     background-color: #a43125;

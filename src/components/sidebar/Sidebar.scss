@@ -70,12 +70,26 @@
       width: 80%;
     }
 
+    @media screen and (max-width: 768px) {
+      margin-left: 30%;
+      width: 70%;
+    }
+
     & > li,
     .settings--btn {
       margin-bottom: 0.4rem;
       position: relative;
       padding: 0.3rem 0;
       border-radius: 10px 0 0 10px;
+
+      @media only screen and (orientation: landscape) and (max-device-width: 768px) {
+        margin-bottom: 0.2rem;
+      }
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        padding: 0.3rem 0;
+        margin-bottom: 0.5rem;
+      }
     }
 
     .settings--btn {

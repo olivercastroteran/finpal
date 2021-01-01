@@ -37,6 +37,10 @@
       margin: 0.6rem;
       margin-right: 0.3rem;
     }
+
+    @media screen and (orientation: portrait) and (max-device-width: 480px) {
+      width: 50px;
+    }
   }
 
   .sidebar.open {
@@ -48,6 +52,10 @@
 
     @media screen and (max-width: 900px) {
       width: 140px;
+    }
+
+    @media screen and (orientation: portrait) and (max-device-width: 480px) {
+      width: 125px;
     }
   }
 

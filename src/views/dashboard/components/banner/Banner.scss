@@ -14,9 +14,19 @@
       width: 55%;
     }
 
+    @media screen and (orientation: portrait) and (max-device-width: 480px) {
+      justify-content: space-evenly;
+      width: 100%;
+      margin-bottom: 5rem;
+    }
+
     h2 {
       font-size: 1.7rem;
       letter-spacing: 1px;
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        margin-bottom: 1rem;
+      }
     }
 
     p {
@@ -49,6 +59,13 @@
         height: auto;
         bottom: 1rem;
         right: -1rem;
+      }
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        width: 120px;
+        height: auto;
+        bottom: 0;
+        right: 0;
       }
     }
   }

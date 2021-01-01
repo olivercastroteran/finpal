@@ -8,6 +8,16 @@
     margin-top: 2.2rem;
   }
 
+  @media screen and (orientation: portrait) and (max-device-width: 480px) {
+    margin: 1.5rem 0;
+  }
+
+  .input-field {
+    @media screen and (orientation: portrait) and (max-device-width: 480px) {
+      margin-top: 1rem;
+    }
+  }
+
   .input-field:not(:first-of-type) {
     margin-left: 1.5rem;
 

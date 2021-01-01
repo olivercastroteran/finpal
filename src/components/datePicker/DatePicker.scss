@@ -1,5 +1,9 @@
 .date-picker {
   margin-bottom: 2rem;
+
+  @media screen and (orientation: portrait) and (max-device-width: 480px) {
+    margin-bottom: 0;
+  }
 }
 
 .date {
@@ -14,6 +18,10 @@
 
   @media screen and (max-width: 768px) {
     margin-right: 0.25rem;
+  }
+
+  @media screen and (orientation: portrait) and (max-device-width: 480px) {
+    margin-top: 0.7rem;
   }
 
   &::-webkit-calendar-picker-indicator {
@@ -41,6 +49,10 @@
   @media screen and (max-width: 768px) {
     margin: 0 0.3rem;
     padding: 0.25rem 1.2rem;
+  }
+
+  @media screen and (orientation: portrait) and (max-device-width: 480px) {
+    margin-top: 0.7rem;
   }
 
   &:hover {

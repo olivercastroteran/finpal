@@ -33,6 +33,14 @@
         width: 100%;
       }
 
+      @media screen and (max-width: 768px) {
+        margin-right: 0;
+      }
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        margin-right: 0;
+      }
+
       & > div {
         padding: 1.5rem;
         background-color: #efefef;

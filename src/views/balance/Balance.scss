@@ -78,8 +78,17 @@
       max-height: 55vh;
     }
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 900px) {
       width: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+      max-height: 75vh;
+    }
+
+    @media screen and (orientation: portrait) and (max-device-width: 480px) {
+      flex-direction: column;
+      max-height: 63vh;
     }
 
     .balance__incomes {
@@ -97,6 +106,11 @@
       display: flex;
       flex-direction: column;
 
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+
       h2 {
         text-align: center;
       }
@@ -110,6 +124,10 @@
         border-top-right-radius: 15px;
         padding: 0.5rem;
         letter-spacing: 1px;
+      }
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        max-height: 60vh;
       }
 
       & > div {

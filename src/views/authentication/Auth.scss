@@ -41,6 +41,10 @@
       &--switch .auth-btn {
         color: #fff;
 
+        @media screen and (orientation: landscape) and (max-device-width: 768px) {
+          margin-bottom: 1rem;
+        }
+
         &.active {
           background-color: #16a085;
         }
@@ -55,6 +59,20 @@
     border: 1px solid #ccc;
     box-shadow: 1px 3px 5px rgba($color: #000000, $alpha: 0.25);
     position: relative;
+
+    @media screen and (max-device-width: 768px) {
+      width: 70%;
+      padding: 0.5rem;
+      padding-bottom: 2rem;
+      margin-top: 6rem;
+    }
+
+    @media screen and (orientation: portrait) and (max-device-width: 480px) {
+      margin-top: 0;
+      width: 100%;
+      padding: 0.75rem;
+      padding-bottom: 2rem;
+    }
 
     &--switch {
       display: flex;
@@ -103,12 +121,20 @@
         letter-spacing: 2px;
         color: #107360;
         margin-bottom: 2rem;
+
+        @media screen and (orientation: landscape) and (max-device-width: 768px) {
+          display: none;
+        }
       }
 
       .input-field {
         width: 100%;
         margin-bottom: 1.25rem;
         position: relative;
+
+        @media screen and (max-device-width: 768px) {
+          margin-bottom: 0.5rem;
+        }
 
         .form__btn {
           outline: none;

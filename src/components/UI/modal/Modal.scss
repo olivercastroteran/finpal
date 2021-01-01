@@ -171,6 +171,10 @@
     flex-direction: column;
     justify-content: space-around;
     padding: 0.7rem 1rem;
+
+    @media screen and (max-width: 768px) {
+      padding: 0.3rem 0.6rem;
+    }
   }
 
   &__setting {
@@ -182,7 +186,7 @@
 
     @media screen and (max-width: 768px) {
       width: 90%;
-      margin: 0.75rem auto;
+      margin: 0.6rem auto;
     }
 
     select,
@@ -196,6 +200,10 @@
       outline: none;
       padding: 0.3rem 1rem;
       transition: all 0.3s;
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        width: 42%;
+      }
 
       &::-webkit-calendar-picker-indicator {
         cursor: pointer;
