@@ -37,6 +37,10 @@
         padding: 1.5rem;
         background-color: #efefef;
         border-radius: 25px;
+
+        @media screen and (max-width: 768px) {
+          padding: 1rem;
+        }
       }
     }
 

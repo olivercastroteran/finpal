@@ -15,6 +15,15 @@
     width: 100%;
   }
 
+  @media screen and (max-width: 900px) {
+    margin-top: 1.3rem;
+    max-height: 45vh;
+  }
+
+  @media screen and (max-width: 768px) {
+    max-height: 55vh;
+  }
+
   &__header {
     display: flex;
     align-items: center;
@@ -27,6 +36,10 @@
       flex: 1;
       text-align: center;
       padding: 0.8rem 0;
+
+      @media screen and (max-width: 900px) {
+        padding: 0.4rem 0;
+      }
     }
   }
 
@@ -69,6 +82,12 @@
       justify-content: space-between;
       border-bottom: 1px solid rgba($color: #888, $alpha: 0.2);
       transition: all 0.2s;
+
+      .code-txt {
+        @media screen and (max-width: 900px) {
+          margin-left: 1rem;
+        }
+      }
 
       .input-field {
         display: flex;

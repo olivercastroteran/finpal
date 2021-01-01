@@ -20,5 +20,15 @@
       width: 230px;
       height: auto;
     }
+
+    @media screen and (max-width: 900px) {
+      width: 170px;
+      height: auto;
+      right: 1rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
 }

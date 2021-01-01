@@ -14,11 +14,11 @@
   z-index: 10;
 
   @media screen and (max-width: 1024px) {
-    width: 55%;
+    width: 50%;
   }
 
   @media screen and (max-width: 900px) {
-    width: 70%;
+    width: 60%;
   }
 
   &.dark {
@@ -47,6 +47,10 @@
     border-radius: 15px;
     padding: 1.5rem;
 
+    @media screen and (max-width: 768px) {
+      padding: 1.2rem;
+    }
+
     .code {
       letter-spacing: 5px;
       padding: 0.2rem;
@@ -60,6 +64,10 @@
       background-color: transparent;
       border: none;
       border-bottom: 1px solid #16a085;
+
+      @media screen and (max-width: 768px) {
+        width: 75%;
+      }
     }
 
     .row {
@@ -82,6 +90,10 @@
         border: none;
         padding: 1rem;
         transition: all 0.2s;
+
+        @media screen and (max-width: 768px) {
+          min-width: 6rem;
+        }
 
         &.code-btn {
           font-size: 1rem;
@@ -166,6 +178,12 @@
     margin: 1rem auto;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: 768px) {
+      width: 90%;
+      margin: 0.75rem auto;
+    }
 
     select,
     input {
@@ -189,6 +207,10 @@
       width: 50%;
       border: 1px solid #107360;
       border-radius: 3px;
+
+      @media screen and (max-width: 768px) {
+        width: 60%;
+      }
     }
   }
 

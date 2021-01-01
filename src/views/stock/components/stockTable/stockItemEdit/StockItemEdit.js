@@ -38,7 +38,7 @@ const StockItemEdit = ({
         />
       )}
 
-      <div className="input-field">
+      <div className="input-field code-txt">
         <input
           type="text"
           value={editedItem.code}

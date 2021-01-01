@@ -9,6 +9,10 @@
     margin-bottom: 1.75rem;
   }
 
+  @media screen and (max-width: 900px) {
+    margin-bottom: 1.25rem;
+  }
+
   &.dark {
     .header__search {
       background-color: #222;

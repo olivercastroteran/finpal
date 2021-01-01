@@ -35,7 +35,7 @@ const StockItem = ({ id, code, name, price, quantity }) => {
           className={isEditing ? 'stock-edit active' : 'stock-edit'}
         />
       )}
-      <p>{code}</p>
+      <p className="code-txt">{code}</p>
       <p>{name}</p>
       <p>
         {formatMoney(price)[0]}

@@ -29,6 +29,10 @@
     @media screen and (max-width: 900px) {
       max-width: 110px;
     }
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
 
   &.dark {

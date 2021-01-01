@@ -4,8 +4,16 @@
   max-width: 1000px;
   flex-wrap: wrap;
 
+  @media screen and (max-width: 900px) {
+    margin-top: 2.2rem;
+  }
+
   .input-field:not(:first-of-type) {
     margin-left: 1.5rem;
+
+    @media screen and (max-width: 768px) {
+      margin-left: 1rem;
+    }
   }
 
   &.dark {
@@ -39,6 +47,10 @@
     padding: 0.3rem 1rem;
     border: 1px solid #16a085;
     transition: background-color 0.3s;
+
+    @media screen and (max-width: 768px) {
+      margin-left: 1rem;
+    }
 
     &:hover {
       background-color: #16a085;

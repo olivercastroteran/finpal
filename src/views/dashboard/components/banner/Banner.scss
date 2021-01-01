@@ -43,6 +43,13 @@
         height: auto;
         bottom: 1rem;
       }
+
+      @media screen and (max-width: 768px) {
+        width: 270px;
+        height: auto;
+        bottom: 1rem;
+        right: -1rem;
+      }
     }
   }
 }
