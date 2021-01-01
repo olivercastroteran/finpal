@@ -5,6 +5,10 @@
   justify-content: space-between;
   margin-bottom: 2.5rem;
 
+  @media screen and (max-width: 1200px) {
+    margin-bottom: 1.75rem;
+  }
+
   &.dark {
     .header__search {
       background-color: #222;

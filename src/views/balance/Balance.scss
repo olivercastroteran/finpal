@@ -8,9 +8,17 @@
 
   .treasure-img {
     position: absolute;
-    bottom: 0;
+    bottom: 1rem;
     left: 1.5rem;
     max-width: 250px;
+    height: auto;
+
+    @media screen and (max-width: 1200px) {
+      max-width: 180px;
+      height: auto;
+      left: 1rem;
+      bottom: 1rem;
+    }
   }
 
   &.dark {
@@ -41,7 +49,14 @@
     margin-bottom: 2rem;
 
     @media screen and (max-width: 1350px) {
-      max-height: 55vh;
+      max-height: 60vh;
+      margin-bottom: 0;
+    }
+
+    @media screen and (max-width: 1200px) {
+      width: 90%;
+      max-height: 60vh;
+      margin-bottom: 0;
     }
 
     & > div {

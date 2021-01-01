@@ -3,6 +3,10 @@
   max-height: 87vh;
   overflow-y: scroll;
 
+  @media screen and (max-width: 1200px) {
+    max-height: 105vh;
+  }
+
   &:hover {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -40,6 +44,11 @@
   h2 {
     letter-spacing: 3px;
     margin-bottom: 2rem;
+
+    @media screen and (max-width: 1200px) {
+      font-size: 1.35rem;
+      letter-spacing: 2px;
+    }
   }
 
   &__item {

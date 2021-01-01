@@ -7,6 +7,12 @@
   h2 {
     margin-bottom: 2rem;
     letter-spacing: 1px;
+
+    @media screen and (max-width: 1200px) {
+      font-size: 1.35rem;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+    }
   }
 
   &__top {
@@ -14,6 +20,10 @@
     align-self: center;
     justify-content: center;
     margin-bottom: 3rem;
+
+    @media screen and (max-width: 1200px) {
+      margin-bottom: 2rem;
+    }
   }
 
   &-data {
@@ -53,6 +63,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+      @media screen and (max-width: 1200px) {
+        width: 30%;
+      }
+
+      svg {
+        @media screen and (max-width: 1200px) {
+          width: 60px;
+          height: 60px;
+        }
+      }
 
       svg path {
         transition: all 0.3s;

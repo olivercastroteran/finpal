@@ -19,6 +19,12 @@
     align-items: center;
     transition: all 0.3s;
 
+    svg {
+      @media screen and (max-width: 1200px) {
+        width: 55px;
+      }
+    }
+
     a {
       text-decoration: none;
       display: flex;
@@ -30,6 +36,10 @@
         font-family: 'Lobster Two', cursive;
         font-size: 2.2rem;
         letter-spacing: 3px;
+
+        @media screen and (max-width: 1200px) {
+          font-size: 1.75rem;
+        }
       }
     }
   }
@@ -39,6 +49,11 @@
     width: 70%;
     margin-left: 30%;
     transition: all 0.3s;
+
+    @media screen and (max-width: 1200px) {
+      margin-left: 25%;
+      width: 75%;
+    }
 
     & > li,
     .settings--btn {
@@ -55,6 +70,10 @@
     svg {
       width: 30px;
       height: 30px;
+
+      @media screen and (max-width: 1200px) {
+        width: 25px;
+      }
     }
   }
 
@@ -75,6 +94,13 @@
     padding: 0.5rem;
     border-radius: 15px;
     transition: all 0.3s;
+
+    svg {
+      @media screen and (max-width: 1200px) {
+        width: 35px;
+        height: auto;
+      }
+    }
 
     &:hover {
       background-color: rgba($color: #fff, $alpha: 0.2);

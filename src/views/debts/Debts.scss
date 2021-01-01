@@ -13,6 +13,12 @@
       position: absolute;
       top: -1.7rem;
       right: 1rem;
+
+      @media screen and (max-width: 1200px) {
+        width: 200px;
+        height: auto;
+        top: -1rem;
+      }
     }
   }
 
