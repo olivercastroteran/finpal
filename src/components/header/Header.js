@@ -46,7 +46,7 @@ const Header = ({ getSearchTerm }) => {
   return (
     <div className={isDarkMode ? 'header dark' : 'header'}>
       <form className="header__search" onSubmit={handleSearch}>
-        <SearchIcon />
+        <SearchIcon className="search-icon" />
         <input
           type="text"
           placeholder={text}

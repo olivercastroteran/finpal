@@ -13,6 +13,14 @@
   transition: all 0.3s;
   z-index: 10;
 
+  @media screen and (max-width: 1024px) {
+    width: 55%;
+  }
+
+  @media screen and (max-width: 900px) {
+    width: 70%;
+  }
+
   &.dark {
     background-color: #222;
 

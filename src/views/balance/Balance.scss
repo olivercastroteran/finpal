@@ -19,6 +19,16 @@
       left: 1rem;
       bottom: 1rem;
     }
+
+    @media screen and (max-width: 1024px) {
+      max-width: 130px;
+      left: 0.5rem;
+      bottom: 0.5rem;
+    }
+
+    @media screen and (max-width: 900px) {
+      max-width: 110px;
+    }
   }
 
   &.dark {
@@ -59,11 +69,27 @@
       margin-bottom: 0;
     }
 
+    @media screen and (max-width: 1024px) {
+      width: 95%;
+      max-height: 55vh;
+    }
+
+    @media screen and (max-width: 1024px) {
+      width: 100%;
+    }
+
+    .balance__incomes {
+      margin-right: 2rem;
+
+      @media screen and (max-width: 1024px) {
+        margin-right: 1rem;
+      }
+    }
+
     & > div {
       width: 50%;
       background-color: #efefef;
       border-radius: 15px;
-      margin: 0 1rem;
       display: flex;
       flex-direction: column;
 

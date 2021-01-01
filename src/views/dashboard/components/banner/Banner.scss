@@ -10,6 +10,10 @@
     flex-direction: column;
     justify-content: space-around;
 
+    @media screen and (max-width: 900px) {
+      width: 55%;
+    }
+
     h2 {
       font-size: 1.7rem;
       letter-spacing: 1px;
@@ -30,7 +34,14 @@
 
       @media screen and (max-width: 1200px) {
         width: 330px;
-        bottom: -1rem;
+        height: auto;
+        bottom: 0.5rem;
+      }
+
+      @media screen and (max-width: 900px) {
+        width: 290px;
+        height: auto;
+        bottom: 1rem;
       }
     }
   }

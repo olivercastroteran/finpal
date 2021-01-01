@@ -1,6 +1,8 @@
 .form-format {
   display: flex;
   margin-top: 3rem;
+  max-width: 1000px;
+  flex-wrap: wrap;
 
   .input-field:not(:first-of-type) {
     margin-left: 1.5rem;
@@ -63,10 +65,19 @@
     background-color: transparent;
     transition: all 0.2s;
 
+    @media screen and (max-width: 1200px) {
+      padding: 0.15rem 0.3rem;
+      width: 5rem;
+    }
+
     &:focus {
       width: 7rem;
       outline: none;
       border-bottom: 1px solid #107360;
+
+      @media screen and (max-width: 1200px) {
+        width: 6rem;
+      }
 
       &:invalid {
         border-bottom: 1px solid #c0392b;

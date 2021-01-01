@@ -16,6 +16,10 @@
     border-radius: 20px;
     position: relative;
 
+    @media screen and (max-width: 1200px) {
+      width: 95%;
+    }
+
     h2 {
       margin-left: 2rem;
       margin-bottom: 1rem;
@@ -26,6 +30,11 @@
       position: absolute;
       bottom: 0.5rem;
       right: 1rem;
+
+      @media screen and (max-width: 900px) {
+        width: 300px;
+        height: auto;
+      }
     }
   }
 

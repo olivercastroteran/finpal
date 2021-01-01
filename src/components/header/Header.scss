@@ -60,6 +60,13 @@
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
+    position: relative;
+
+    @media screen and (max-width: 900px) {
+      padding: 0.2rem 1rem;
+      width: 60%;
+      height: 90%;
+    }
 
     input {
       color: inherit;
@@ -71,15 +78,23 @@
       outline: none;
     }
 
-    svg {
+    .search-icon {
       width: 28px;
       height: 28px;
+
+      @media screen and (max-width: 900px) {
+        width: 20px;
+        height: 20px;
+      }
     }
 
     .refresh-btn {
-      align-self: center;
+      position: absolute;
+      right: 1rem;
+      bottom: 25%;
       cursor: pointer;
-      transform: translateY(2px);
+      width: 24px;
+      height: 24px;
       transition: all 0.2s;
 
       &:hover {
@@ -116,6 +131,11 @@
     svg {
       width: 36px;
       height: 36px;
+
+      @media screen and (max-width: 900px) {
+        width: 28px;
+        height: 28px;
+      }
     }
   }
 }
