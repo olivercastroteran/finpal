@@ -32,8 +32,15 @@ const DebtItem = ({ id, type, name, description, amount, date }) => {
     const yearsDiff = year - parseInt(dateArr[0]);
     const monthDiff = month - parseInt(dateArr[1]);
 
-    if (yearsDiff >= 1) {
+    if (yearsDiff > 1) {
       setDifference('plus-twelve');
+    } else if (yearsDiff === 1) {
+      const m = parseInt(dateArr[1]);
+      if (month - m >= 0) {
+        setDifference('plus-twelve');
+      } else if (m - month <= 6) {
+        setDifference('plus-six');
+      }
     } else if (monthDiff >= 6) {
       setDifference('plus-six');
     }

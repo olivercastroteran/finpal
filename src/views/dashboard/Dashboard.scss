@@ -19,21 +19,47 @@
     justify-content: space-between;
     flex: 1;
 
+    @media screen and (max-width: 1024px) {
+      flex-direction: column;
+    }
+
     &--left {
       width: 70%;
       margin-right: 2rem;
       display: flex;
       flex-direction: column;
 
+      @media screen and (max-width: 1024px) {
+        width: 100%;
+      }
+
+      @media screen and (max-width: 768px) {
+        margin-right: 0;
+      }
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        margin-right: 0;
+      }
+
       & > div {
         padding: 1.5rem;
         background-color: #efefef;
         border-radius: 25px;
+
+        @media screen and (max-width: 768px) {
+          padding: 1rem;
+        }
       }
     }
 
     &--right {
       width: 30%;
+
+      @media screen and (max-width: 1024px) {
+        width: 100%;
+        margin-top: 2rem;
+        max-height: 25rem;
+      }
 
       & > div {
         padding: 1rem;

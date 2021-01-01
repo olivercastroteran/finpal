@@ -11,6 +11,53 @@
     max-height: 50vh;
   }
 
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 900px) {
+    margin-top: 1.3rem;
+    max-height: 45vh;
+  }
+
+  @media screen and (max-width: 768px) {
+    max-height: 55vh;
+  }
+
+  @media screen and (orientation: landscape) and (max-width: 768px) {
+    max-height: 100vh;
+  }
+
+  @media screen and (orientation: portrait) and (max-device-width: 480px) {
+    overflow-x: scroll;
+    width: 100%;
+
+    &::-webkit-scrollbar {
+      height: 0.5rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: transparent;
+    }
+
+    &:hover::-webkit-scrollbar {
+      height: 0.5rem;
+    }
+
+    &:hover::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+      background-color: rgba($color: #888, $alpha: 0.3);
+      border-radius: 15px;
+
+      &:hover {
+        background-color: rgba($color: #888, $alpha: 0.4);
+      }
+    }
+  }
+
   &__header {
     display: flex;
     align-items: center;
@@ -19,10 +66,18 @@
     background-color: #2c8ac7;
     border-radius: 10px;
 
+    @media screen and (orientation: portrait) and (max-device-width: 480px) {
+      min-width: 700px;
+    }
+
     h3 {
       flex: 1;
       text-align: center;
       padding: 0.8rem 0;
+
+      @media screen and (max-width: 900px) {
+        padding: 0.4rem 0;
+      }
     }
   }
 
@@ -31,6 +86,10 @@
     height: calc(100% - 48px);
     overflow-y: scroll;
     overflow-x: hidden;
+
+    @media screen and (orientation: portrait) and (max-device-width: 480px) {
+      min-width: 700px;
+    }
 
     &::-webkit-scrollbar {
       width: 0.6rem;
@@ -65,6 +124,12 @@
       justify-content: space-between;
       border-bottom: 1px solid rgba($color: #888, $alpha: 0.2);
       transition: all 0.2s;
+
+      .code-txt {
+        @media screen and (max-width: 900px) {
+          margin-left: 1rem;
+        }
+      }
 
       .input-field {
         display: flex;

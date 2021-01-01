@@ -8,9 +8,31 @@
 
   .treasure-img {
     position: absolute;
-    bottom: 0;
+    bottom: 1rem;
     left: 1.5rem;
     max-width: 250px;
+    height: auto;
+
+    @media screen and (max-width: 1200px) {
+      max-width: 180px;
+      height: auto;
+      left: 1rem;
+      bottom: 1rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+      max-width: 130px;
+      left: 0.5rem;
+      bottom: 0.5rem;
+    }
+
+    @media screen and (max-width: 900px) {
+      max-width: 110px;
+    }
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
 
   &.dark {
@@ -41,16 +63,53 @@
     margin-bottom: 2rem;
 
     @media screen and (max-width: 1350px) {
+      max-height: 60vh;
+      margin-bottom: 0;
+    }
+
+    @media screen and (max-width: 1200px) {
+      width: 90%;
+      max-height: 60vh;
+      margin-bottom: 0;
+    }
+
+    @media screen and (max-width: 1024px) {
+      width: 95%;
       max-height: 55vh;
+    }
+
+    @media screen and (max-width: 900px) {
+      width: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+      max-height: 75vh;
+    }
+
+    @media screen and (orientation: portrait) and (max-device-width: 480px) {
+      flex-direction: column;
+      max-height: 63vh;
+    }
+
+    .balance__incomes {
+      margin-right: 2rem;
+
+      @media screen and (max-width: 1024px) {
+        margin-right: 1rem;
+      }
     }
 
     & > div {
       width: 50%;
       background-color: #efefef;
       border-radius: 15px;
-      margin: 0 1rem;
       display: flex;
       flex-direction: column;
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
 
       h2 {
         text-align: center;
@@ -65,6 +124,10 @@
         border-top-right-radius: 15px;
         padding: 0.5rem;
         letter-spacing: 1px;
+      }
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        max-height: 60vh;
       }
 
       & > div {

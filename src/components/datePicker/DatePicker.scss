@@ -1,5 +1,9 @@
 .date-picker {
   margin-bottom: 2rem;
+
+  @media screen and (orientation: portrait) and (max-device-width: 480px) {
+    margin-bottom: 0;
+  }
 }
 
 .date {
@@ -11,6 +15,14 @@
   border-radius: 5px;
   padding: 0.5rem 0.75rem;
   transition: all 0.2s;
+
+  @media screen and (max-width: 768px) {
+    margin-right: 0.25rem;
+  }
+
+  @media screen and (orientation: portrait) and (max-device-width: 480px) {
+    margin-top: 0.7rem;
+  }
 
   &::-webkit-calendar-picker-indicator {
     cursor: pointer;
@@ -34,6 +46,15 @@
   border-radius: 5px;
   transition: all 0.2s;
 
+  @media screen and (max-width: 768px) {
+    margin: 0 0.3rem;
+    padding: 0.25rem 1.2rem;
+  }
+
+  @media screen and (orientation: portrait) and (max-device-width: 480px) {
+    margin-top: 0.7rem;
+  }
+
   &:hover {
     background-color: #16a085;
     color: #fff;
@@ -44,6 +65,10 @@
   margin-left: 0.5rem;
   color: #16a085;
   font-size: 1.3rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.15rem;
+  }
 }
 
 .date-picker.dark {

@@ -5,6 +5,14 @@
   justify-content: space-between;
   margin-bottom: 2.5rem;
 
+  @media screen and (max-width: 1200px) {
+    margin-bottom: 1.75rem;
+  }
+
+  @media screen and (max-width: 900px) {
+    margin-bottom: 1.25rem;
+  }
+
   &.dark {
     .header__search {
       background-color: #222;
@@ -31,6 +39,14 @@
 
         &:active {
           transform: translateY(2px) rotate(-45deg);
+
+          @media screen and (orientation: portrait) and (max-device-width: 480px) {
+            transform: scale(0.7) translateY(3px) rotate(-45deg);
+          }
+        }
+
+        @media screen and (orientation: portrait) and (max-device-width: 480px) {
+          transform: scale(0.7) translateY(3px);
         }
       }
     }
@@ -56,6 +72,17 @@
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
+    position: relative;
+
+    @media screen and (max-width: 900px) {
+      padding: 0.2rem 1rem;
+      width: 60%;
+      height: 90%;
+    }
+
+    @media screen and (orientation: portrait) and (max-device-width: 480px) {
+      padding: 0.2rem 0.6rem;
+    }
 
     input {
       color: inherit;
@@ -65,17 +92,35 @@
       font-size: 1.15rem;
       margin-left: 1rem;
       outline: none;
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        font-size: 1rem;
+        margin-left: 0.6rem;
+      }
     }
 
-    svg {
+    .search-icon {
       width: 28px;
       height: 28px;
+
+      @media screen and (max-width: 900px) {
+        width: 20px;
+        height: 20px;
+      }
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        width: 18px;
+        height: 18px;
+      }
     }
 
     .refresh-btn {
-      align-self: center;
+      position: absolute;
+      right: 1rem;
+      bottom: 25%;
       cursor: pointer;
-      transform: translateY(2px);
+      width: 24px;
+      height: 24px;
       transition: all 0.2s;
 
       &:hover {
@@ -86,6 +131,14 @@
 
       &:active {
         transform: translateY(2px) rotate(-45deg);
+
+        @media screen and (orientation: portrait) and (max-device-width: 480px) {
+          transform: scale(0.7) translateY(3px) rotate(-45deg);
+        }
+      }
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        transform: scale(0.7) translateY(3px);
       }
     }
   }
@@ -107,11 +160,26 @@
     span {
       margin-right: 0.75rem;
       font-size: 1.1rem;
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        margin-right: 5px;
+        font-size: 0.9rem;
+      }
     }
 
     svg {
       width: 36px;
       height: 36px;
+
+      @media screen and (max-width: 900px) {
+        width: 28px;
+        height: 28px;
+      }
+
+      @media screen and (orientation: portrait) and (max-device-width: 480px) {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 }

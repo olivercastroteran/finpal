@@ -7,12 +7,33 @@
     margin-bottom: 3rem;
     position: relative;
 
+    @media screen and (max-width: 1200px) {
+      margin-bottom: 1.5rem;
+    }
+
     svg {
       width: 300px;
       height: auto;
       position: absolute;
       top: -1.7rem;
       right: 1rem;
+
+      @media screen and (max-width: 1200px) {
+        width: 200px;
+        height: auto;
+        top: -1rem;
+      }
+
+      @media screen and (max-width: 1024px) {
+        width: 120px;
+        height: auto;
+        top: -1.5rem;
+        right: 1rem;
+      }
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
     }
   }
 

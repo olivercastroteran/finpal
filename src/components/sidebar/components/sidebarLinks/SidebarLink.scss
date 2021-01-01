@@ -9,6 +9,10 @@
   display: flex;
   align-items: center;
 
+  @media screen and (max-width: 768px) {
+    padding: 0.25rem 0 0.25rem 0.5rem;
+  }
+
   &:hover {
     background-color: rgba($color: #fff, $alpha: 0.2);
   }
@@ -17,6 +21,14 @@
     transition: all 0.3s;
     border-radius: 30px;
     width: 100%;
+
+    @media screen and (max-width: 900px) {
+      padding: 0.3rem 0.8rem 0.3rem 0.8rem;
+    }
+
+    @media screen and (orientation: portrait) and (max-device-width: 480px) {
+      padding: 0.1rem 0.4rem 0.1rem 0.4rem;
+    }
 
     &:hover {
       transform: scale(1.05);
@@ -32,6 +44,10 @@
   p {
     color: #fff;
     margin-left: 1rem;
+
+    @media screen and (max-width: 1200px) {
+      margin-left: 0.5rem;
+    }
   }
 
   &.active {
@@ -41,6 +57,11 @@
       color: #107360;
       text-transform: uppercase;
       letter-spacing: 1px;
+
+      @media screen and (max-width: 900px) {
+        font-size: 0.9rem;
+        letter-spacing: 0;
+      }
     }
 
     &:after,
@@ -113,5 +134,17 @@
   &__icon {
     display: flex;
     align-items: center;
+
+    svg {
+      @media screen and (max-width: 900px) {
+        width: 23px;
+        height: auto;
+      }
+
+      @media screen and (max-width: 768px) {
+        width: 20px;
+        height: auto;
+      }
+    }
   }
 }
