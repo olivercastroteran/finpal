@@ -3,6 +3,8 @@ const spanish = {
     title: 'Ajustes',
     language: 'Idioma',
     darkMode: 'Modo Oscuro',
+    contact: 'Contacto',
+    link: 'https://oliverct.com/',
     btn: 'GUARDAR',
   },
   addTransaction: {

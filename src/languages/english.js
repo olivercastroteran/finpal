@@ -3,6 +3,8 @@ const english = {
     title: 'Settings',
     language: 'Language',
     darkMode: 'Dark Mode',
+    contact: 'Contact',
+    link: 'https://oliverct.com/',
     btn: 'SAVE',
   },
   addTransaction: {

@@ -55,12 +55,25 @@ const SettingsForm = () => {
             <option value="spanish">Español</option>
           </select>
         </div>
+
         <div className="modal__setting">
           <label>{content?.darkMode}</label>
           <ToggleBtn
             isToggleOn={isDarkMode}
             changeToggle={() => dispatch(toggleDarkMode())}
           />
+        </div>
+
+        <div className="modal__setting">
+          <label>{content?.contact}</label>
+          <a
+            href="https://oliverct.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="modal__link"
+          >
+            {content?.link}
+          </a>
         </div>
         <button className="modal__btn">{content?.btn}</button>
       </form>
