@@ -14,6 +14,22 @@ export const login = (credentials) => {
   };
 };
 
+export const demoLogin = () => {
+  return (dispatch, getState, { getFirebase }) => {
+    const firebase = getFirebase();
+
+    firebase
+      .auth()
+      .signInWithEmailAndPassword('oliver@test.com', 'Test123')
+      .then(() => {
+        dispatch({ type: 'LOGIN_SUCCESS' });
+      })
+      .catch((err) => {
+        dispatch({ type: 'LOGIN_ERROR', err });
+      });
+  };
+};
+
 export const logout = () => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();

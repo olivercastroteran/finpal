@@ -147,6 +147,17 @@
           color: #fff;
           transition: all 0.2s;
 
+          @media screen and (orientation: portrait) and (max-device-width: 480px) {
+            padding: 0.3rem 1.5rem;
+          }
+
+          &.demo {
+            margin-left: 1.5rem;
+            @media screen and (orientation: portrait) and (max-device-width: 480px) {
+              margin-left: 0.75rem;
+            }
+          }
+
           &:hover {
             background-color: #16a085;
             transform: translateY(-3px);

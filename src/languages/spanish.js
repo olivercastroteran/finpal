@@ -36,6 +36,7 @@ const spanish = {
   login: {
     title: 'Iniciar Sesión',
     btn: 'Iniciar Sesión',
+    demo: 'Demo Login',
   },
   signup: {
     title: 'Registrarse',

@@ -36,6 +36,7 @@ const english = {
   login: {
     title: 'Login',
     btn: 'Login',
+    demo: 'Demo Login',
   },
   signup: {
     title: 'Sigup',

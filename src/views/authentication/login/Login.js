@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { english, spanish } from '../../../languages';
-import { login } from '../../../store/actions/authActions';
+import { demoLogin, login } from '../../../store/actions/authActions';
 import { HideIcon, LookIcon } from '../../../assets/icons';
 import Spinner from '../../../components/UI/spinner/Spinner';
 
@@ -31,6 +31,13 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password }));
+    if (!auth.uid) {
+      setIsLoading(true);
+    }
+  };
+
+  const handleDemoLogin = () => {
+    dispatch(demoLogin());
     if (!auth.uid) {
       setIsLoading(true);
     }
@@ -85,6 +92,13 @@ const Login = () => {
 
       <div className="input-field">
         <button className="form__btn">{content?.btn}</button>
+        <button
+          className="form__btn demo"
+          type="button"
+          onClick={handleDemoLogin}
+        >
+          {content?.demo}
+        </button>
       </div>
 
       {isLoading && <Spinner />}

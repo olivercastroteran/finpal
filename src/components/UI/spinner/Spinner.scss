@@ -12,6 +12,11 @@
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
+
+  @media screen and (max-device-width: 768px) {
+    font-size: 10px;
+    margin: 60px auto;
+  }
 }
 @-webkit-keyframes load4 {
   0%,
